@@ -17,23 +17,23 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent">
-          <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}" alt="logo" width="100px" class="img-fluid"></a>
+          <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}" alt="logo" class="h-100 w-auto"></a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
+              <li class="nav-item d-none d-md-block">
 
                 <div class="dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
                   <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownfirstLink">
                     <div class="row">
-                      <div class="col-lg-4">
+                      <div class="col-xl-4 col-lg-6">
                         <div class="row">
                           <div class="col-4">
                             <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
                           </div>
-                          <div class="col-12">
-                            <p class="font-weight-bolder h4">Одежда и аксессуары</p>
+                          <div class="col-12 mt-2">
+                            <p class="font-weight-bolder h5">Одежда и аксессуары</p>
                             <a href="#" class="text-decoration-none">Смотреть все товары</a>
                           </div>
                         </div>
@@ -43,22 +43,26 @@
                 </div>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
+              <li class="nav-item d-none d-md-block">
+
+                <div class="dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownsecondLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asay Jurek Vintage home</a>
+                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
+                    <div class="row">
+                      <div class="col-xl-4 col-lg-6">
+                        <div class="row">
+                          <div class="col-4">
+                            <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
+                          </div>
+                          <div class="col-12 mt-2">
+                            <p class="font-weight-bolder h5">Одежда и аксессуары</p>
+                            <a href="#" class="text-decoration-none">Смотреть все товары</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

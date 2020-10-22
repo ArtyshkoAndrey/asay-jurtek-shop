@@ -27658,6 +27658,18 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #000;
 }
 
+a {
+  color: #CF6B37;
+}
+
+a:hover {
+  color: #000;
+}
+
+.navbar {
+  height: 100px;
+}
+
 .navbar .navbar-dropdown-big {
   width: 100vw;
   left: 0;
