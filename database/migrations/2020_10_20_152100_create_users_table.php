@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
       $table->unsignedBigInteger('country_id')->nullable();
       $table->unsignedBigInteger('currency_id')->nullable();
       $table->foreign('city_id')->references('id')->on('cities')->onDelete('set NULL');
-      $table->foreign('country_id')->references('id')->on('countries')->onDelete('set NULL');
-      $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('set NULL');
+      $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
+      $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('set null');
       $table->string('email')->unique();
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');

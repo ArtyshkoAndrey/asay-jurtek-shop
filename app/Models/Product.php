@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
   use HasFactory;
-
   use SoftDeletes;
+
   protected $fillable = [
     'title', 'description', 'on_sale',
     'price_sale', 'price', 'skus',
     'meta', 'on_new'
   ];
   protected $casts = [
-    'on_sale' => 'boolean',
-    'on_new'  => 'boolean',
-    'meta'    => 'object'
+    'on_sale' => 'boolean', // Скидка
+    'on_new'  => 'boolean', // Новая
+    'meta'    => 'object'   // Данные ля СЕО
   ];
 
   protected $with  = ['photos'];

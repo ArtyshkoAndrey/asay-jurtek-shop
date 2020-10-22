@@ -9,24 +9,30 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  ...$guards
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next, ...$guards)
-    {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+  /**
+   * Handle an incoming request.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  \Closure  $next
+   * @param  string|null  ...$guards
+   * @return mixed
+   */
+  public function handle(Request $request, Closure $next, ...$guards)
+  {
+    switch ($guard) {
+      case 'admin':
+        if (Auth::guard($guard)->check()) {
+          return redirect()->route('admin.root');
         }
+        break;
 
-        return $next($request);
+      default:
+        if (Auth::guard($guard)->check()) {
+          return redirect('/');
+        }
+        break;
     }
+
+    return $next($request);
+  }
 }

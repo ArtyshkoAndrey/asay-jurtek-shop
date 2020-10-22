@@ -61,4 +61,18 @@ class User extends Authenticatable
   public function country () {
     return $this->balongsTo(Country::class);
   }
+
+  public function favoriteProducts () {
+    return $this->belongsToMany(Product::class, 'user_favorite_products')
+      ->withTimestamps()
+      ->orderBy('user_favorite_products.created_at', 'desc');
+  }
+
+  public function cartItems () {
+    return $this->hasMany(CartItem::class);
+  }
+
+  public function sendPasswordResetNotification ($token) {
+    $this->notify(new PasswordReset($token));
+  }
 }
