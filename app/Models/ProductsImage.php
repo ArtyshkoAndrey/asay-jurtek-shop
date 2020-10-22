@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductsImage extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $fillable = [
+    'name'
+  ];
+
+  public function product() {
+    return $this->belongsTo(Product::class, 'product_id', 'id')->withTrashed();
+  }
 }

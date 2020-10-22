@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $fillable = ['amount'];
+  public $timestamps  = false;
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }

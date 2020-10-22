@@ -1,37 +1,26 @@
 <?php
 use Illuminate\Support\Facades\Route;
-// if ((new App\Models\Settings)->statusSite()) {
+
+if ((new App\Models\Setting)->statusSite()) {
 
   // Auth::routes();
 //   getAdminRoute();
 
 // } else {
-
-  // getAdminRoute();
-Route::get('admin/login', ['as' => 'admin.auth.login', 'uses' => 'Admin/Auth/LoginController@showLoginForm']);
-
-  // Route::any('{all}', function () {
-  //   return view('pages.site');
-  // })->where('all', '.*');
-// }
+  Auth::routes();
+  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+  getAdminRoute();
+ }
 
 
 function getAdminRoute() {
-  Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-    Route::get('login', ['as' => 'admin.auth.login', 'uses' => 'Auth\LoginController@showLoginForm']);
-    Route::post('login', ['as' => 'admin.auth.login', 'uses' => 'Auth\LoginController@login']);
-    // Password Reset Routes...
-    Route::post('password/email', ['as' => 'admin.auth.password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/email', ['as' => 'admin.auth.password.email', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/reset', ['as' => 'admin.auth.password.reset', 'uses' => 'Auth\ResetPasswordController@reset']);
-    Route::get('password/reset/{token?}', ['as' => 'admin.auth.password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
-  });
+  Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
 
-  Route::group(['prefix' => 'admin', 'guard' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:admin']], function () {
-
-    Route::get('logout', 'Auth\LoginController@logout')->name('admin.auth.logout');
-
-    Route::resource('/order', 'OrderController', ['as' => 'admin.store']); 
-
+    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('root');
+    Route::put('status', [\App\Http\Controllers\Admin\DashboardController::class, 'status'])->name('root.status');
+    Route::name('store.')->group(function () {
+      Route::resource('order', App\Http\Controllers\Admin\OrderController::class);
+      Route::delete('/order/all', [App\Http\Controllers\Admin\OrderController::class,'collectionsDestroy'])->name('order.collectionsDestroy');
+    });
   });
 }

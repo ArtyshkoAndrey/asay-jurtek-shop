@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class CityExpress extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  public function cityOriginal() {
+    return $this->hasOne(City::class, 'id', 'city_id');
+  }
 }

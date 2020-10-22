@@ -11,22 +11,18 @@
     <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
     @yield('css')
   </head>
-  <body class="{{ Route::currentRouteNamed('admin.auth.login') || Route::currentRouteNamed('admin.auth.password.email') || Route::currentRouteNamed('admin.auth.password.reset') ? 'login-page' : '' }}">
-    @if(Route::currentRouteNamed('admin.auth.login') || Route::currentRouteNamed('admin.auth.password.email') || Route::currentRouteNamed('admin.auth.password.reset'))
-      @yield('content')
-    @else
-      <div class="wrapper">
-        <div class="main-header ml-0">
-          @include('admin.layouts.navbar')
-        </div>
-        <div class="sidebar-wrapper">
-          @include('admin.layouts.aside')
-        </div>
-        <div class="content-wrapper">
-          @yield('content')
-        </div>
+  <body class="">
+    <div class="wrapper">
+      <div class="main-header ml-0">
+        @include('admin.layouts.navbar')
       </div>
-    @endif
+      <div class="sidebar-wrapper">
+        @include('admin.layouts.aside')
+      </div>
+      <div class="content-wrapper">
+        @yield('content')
+      </div>
+    </div>
     <script src="{{ mix('js/admin.js') }}"></script>
     <script>
       $( document ).ready( () => {

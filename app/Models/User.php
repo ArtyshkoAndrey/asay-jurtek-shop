@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\PasswordReset;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,6 +26,7 @@ class User extends Authenticatable
     'contact_phone',
     'email',
     'password',
+    'is_admin'
   ];
 
   /**
@@ -44,11 +46,21 @@ class User extends Authenticatable
    */
   protected $casts = [
     'email_verified_at' => 'datetime',
+    'is_admin' => 'boolean'
   ];
 
   public function getFullAddress () {
     return "{$this->country->name}, {$this->city->name}, {$this->street}";
   }
+
+  public function getIOName () {
+    return "{$this->first_name} {$this->second_name}";
+  }
+
+  public function getPhoto () {
+    return $this->avatar ? asset('public/avatar/avatar/thumbnail/' . $this->avatar) : asset('images/person.png');
+  }
+
 
   public function currency () {
     return $this->belongsTo(Currency::class);

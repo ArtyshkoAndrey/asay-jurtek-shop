@@ -19,11 +19,12 @@ class CreateUsersTable extends Migration
       $table->string('second_name');
       $table->string('patronymic');
       $table->string('street');
-      $table->text('avatar');
+      $table->text('avatar')->nullable;
       $table->string('contact_phone');
       $table->unsignedBigInteger('city_id')->nullable();
       $table->unsignedBigInteger('country_id')->nullable();
       $table->unsignedBigInteger('currency_id')->nullable();
+      $table->boolean('is_admin')->default(false);
       $table->foreign('city_id')->references('id')->on('cities')->onDelete('set NULL');
       $table->foreign('country_id')->references('id')->on('countries')->onDelete('set null');
       $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('set null');

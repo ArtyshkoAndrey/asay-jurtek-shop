@@ -81,4 +81,44 @@ class Order extends Model
       }
     });
   }
+
+  public function user ()
+  {
+    return $this->belongsTo(User::class);
+  }
+
+  public function items ()
+  {
+    return $this->hasMany(OrderItem::class);
+  }
+  public function expressCompany ()
+  {
+    return $this->belongsTo(ExpressCompany::class, 'id_express_company', 'id');
+  }
+
+  public static function findAvailableNo ()
+  {
+    // Префикс серийного номера заказа
+    $prefix = date('YmdHis');
+    for ($i = 0; $i < 10; $i++) {
+      // Случайно сгенерированный 6-значный номер
+      $no = $prefix.str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+      // Определите, существует ли он уже
+      if (!static::query()->where('no', $no)->exists()) {
+        return $no;
+      }
+    }
+    \Log::warning('find order no failed');
+
+    return false;
+  }
+  public static function getAvailableRefundNo ()
+  {
+    do {
+      // Класс Uuid может быть использован для генерации уникальных строк с высокой вероятностью
+      $no = Uuid::uuid4()->getHex();
+      // Чтобы избежать повторения, мы запрашиваем базу данных после генерации, чтобы узнать, существует ли такой же номер заказа на возврат.
+    } while (self::query()->where('refund_no', $no)->exists());
+    return $no;
+  }
 }
