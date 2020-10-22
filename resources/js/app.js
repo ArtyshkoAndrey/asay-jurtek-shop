@@ -20,3 +20,5 @@ try {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
   }
 } catch (e) {}
+
+require('./box-image.js')

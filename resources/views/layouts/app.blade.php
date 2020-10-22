@@ -6,17 +6,15 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Zakaz - @yield('title')</title>
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  <div id="app" class="px-md-5 pt-4 px-0">
+  <div id="app" class="px-md-5 pt-1 px-0">
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="navbar navbar-light w-100 navbar-expand bg-transparent">
+        <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">
           <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}" alt="logo" class="h-100 w-auto"></a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,7 +23,7 @@
 
                 <div class="dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
-                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownfirstLink">
+                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
                         <div class="row">
@@ -35,6 +33,34 @@
                           <div class="col-12 mt-2">
                             <p class="font-weight-bolder h5">Одежда и аксессуары</p>
                             <a href="#" class="text-decoration-none">Смотреть все товары</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col border-left">
+                        <div class="row">
+                          <div class="col">
+                            <a href="#" class="text-decoration-none text-dark">
+                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
+                              <p class="font-weight-bold text-center">Детям</p>
+                            </a>
+                          </div>
+                          <div class="col">
+                            <a href="#" class="text-decoration-none text-dark">
+                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
+                              <p class="font-weight-bold text-center">Детям</p>
+                            </a>
+                          </div>
+                          <div class="col">
+                            <a href="#" class="text-decoration-none text-dark">
+                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
+                              <p class="font-weight-bold text-center">Детям</p>
+                            </a>
+                          </div>
+                          <div class="col">
+                            <a href="#" class="text-decoration-none text-dark">
+                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
+                              <p class="font-weight-bold text-center">Детям</p>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -64,6 +90,9 @@
                   </div>
                 </div>
               </li>
+              <li class="nav-item d-none d-md-block">
+                <a href="#" class="nav-link">Адресс и контакты</a>
+              </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -78,5 +107,6 @@
       @yield('content')
     </main>
   </div>
+  <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

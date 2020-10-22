@@ -49573,6 +49573,21 @@ try {
   }
 } catch (e) {}
 
+__webpack_require__(/*! ./box-image.js */ "./resources/js/box-image.js");
+
+/***/ }),
+
+/***/ "./resources/js/box-image.js":
+/*!***********************************!*\
+  !*** ./resources/js/box-image.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function box_image(selector) {
+  $(selector).height($(selector).width());
+}
+
 /***/ }),
 
 /***/ 1:
