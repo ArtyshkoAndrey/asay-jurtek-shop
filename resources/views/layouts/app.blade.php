@@ -22,8 +22,8 @@
               <li class="nav-item d-none d-md-block">
 
                 <div class="dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
-                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
+                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-4 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
                         <div class="row">
@@ -37,31 +37,23 @@
                         </div>
                       </div>
                       <div class="col border-left">
-                        <div class="row">
-                          <div class="col">
-                            <a href="#" class="text-decoration-none text-dark">
-                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
-                              <p class="font-weight-bold text-center">Детям</p>
-                            </a>
-                          </div>
-                          <div class="col">
-                            <a href="#" class="text-decoration-none text-dark">
-                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
-                              <p class="font-weight-bold text-center">Детям</p>
-                            </a>
-                          </div>
-                          <div class="col">
-                            <a href="#" class="text-decoration-none text-dark">
-                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
-                              <p class="font-weight-bold text-center">Детям</p>
-                            </a>
-                          </div>
-                          <div class="col">
-                            <a href="#" class="text-decoration-none text-dark">
-                              <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown">
-                              <p class="font-weight-bold text-center">Детям</p>
-                            </a>
-                          </div>
+                        <div class="row pl-3">
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -72,7 +64,7 @@
               <li class="nav-item d-none d-md-block">
 
                 <div class="dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownsecondLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asay Jurek Vintage home</a>
+                  <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownsecondLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asay Jurek Vintage home</a>
                   <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
@@ -86,12 +78,33 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col border-left">
+                        <div class="row pl-3">
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                          <a href="#" class="col text-decoration-none text-dark">
+                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="font-weight-bold text-center m-0">Детям</p>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </li>
               <li class="nav-item d-none d-md-block">
-                <a href="#" class="nav-link">Адресс и контакты</a>
+                <a href="#" class="nav-link text-dark">Адресс и контакты</a>
+              </li>
               <li class="nav-item ml-5">
                 <form class="form-inline my-2 my-lg-0">
                   <div class="input-group">
