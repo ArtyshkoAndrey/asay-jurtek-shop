@@ -8,6 +8,7 @@
   <title>Zakaz - @yield('title')</title>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/icon.css') }}">
 </head>
 <body>
   <div id="app" class="px-md-5 pt-1 px-0">
@@ -23,7 +24,7 @@
 
                 <div class="dropdown">
                   <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
-                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-4 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
+                  <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-4 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
                         <div class="row">
@@ -65,7 +66,7 @@
 
                 <div class="dropdown">
                   <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownsecondLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asay Jurek Vintage home</a>
-                  <div class="dropdown-menu navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
+                  <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
                         <div class="row">
@@ -105,23 +106,47 @@
               <li class="nav-item d-none d-md-block">
                 <a href="#" class="nav-link text-dark">Адресс и контакты</a>
               </li>
+
               <li class="nav-item ml-5">
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0 nav-search">
                   <div class="input-group">
-                    <div class="input-group-prepend" style="    border-radius: 10px;
-                    background: #fff;
-                    position: absolute;
-                    z-index: 1000;
-                    height: 90%;
-                    top: 5%;
-                    left: 2%;">
-                      <span class="input-group-text" id="validationTooltipUsernamePrepend" style="background: #fff;border: none; color:#C1C8CA"><i class="far fa-search"></i></span>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="nav-icon-search"><i class="far fa-search"></i></span>
                     </div>
-                    <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Что вы искали?" aria-describedby="validationTooltipUsernamePrepend" required style="    border-radius: 10px;
-    padding-left: 20%;
-}">
+                    <input type="text" class="form-control h-100" id="nav-search" placeholder="Что вы искали?" required>
                   </div>
                 </form>
+              </li>
+
+              <li class="nav-item dropdown ml-2 mr-2">
+                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdowncurrencyLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Валюта: KZT</a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncurrencyLink">
+                  <a class="dropdown-item bg-transparent" href="#">Казахстанский тенге</a>
+                  <a class="dropdown-item border-top bg-transparent" href="#">Российский рубль</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown px-3 border-left">
+                <a href="#" class="text-dark" role="button" id="dropdownuserLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-user icon-1_5x"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownuserLink">
+                  <a class="dropdown-item bg-transparent text-dark" href="#">
+                    <img src="{{ asset('images/User icon loged.png') }}" class="img-fluid rounded mr-2" width="25px" alt="avatar">
+                    Lorem ipsum dolor eiusmod
+                  </a>
+                  <a class="dropdown-item bg-transparent text-dark d-flex align-items-center" href="#">
+                    <i class="icon icon-list icon-1_5x ml-0 mr-2"></i>
+                    Мои заказы
+                  </a>
+                  <a class="dropdown-item bg-transparent text-dark d-flex align-items-center" href="#">
+                    <i class="icon icon-log_out icon-1_5x ml-0 mr-2"></i>
+                    Выйти
+                  </a>
+
+                </div>
+              </li>
+              <li class="nav-item dropdown pl-3 border-left">
+                <a href="#" class="text-dark"><i class="icon-cart icon-1_5x"></i></a>
               </li>
             </ul>
 

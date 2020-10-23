@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2020 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="arrow-down" unicode="&#xe800;" d="M779 321l-58 59-179-179v399h-84v-399l-179 179-58-59 279-280 279 280z" horiz-adv-x="1000" />
+
+<glyph glyph-name="cart" unicode="&#xe801;" d="M208-67h584c46 0 83 38 83 84v458c0 11-4 22-12 30-8 7-19 12-30 12h-125v41c0 115-93 209-208 209-115 0-208-94-208-209v-41h-125c-11 0-22-5-30-12-8-8-12-19-12-30v-458c0-46 37-84 83-84z m167 625c0 69 56 125 125 125 69 0 125-56 125-125v-41h-250v41z m-167-125h84v-83h83v83h250v-83h83v83h84l0-416h-584v416z" horiz-adv-x="1000" />
+
+<glyph glyph-name="down" unicode="&#xe802;" d="M679 463l-179-179-179 179-59-59 238-238 238 238-59 59z" horiz-adv-x="1000" />
+
+<glyph glyph-name="list" unicode="&#xe803;" d="M167 600h83v-83h-83v83z m0-208h83v-84h-83v84z m0-209h83v-83h-83v83z m666 334v83h-499v-83h449 50z m-500-125h500v-84h-500v84z m0-209h500v-83h-500v83z" horiz-adv-x="1000" />
+
+<glyph glyph-name="log_out" unicode="&#xe804;" d="M667 308v84h-375v125l-209-167 209-167v125h375z m166 417h-375c-46 0-83-37-83-83v-167h83v167h375v-584h-375v167h-83v-167c0-46 37-83 83-83h375c46 0 84 37 84 83v584c0 46-38 83-84 83z" horiz-adv-x="1000" />
+
+<glyph glyph-name="search" unicode="&#xe805;" d="M417 100c74 0 145 25 204 70l183-183 59 59-183 183c45 59 70 130 70 204 0 184-150 334-333 334-184 0-334-150-334-334 0-183 150-333 334-333z m0 583c138 0 250-112 250-250 0-137-112-250-250-250-138 0-250 113-250 250 0 138 112 250 250 250z" horiz-adv-x="1000" />
+
+<glyph glyph-name="trash" unicode="&#xe806;" d="M250 558h-42v-541c0-22 9-44 25-59 15-16 37-25 59-25h416c22 0 44 9 59 25 16 15 25 37 25 59v541h-542z m167-500h-84v375h84v-375z m250 0h-84v375h84v-375z m25 625l-67 84h-250l-67-84h-183v-83h750v83h-183z" horiz-adv-x="1000" />
+
+<glyph glyph-name="user" unicode="&#xe807;" d="M500 767c-115 0-208-94-208-209 0-114 93-208 208-208 115 0 208 94 208 208 0 115-93 209-208 209z m0-334c-69 0-125 56-125 125 0 69 56 125 125 125 69 0 125-56 125-125 0-69-56-125-125-125z m375-458v42c0 161-131 291-292 291h-166c-161 0-292-130-292-291v-42h83v42c0 115 94 208 209 208h166c115 0 209-93 209-208v-42h83z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>
