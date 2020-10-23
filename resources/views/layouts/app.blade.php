@@ -92,12 +92,26 @@
               </li>
               <li class="nav-item d-none d-md-block">
                 <a href="#" class="nav-link">Адресс и контакты</a>
+              <li class="nav-item ml-5">
+                <form class="form-inline my-2 my-lg-0">
+                  <div class="input-group">
+                    <div class="input-group-prepend" style="    border-radius: 10px;
+                    background: #fff;
+                    position: absolute;
+                    z-index: 1000;
+                    height: 90%;
+                    top: 5%;
+                    left: 2%;">
+                      <span class="input-group-text" id="validationTooltipUsernamePrepend" style="background: #fff;border: none; color:#C1C8CA"><i class="far fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Что вы искали?" aria-describedby="validationTooltipUsernamePrepend" required style="    border-radius: 10px;
+    padding-left: 20%;
+}">
+                  </div>
+                </form>
               </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
           </div>
         </nav>
       </div>
