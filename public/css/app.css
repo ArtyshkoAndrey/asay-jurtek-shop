@@ -27653,7 +27653,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font: 18px/27px "Circe", sans-serif;
+  font: 18px/27px "Jost", sans-serif;
   font-size: 16px;
   background: #FFFFFF;
   /* Track */
@@ -27678,11 +27678,41 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #000;
 }
 
-a {
+a,
+.color-orange,
+.link {
   color: #CF6B37 !important;
 }
 
-a:hover {
+a:hover,
+.link:hover {
+  color: #000 !important;
+}
+
+a.inverse,
+.inverse {
+  color: #000 !important;
+}
+
+a.inverse:hover,
+.inverse:hover {
+  color: #CF6B37 !important;
+}
+
+.btn-transparent {
+  border: 1px solid #FFF;
+  padding: 10px 24px;
+}
+
+.btn-transparent.btn-text-white,
+.btn-transparent.btn-text-white:hover {
+  border: 1px solid #FFF;
+  color: #FFFFFF !important;
+}
+
+.btn-transparent.btn-text-black,
+.btn-transparent.btn-text-black:hover {
+  border: 1px solid #000;
   color: #000 !important;
 }
 
@@ -27732,6 +27762,42 @@ a:hover {
 .nav-search input#nav-search {
   border-radius: 10px !important;
   padding-left: 45px !important;
+}
+
+.btn-orange {
+  color: white !important;
+  font-weight: normal;
+  background-color: #CF6B37;
+  border: 0;
+  border-radius: 0;
+}
+
+.btn-orange:hover {
+  background-color: black;
+  color: white !important;
+}
+
+.dropdown-toggle {
+  align-items: center;
+  display: flex;
+}
+
+.dropdown-toggle::after {
+  color: #CF6B37;
+  font: normal normal normal 14px/1 "icon";
+  content: "\E802";
+  font-weight: 600;
+  padding: 0.5rem;
+  border: 0;
+  text-align: center;
+  display: block;
+  padding: 0;
+}
+
+.dropdown-toggle.not-arrow::after {
+  content: "";
+  padding: 0;
+  display: none;
 }
 
 @media (min-width: 992px) {

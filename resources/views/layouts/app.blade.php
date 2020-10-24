@@ -7,8 +7,10 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Zakaz - @yield('title')</title>
   <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/icon.css') }}">
+  @yield('style')
 </head>
 <body>
   <div id="app" class="px-md-5 pt-1 px-0">
@@ -39,19 +41,19 @@
                       </div>
                       <div class="col border-left">
                         <div class="row pl-3">
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
@@ -81,19 +83,19 @@
                       </div>
                       <div class="col border-left">
                         <div class="row pl-3">
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none text-dark">
+                          <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="font-weight-bold text-center m-0">Детям</p>
                           </a>
@@ -130,15 +132,15 @@
                   <i class="icon-user icon-1_5x"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownuserLink">
-                  <a class="dropdown-item bg-transparent text-dark" href="#">
+                  <a class="dropdown-item bg-transparent inverse" href="#">
                     <img src="{{ asset('images/User icon loged.png') }}" class="img-fluid rounded mr-2" width="25px" alt="avatar">
                     Lorem ipsum dolor eiusmod
                   </a>
-                  <a class="dropdown-item bg-transparent text-dark d-flex align-items-center" href="#">
+                  <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="#">
                     <i class="icon icon-list icon-1_5x ml-0 mr-2"></i>
                     Мои заказы
                   </a>
-                  <a class="dropdown-item bg-transparent text-dark d-flex align-items-center" href="#">
+                  <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="#">
                     <i class="icon icon-log_out icon-1_5x ml-0 mr-2"></i>
                     Выйти
                   </a>
@@ -146,7 +148,82 @@
                 </div>
               </li>
               <li class="nav-item dropdown pl-3 border-left">
-                <a href="#" class="text-dark"><i class="icon-cart icon-1_5x"></i></a>
+                <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-cart icon-1_5x"></i></a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncartLink" style="min-width: 646px">
+
+                  <div class="row">
+                    <div class="col-2">
+                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
+                    </div>
+                    <div class="col-10 border-bottom">
+                      <div class="row align-items-center h-100">
+                        <div class="col-6">
+                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
+                        </div>
+                        <div class="col-auto ml-auto font-weight-bold">
+                          <p class="m-0">10 000 тг.</p>
+                        </div>
+                        <div class="col-2">
+                          <form class="" action="#" method="post">
+                            <button type="submit" name="submit" class="btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-2">
+                    <div class="col-2">
+                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
+                    </div>
+                    <div class="col-10 border-bottom">
+                      <div class="row align-items-center h-100">
+                        <div class="col-6">
+                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
+                        </div>
+                        <div class="col-auto ml-auto font-weight-bold">
+                          <p class="m-0">10 000 тг.</p>
+                        </div>
+                        <div class="col-2">
+                          <form class="" action="#" method="post">
+                            <button type="submit" name="submit" class="btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-2">
+                    <div class="col-2">
+                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
+                    </div>
+                    <div class="col-10 border-bottom">
+                      <div class="row align-items-center h-100">
+                        <div class="col-6">
+                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
+                        </div>
+                        <div class="col-auto ml-auto font-weight-bold">
+                          <p class="m-0">10 000 тг.</p>
+                        </div>
+                        <div class="col-2">
+                          <form class="" action="#" method="post">
+                            <button type="submit" name="submit" class="btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-3 row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <p class="h5 font-weight-normal">Итого 57 000 тг.</p>
+                      <a href="#" class="text-decoration-none">Очистить корзину</a>
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="btn btn-orange">Перейти в корзину</a>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
 

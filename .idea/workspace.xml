@@ -180,7 +180,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../myshop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -201,6 +201,8 @@
       <updated>1603350369215</updated>
       <workItem from="1603350370614" duration="13108000" />
       <workItem from="1603372351657" duration="4067000" />
+      <workItem from="1603536823151" duration="755000" />
+      <workItem from="1603547089890" duration="2796000" />
     </task>
     <servers />
   </component>
@@ -247,6 +249,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="709" y="247" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603361018919" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1603547200186">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1603547200186" />
     <state x="0" y="0" width="844" height="1036" key="dock-window-1" timestamp="1603352200865">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -2,13 +2,14 @@
 use Illuminate\Support\Facades\Route;
 
 if ((new App\Models\Setting)->statusSite()) {
+   Auth::routes();
 
-  // Auth::routes();
-//   getAdminRoute();
+  Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
-// } else {
+   getAdminRoute();
+ } else {
   Auth::routes();
-  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+  Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
   getAdminRoute();
  }
 
