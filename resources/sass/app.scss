@@ -4,6 +4,7 @@
 
 $link-color: #CF6B37;
 $link-color-hover: #000;
+$max-width-container: 1400px;
 
 @keyframes showNav {
   from {opacity: 0;}
@@ -44,6 +45,11 @@ a {
 a:hover {
   color: $link-color-hover !important;
 }
+
+.container-fluid {
+  max-width: $max-width-container;
+}
+
 .navbar {
   height: 100px;
   .nav-item {

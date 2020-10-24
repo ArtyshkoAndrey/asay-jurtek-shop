@@ -19,7 +19,7 @@
           <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}" alt="logo" class="h-100 w-auto"></a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav w-100">
               <li class="nav-item d-none d-md-block">
 
                 <div class="dropdown">
@@ -103,11 +103,11 @@
                   </div>
                 </div>
               </li>
-              <li class="nav-item d-none d-md-block">
+              <li class="nav-item d-none d-md-block mr-md-auto">
                 <a href="#" class="nav-link text-dark">Адресс и контакты</a>
               </li>
 
-              <li class="nav-item ml-5">
+              <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 nav-search">
                   <div class="input-group">
                     <div class="input-group-prepend">
