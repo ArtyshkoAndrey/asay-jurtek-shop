@@ -4,8 +4,27 @@
 @section('style')
   <style>
     #first-big-header {
-      background: linear-gradient(90deg, #D1BC8A 50%, rgba(209, 188, 138, 0) 100%), url("http://zakaz/images/586e6940ea673b0ebbdc6668f59ca32a.jpg") no-repeat right top;
+      position: relative;
+      @if($header->gradient)
+        background: linear-gradient({{ $header->gradient_position === 'right-to-left' ? '270deg' : '90deg' }}, {{ $header->color_gradient }} 50%, rgba(209, 188, 138, 0) 100%);
+      @endif
       min-height: 500px;
+    }
+    #first-big-header::before {
+      background: url("{{ $header->image }}") no-repeat left top;
+      background-size: cover;
+      min-height: 500px;
+      content: '';
+
+      width: {{ $header->width . '%' }};
+
+      @if($header->position === 'left')
+        left: 0;
+      @elseif($header->position === 'right')
+        right: 0;
+      @endif
+      z-index: -1;
+      position: absolute;
     }
   </style>
 @endsection

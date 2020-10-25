@@ -3,7 +3,9 @@ use Illuminate\Support\Facades\Route;
 
 if ((new App\Models\Setting)->statusSite()) {
    Auth::routes();
-
+  Route::get('/test', function () {
+    (new App\Models\Setting)->setHeader();
+  });
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
    getAdminRoute();

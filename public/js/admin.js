@@ -55726,9 +55726,9 @@ __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OSPanel\domains\zakaz\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! C:\OSPanel\domains\zakaz\resources\sass\admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! C:\OSPanel\domains\zakaz\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\OpenServer\domains\zakaz\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! D:\OpenServer\domains\zakaz\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! D:\OpenServer\domains\zakaz\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

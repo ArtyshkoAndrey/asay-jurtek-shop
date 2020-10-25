@@ -49597,7 +49597,7 @@ function box_image(selector) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\OSPanel\domains\zakaz\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\OpenServer\domains\zakaz\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

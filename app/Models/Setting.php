@@ -17,4 +17,18 @@ class Setting extends Model
     else
       $this->where('key', 'status')->first()->update(['meta' => $status]);
   }
+
+  public function setHeader () {
+    $s = new Setting();
+    $s->key = 'header';
+    $s->meta = json_encode(array(
+      'image' => 'http://zakaz/images/586e6940ea673b0ebbdc6668f59ca32a.jpg',
+      'position' => 'left',
+      'width' => '50',
+      'color_gradient' => '#D1BC8A',
+      'gradient_position' => 'right-to-left',
+      'gradient' => true
+    ));
+    $s->save();
+  }
 }
