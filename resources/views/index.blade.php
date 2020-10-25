@@ -26,12 +26,37 @@
       z-index: -1;
       position: absolute;
     }
+
+    .promotion {
+     min-height: 655px; 
+    }
+
+    .promotion>div {
+      opacity: 0;
+      transition: 1s;
+      background: rgba(209, 188, 138, 0.5);
+      min-height: 500px;
+    }
+
+    .promotion:hover>div {
+      opacity: 1;
+    }
+
+    #secondPromotion {
+      background: url("{{ asset('images/7b7c7d98382e7221ab48a124b02f205c.jpg') }}");
+      background-size: cover;
+    }
+
+    #therdPromotion {
+      background: url("{{ asset('images/7b7c7d98382e7221ab48a124b02f205c.jpg') }}");
+      background-size: cover;
+    }
   </style>
 @endsection
 
 @section('content')
   <div class="container-fluid">
-    <div class="row">
+    <div class="row m-0">
       <div class="col-12 d-flex align-items-center" id="first-big-header">
         <div class="row w-100 m-0">
           <div class="col-lg-6 text-center text-white">
@@ -42,12 +67,24 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-12">
-
+      <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
+        <div class="promotion h-100 h-100 d-flex" id="secondPromotion">
+          <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
+          <h3 class="font-weight-bolder text-white ">Asay Jurek Vintage home</h4>
+          <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+        </div>
+        </div>
       </div>
-      <div class="col-lg-6 col-12">
 
+      <div class="col-lg-6 col-12 p-0 mt-4 pl-lg-3">
+        <div class="promotion h-100 h-100 d-flex" id="therdPromotion">
+          <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
+          <h3 class="font-weight-bolder text-white ">Asay Jurek Vintage home</h4>
+          <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+        </div>
+        </div>
       </div>
+
     </div>
   </div>
 @endsection

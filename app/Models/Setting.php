@@ -23,10 +23,10 @@ class Setting extends Model
     $s->key = 'header';
     $s->meta = json_encode(array(
       'image' => 'http://zakaz/images/586e6940ea673b0ebbdc6668f59ca32a.jpg',
-      'position' => 'left',
+      'position' => 'right', //left
       'width' => '50',
       'color_gradient' => '#D1BC8A',
-      'gradient_position' => 'right-to-left',
+      'gradient_position' => 'left-to-right', //right-to-left
       'gradient' => true
     ));
     $s->save();

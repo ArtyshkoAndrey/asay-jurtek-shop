@@ -39,23 +39,23 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col border-left">
+                      <div class="col border-left d-flex align-items-center">
                         <div class="row pl-3">
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                         </div>
                       </div>
@@ -81,23 +81,23 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col border-left">
+                      <div class="col border-left d-flex align-items-center">
                         <div class="row pl-3">
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                           <a href="#" class="col text-decoration-none inverse">
                             <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="font-weight-bold text-center m-0">Детям</p>
+                            <p class="text-center m-0">Детям</p>
                           </a>
                         </div>
                       </div>
