@@ -11,7 +11,7 @@
       min-height: 500px;
     }
     #first-big-header::before {
-      background: url("{{ $header->image }}") no-repeat left top;
+      background: url({{ asset('images/'.$header->image) }}) no-repeat left top;
       background-size: cover;
       min-height: 500px;
       content: '';
@@ -28,14 +28,13 @@
     }
 
     .promotion {
-     min-height: 655px; 
+     min-height: 655px;
     }
 
     .promotion>div {
       opacity: 0;
       transition: 1s;
       background: rgba(209, 188, 138, 0.5);
-      min-height: 500px;
     }
 
     .promotion:hover>div {
@@ -51,6 +50,23 @@
       background: url("{{ asset('images/7b7c7d98382e7221ab48a124b02f205c.jpg') }}");
       background-size: cover;
     }
+
+    @media screen and (max-width: 992px) {
+      .promotion>div {
+        opacity: 1 !important;
+      }
+      .promotion {
+        min-height: 400px;
+      }
+      #first-big-header {
+        background: linear-gradient(rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 100%), url({{ asset('images/'.$header->image) }}) no-repeat center top;
+        background-size: cover;
+        width: 100%;
+      }
+      #first-big-header::before {
+        content: none;
+      }
+    }
   </style>
 @endsection
 
@@ -62,7 +78,7 @@
           <div class="col-lg-6 text-center text-white">
             <h1 class="font-weight-bolder">Asay Jurek</h1>
             <p>Селективный секонд хенд</p>
-            <a href="#" class="btn btn-transparent btn-text-white">Перейти к покупкам</a>
+            <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
           </div>
         </div>
       </div>
@@ -70,7 +86,7 @@
       <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
         <div class="promotion h-100 h-100 d-flex" id="secondPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h3 class="font-weight-bolder text-white ">Asay Jurek Vintage home</h4>
+          <h4 class="font-weight-bolder text-white h3">Asay Jurek Vintage home</h4>
           <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>
@@ -79,7 +95,7 @@
       <div class="col-lg-6 col-12 p-0 mt-4 pl-lg-3">
         <div class="promotion h-100 h-100 d-flex" id="therdPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h3 class="font-weight-bolder text-white ">Asay Jurek Vintage home</h4>
+          <h4 class="font-weight-bolder text-white h3">Asay Jurek Vintage home</h4>
           <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>
@@ -87,4 +103,58 @@
 
     </div>
   </div>
+
+  <div class="container-fluid mt-4">
+    <div class="row m-0">
+      <h3>Новые товары</h3>
+    </div>
+    <div class="row m-0">
+      @forelse($items as $item)
+        <div class="col-lg-3 mt-4 col-sm-6 col-12 pl-sm-0">
+          @include('layouts.item', array('item'=>$item))
+        </div>
+      @empty
+        <div class="col-12 text-center">
+          <p class="h3 font-weight-bolder">Новых товаров нет ((</p>
+        </div>
+      @endforelse
+    </div>
+  </div>
+
+  <div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-md-10">
+        <div class="row bg-gray align-items-center">
+          <div class="col-md col-12 p-0 pl-5 py-5 py-md-0">
+            <p class="text-muted mb-0">Адрес</p>
+            <p class="h3 font-weight-normal">ул. Валиханова 43</p>
+
+            <p class="text-muted mt-5 mb-0">Телефоны</p>
+            <p class="h3 font-weight-normal">+ 7 (777) 777-77-77</p>
+
+            <p class="text-muted mt-5 mb-0">Режим работы</p>
+            <p class="h3 font-weight-normal">Пн - Пт 12:00 - 20:30</p>
+            <p class="h3 font-weight-normal">Сб - Вс 10:00 - 18:30</p>
+          </div>
+          <div class="col-md col-12 p-0"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A728fde973e21e0ab8fec78f16f463d583fa52b0cba4e42f210328c73136ad9ba&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@section('js')
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      resizeImgItems();
+      window.onresize = () => {
+        resizeImgItems();
+      }
+    }, false);
+
+    function resizeImgItems() {
+      let itemsImg = $('.item img');
+      itemsImg.height(itemsImg.width())
+    }
+  </script>
 @endsection

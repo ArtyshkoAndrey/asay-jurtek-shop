@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
+use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct()
-  {
-//    $this->middleware('auth');
-  }
 
   /**
    * Show the application dashboard.
@@ -30,6 +23,7 @@ class HomeController extends Controller
   public function index() {
     $headerTemp = Setting::where('key', 'header')->first();
     $header = json_decode($headerTemp->meta);
-    return view('index', compact('header'));
+    $items = Product::where('on_new', true)->orderBy('created_at', 'desc')->take(4)->with('photos')->get();
+    return view('index', compact('header', 'items'));
   }
 }

@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
       $table->decimal('weight', 10, 2);
       $table->decimal('price_sale', 10, 0)->nullable();
       $table->json('meta')->nullable();
+      $table->string('sku')->nullable();
+      $table->string('status')->nullable();
       $table->timestamps();
       $table->softDeletes();
     });

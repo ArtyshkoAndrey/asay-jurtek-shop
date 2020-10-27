@@ -36,4 +36,15 @@ class Product extends Model
   public function photos() {
     return $this->hasMany(ProductsImage::class, 'product_id', 'id');
   }
+
+  public function cost (Currency $currency) {
+    return number_format($this->price * $currency->ratio, null, null, ' ');
+  }
+
+  public function placeholder() {
+    if (count($this->photos) > 0)
+      return asset('storage/items/' . $this->photos[0]->name);
+    else
+      return asset('images/unnamed.png');
+  }
 }
