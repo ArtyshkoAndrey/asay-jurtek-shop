@@ -41,7 +41,6 @@ class ProductController extends Controller {
   }
 
   public function removeAllCart () {
-    dd(123);
     if(Auth::check()) {
       $this->cartService->deleteAll();
 

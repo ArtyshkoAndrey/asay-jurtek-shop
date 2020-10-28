@@ -1,5 +1,7 @@
 import lodash from "lodash";
 import store from "./store";
+import Cookies from 'js-cookie';
+// import axios from 'axios';
 
 require('sweetalert');
 window._ = lodash;
@@ -35,8 +37,17 @@ const app = new Vue({
     return {
     }
   },
-  mounted () {
-    console.log(this.$store.state.cart.items.find(x => x.id === 2))
+  async mounted  () {
+    if (this.$store.state.currency === null) {
+      await window.axios.post('/api/currency/get/' + Cookies.get('cr'))
+        .then(response => {
+          console.log(response);
+          this.$store.commit('currency', response.data.currency)
+        })
+        .cath(error => {
+          console.log(error)
+        })
+    }
   },
   methods: {
     addItemCart (item) {

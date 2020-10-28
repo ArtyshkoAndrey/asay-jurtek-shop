@@ -6,15 +6,15 @@ use App\Helpers;
 use App\Models\Currency;
 use Illuminate\Http\Request;
 
-class CurrencyController extends Controller
+class ApiController extends Controller
 {
   public function __constructor()
   {
     //
   }
 
-  public function change(Request $request) {
-    Helpers::changeCurrency($request->currency);
-    return redirect()->back();
+  public function getCurrency ($id) {
+    $currency = Currency::find($id);
+    return response()->json(['currency' => $currency]);
   }
 }

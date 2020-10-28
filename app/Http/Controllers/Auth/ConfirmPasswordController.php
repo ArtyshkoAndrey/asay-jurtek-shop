@@ -35,9 +35,10 @@ class ConfirmPasswordController extends Controller
    * @return void
    */
   protected $cartService;
+  
   public function __construct(CartService $cartService)
   {
-    parent::__contruct($cartService);
+    parent::__construct($cartService);
     $this->middleware('auth');
   }
 }

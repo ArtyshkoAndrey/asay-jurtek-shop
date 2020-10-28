@@ -18,8 +18,10 @@ class Controller extends BaseController
     $this->cartService = $cartService;
     $this->middleware(function ($request, $next) {
       $currency = Helpers::currency();
-
-      extract($this->cartService->get(), EXTR_REFS);
+      $cartItems = [];
+      $amount = 0;
+      $priceAmount = 0;
+      auth()->user() ? extract($this->cartService->get(), EXTR_REFS) : null;
       view()->share('currency', $currency);
       view()->share('cartItems', $cartItems);
       view()->share('priceAmount', number_format($priceAmount * $currency->ratio, null, null, ' '));

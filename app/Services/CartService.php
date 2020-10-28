@@ -46,8 +46,7 @@ class CartService {
 
   public function deleteAll()
   {
-    dd(Auth::user()->cartItems()->get());
-    Auth::user()->cartItems()->all()->delete();
+    Auth::user()->cartItems()->delete();
   }
 
   public function amount ()

@@ -11,9 +11,9 @@ if ((new App\Models\Setting)->statusSite()) {
   Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
   Route::prefix('product')->name('product.')->group(function () {
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('show');
+    Route::post('/all', [\App\Http\Controllers\ProductController::class, 'removeAllCart'])->name('removeAll');
     Route::post('/{id}', [\App\Http\Controllers\ProductController::class, 'addCart'])->name('addCart');
     Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'removeCart'])->name('removeCart');
-    Route::delete('/all', [\App\Http\Controllers\ProductController::class, 'removeAllCart'])->name('removeAll');
   });
 
     getAdminRoute();

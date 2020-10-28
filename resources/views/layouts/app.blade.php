@@ -116,7 +116,7 @@
                 <a href="#" class="nav-link text-dark">Адресс и контакты</a>
               </li>
 {{--              Поиск--}}
-              <li class="nav-item d-none d-xl-flex">
+<!--               <li class="nav-item d-none d-xl-flex">
                 <form class="form-inline my-2 my-lg-0 nav-search" method="GET" action="{{ route('search') }}">
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -126,9 +126,9 @@
                   </div>
                   <button class="btn btn-orange ml-2"><i class="far fa-search"></i></button>
                 </form>
-              </li>
+              </li> -->
 {{--              Поиск мобилка--}}
-              <li class="nav-item dropdown d-flex d-xl-none ml-auto">
+              <li class="nav-item dropdown d-flex ml-auto">
                 <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdowncurrencyLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="icon-search icon-1_5x"></i>
                 </a>
@@ -207,6 +207,29 @@
                 <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-cart icon-1_5x"></i></a>
                 <div id="cart" class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncartLink">
                   @guest
+                    <div class="row" v-for="item in $store.state.cart.items">
+                        <div class="col-3 col-sm-2">
+                          <img v-if="item.photos.length > 0" :src="'{{ asset('storage/items/') }}' + '/' + item.photos[0].name" :alt="item.title" class="img-fluid pb-2">
+                          <img v-else :src="'{{ asset('images/unnamed.png') }}'" :alt="item.title" class="img-fluid pb-2">
+                        </div>
+                        <div class="col-9 col-sm-10 border-bottom">
+                          <div class="row align-items-center h-100">
+                            <div class="col-12 col-sm-6">
+                              <p class="m-0">@{{ item.title }}</p>
+                            </div>
+                            <div class="col-auto ml-auto font-weight-bolder">
+                              <p class="m-0">@{{ $cost((item.on_sale ? item.price_sale : item.price) * $store.state.currency.ratio ) }} @{{ $store.state.currency.symbol }}</p>
+                            </div>
+                            <div class="col-2">
+                              <form class="" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   @else
                     @foreach($cartItems as $ci)
                       <div class="row @if(!$loop->first) mt-2 @endif">
@@ -241,7 +264,6 @@
                       <a href="#" class="text-decoration-none" onclick="event.preventDefault();document.getElementById('delete-all-items').submit();">Очистить корзину</a>
                       <form id="delete-all-items" class="d-none" action="{{ route('product.removeAll') }}" method="post">
                         @csrf
-                        @method('delete')
                       </form>
                     </div>
                     <div class="col-auto">

@@ -7,10 +7,12 @@ const store = new Vuex.Store({
   state: {
     cart: {
       items: []
-    }
+    },
+    currency: null
   },
   mutations: {
-    addItem: (state, item) => {state.cart.items.push(item)}
+    addItem: (state, item) => {state.cart.items.push(item)},
+    currency: (state, item) => {state.currency = item}
   },
   plugins: [createPersistedState()],
 });
