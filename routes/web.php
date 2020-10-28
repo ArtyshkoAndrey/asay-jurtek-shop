@@ -9,8 +9,14 @@ if ((new App\Models\Setting)->statusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');
   Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
-  Route::get('/product/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-  getAdminRoute();
+  Route::prefix('product')->name('product.')->group(function () {
+    Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('show');
+    Route::post('/{id}', [\App\Http\Controllers\ProductController::class, 'addCart'])->name('addCart');
+    Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'removeCart'])->name('removeCart');
+    Route::delete('/all', [\App\Http\Controllers\ProductController::class, 'removeAllCart'])->name('removeAll');
+  });
+
+    getAdminRoute();
  } else {
   Auth::routes();
   getAdminRoute();
