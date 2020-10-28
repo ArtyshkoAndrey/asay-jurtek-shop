@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Services\CartService;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -33,9 +34,11 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-      parent::__construct();
-      $this->middleware('guest')->except('logout');
-    }
+  protected $cartService;
+
+  public function __construct(CartService $cartService)
+  {
+    parent::__construct($cartService);
+    $this->middleware('guest')->except('logout');
+  }
 }

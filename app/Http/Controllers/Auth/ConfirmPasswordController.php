@@ -4,37 +4,40 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Services\CartService;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 class ConfirmPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Confirm Password Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password confirmations and
-    | uses a simple trait to include the behavior. You're free to explore
-    | this trait and override any functions that require customization.
-    |
-    */
+  /*
+  |--------------------------------------------------------------------------
+  | Confirm Password Controller
+  |--------------------------------------------------------------------------
+  |
+  | This controller is responsible for handling password confirmations and
+  | uses a simple trait to include the behavior. You're free to explore
+  | this trait and override any functions that require customization.
+  |
+  */
 
-    use ConfirmsPasswords;
+  use ConfirmsPasswords;
 
-    /**
-     * Where to redirect users when the intended url fails.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+  /**
+   * Where to redirect users when the intended url fails.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  protected $cartService;
+  public function __construct(CartService $cartService)
+  {
+    parent::__contruct($cartService);
+    $this->middleware('auth');
+  }
 }

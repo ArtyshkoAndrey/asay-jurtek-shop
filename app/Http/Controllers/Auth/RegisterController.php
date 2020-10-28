@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Services\CartService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -36,9 +37,11 @@ class RegisterController extends Controller
    *
    * @return void
    */
-  public function __constructor()
+  protected $cartService;
+
+  public function __construct(CartService $cartService)
   {
-    parent::__contructor();
+    parent::__construct($cartService);
     $this->middleware('guest');
   }
 
