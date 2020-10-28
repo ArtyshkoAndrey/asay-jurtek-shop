@@ -43,9 +43,22 @@
                 <p class="h3 font-weight-normal">{{ $item->cost($currency) }} {{ $currency->symbol }}</p>
               </div>
               <div class="col-auto">
-                <form action="">
-                  <button type="submit" class="btn btn-orange inverse">Добавить в корзину</button>
-                </form>
+                @guest
+                  <button type="button" v-if="$store.state.cart.items.find(x => x.id === {{ $item->id }})" class="btn btn-green">Товар добавлен в корзину</button>
+                  <button type="button" @click="addItemCart({{ $item }})" v-else class="btn btn-orange inverse">Добавить в корзину</button>
+                @else
+                  @if ($inCart)
+                    <form action="{{ route('product.addCart', $item->id) }}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-green">Товар добавлен в корзину</button>
+                    </form>
+                  @else
+                    <form action="{{ route('product.addCart', $item->id) }}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-orange inverse">Добавить в корзину</button>
+                    </form>
+                  @endif
+                @endguest
               </div>
             </div>
           </div>

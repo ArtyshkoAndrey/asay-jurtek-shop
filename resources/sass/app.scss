@@ -188,6 +188,16 @@ a.inverse:hover, .inverse:hover {
 
 }
 
+.btn-green {
+  background-color: #37CF86;
+  border: 0;
+  border-radius: 0;
+  color: white !important;
+  &:hover {
+    background-color: black;
+  }
+}
+
 .dropdown-toggle {
   align-items: center;
   display: flex;
@@ -245,6 +255,11 @@ a.inverse:hover, .inverse:hover {
   &.active {
     opacity: 1;
   }
+}
+
+#error-alert {
+  right: 50px;
+  top: 100px;
 }
 
 

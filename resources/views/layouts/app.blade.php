@@ -206,74 +206,43 @@
               <li class="nav-item dropdown pl-md-3 pl-1 px-md-3 border-md-left">
                 <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-cart icon-1_5x"></i></a>
                 <div id="cart" class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncartLink">
-
-                  <div class="row">
-                    <div class="col-3 col-sm-2">
-                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
-                    </div>
-                    <div class="col-9 col-sm-10 border-bottom">
-                      <div class="row align-items-center h-100">
-                        <div class="col-12 col-sm-6">
-                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
+                  @guest
+                  @else
+                    @foreach($cartItems as $ci)
+                      <div class="row @if(!$loop->first) mt-2 @endif">
+                        <div class="col-3 col-sm-2">
+                          <img src="{{ $ci->placeholder() }}" alt="{{ $ci->title }}" class="img-fluid pb-2">
                         </div>
-                        <div class="col-auto ml-auto font-weight-bolder">
-                          <p class="m-0">10 000 тг.</p>
-                        </div>
-                        <div class="col-2">
-                          <form class="" action="#" method="post">
-                            <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-3 col-sm-2">
-                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
-                    </div>
-                    <div class="col-9 col-sm-10 border-bottom">
-                      <div class="row align-items-center h-100">
-                        <div class="col-12 col-sm-6">
-                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
-                        </div>
-                        <div class="col-auto ml-auto font-weight-bolder">
-                          <p class="m-0">10 000 тг.</p>
-                        </div>
-                        <div class="col-2">
-                          <form class="" action="#" method="post">
-                            <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
-                          </form>
+                        <div class="col-9 col-sm-10 border-bottom">
+                          <div class="row align-items-center h-100">
+                            <div class="col-12 col-sm-6">
+                              <p class="m-0">{{ $ci->title }}</p>
+                            </div>
+                            <div class="col-auto ml-auto font-weight-bolder">
+                              <p class="m-0">{{ $ci->cost($currency) }} {{ $currency->symbol }}</p>
+                            </div>
+                            <div class="col-2">
+                              <form class="" action="{{ route('product.removeCart', $ci->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    @endforeach
+                  @endguest
 
-                  <div class="row mt-2">
-                    <div class="col-3 col-sm-2">
-                      <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid pb-2">
-                    </div>
-                    <div class="col-9 col-sm-10 border-bottom">
-                      <div class="row align-items-center h-100">
-                        <div class="col-12 col-sm-6">
-                          <p class="m-0">Рубашка от винтажного костюма Brandtex</p>
-                        </div>
-                        <div class="col-auto ml-auto font-weight-bolder">
-                          <p class="m-0">10 000 тг.</p>
-                        </div>
-                        <div class="col-2">
-                          <form class="" action="#" method="post">
-                            <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                   <div class="mt-3 row align-items-center justify-content-between">
                     <div class="col-auto">
-                      <p class="h5 font-weight-normal">Итого 57 000 тг.</p>
-                      <a href="#" class="text-decoration-none">Очистить корзину</a>
+                      <p class="h5 font-weight-normal">Итого {{ $priceAmount }} {{ $currency->symbol }}</p>
+                      <a href="#" class="text-decoration-none" onclick="event.preventDefault();document.getElementById('delete-all-items').submit();">Очистить корзину</a>
+                      <form id="delete-all-items" class="d-none" action="{{ route('product.removeAll') }}" method="post">
+                        @csrf
+                        @method('delete')
+                      </form>
                     </div>
                     <div class="col-auto">
                       <a href="#" class="btn btn-orange">Перейти в корзину</a>

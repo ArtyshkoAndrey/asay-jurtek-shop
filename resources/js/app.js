@@ -1,4 +1,5 @@
 import lodash from "lodash";
+import store from "./store";
 
 require('sweetalert');
 window._ = lodash;
@@ -21,4 +22,25 @@ try {
   }
 } catch (e) {}
 
-require('./box-image.js')
+Vue.prototype.$cost = function (number) {
+  return new Intl.NumberFormat('ru-RU').format((number).toFixed(0))
+}
+Vue.config.devtools = true;
+Vue.config.performance = true;
+
+const app = new Vue({
+  el: '#app',
+  store: store,
+  data() {
+    return {
+    }
+  },
+  mounted () {
+    console.log(this.$store.state.cart.items.find(x => x.id === 2))
+  },
+  methods: {
+    addItemCart (item) {
+      this.$store.commit('addItem', item)
+    }
+  }
+})
