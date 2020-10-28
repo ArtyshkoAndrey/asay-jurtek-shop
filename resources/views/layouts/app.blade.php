@@ -14,7 +14,14 @@
 <body class="{{ \App\Helpers::route_class() }}-page">
   @yield('style')
   <div id="app" class="px-md-5 pt-1 px-0">
-
+    @if($errors->any())
+      <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert">
+        <strong>Ошибка!</strong> {{ $errors->first() }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    @endif
     <div class="container-fluid bg-white" id="navbar">
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">
