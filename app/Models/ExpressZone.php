@@ -27,4 +27,7 @@ class ExpressZone extends Model
   public function company () {
     return $this->belongsTo(ExpressCompany::class, 'company_id', 'id');
   }
+  public function cost ($num) {
+    return number_format($num, null, null, ' ');
+  }
 }

@@ -67,7 +67,7 @@
                   <div class="col-12">
                     <select name="user" id="user" class="form-control w-auto" required>
                       @foreach(\App\Models\User::all() as $user)
-                        <option value="{{ $user->id }}" {{ $order->user->id === $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                        <option value="{{ $user->id }}" {{ $order->user->id === $user->id ? 'selected' : '' }}>{{ $user->getIOName() }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -127,7 +127,7 @@
                     <label for="express_company">Способ доставки</label>
                   </div>
                   <div class="col-12">
-                    <p id="express_company" class="text-muted">{{$order->expressCompany->name }}</p>
+                    <p id="express_company" class="text-muted">{{ $order->expressCompany->name }}</p>
                   </div>
                 </div>
 
@@ -136,7 +136,7 @@
                     <label for="total_amount">Сумма доставки</label>
                   </div>
                   <div class="col-12">
-                    <p id="total_amount" class="text-muted">{{ cost($order->ship_price) }} тг.</p>
+                    <p id="total_amount" class="text-muted">{{ $order->cost($order->ship_price) }} тг.</p>
                   </div>
                 </div>
               </div>
@@ -156,20 +156,7 @@
                     <label for="total_amount">Сумма без доставки</label>
                   </div>
                   <div class="col-12">
-                    <p id="total_amount" class="text-muted">{{ cost($order->total_amount) }} тг.</p>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-12">
-                    <label for="total_amount">Акции</label>
-                  </div>
-                  <div class="col-12">
-                    @forelse($order->promotions as $index => $pr)
-                      <p id="total_amount-{{$pr->id}}" class="text-muted">{{ $index + 1 . '. '}} <span class="text-bold">{{ $pr->name }}</span></p>
-                    @empty
-                      <p id="total_amount" class="text-muted">Нет акций</p>
-                    @endforelse
+                    <p id="total_amount" class="text-muted">{{ $order->cost($order->total_amount) }} тг.</p>
                   </div>
                 </div>
               </div>
@@ -183,18 +170,16 @@
                       <th class="border-top-0"></th>
                       <th class="border-top-0">Товар</th>
                       <th class="border-top-0">Цена</th>
-                      <th class="border-top-0">Кол-во</th>
                       <th class="border-top-0">Итого</th>
                     </tr>
                   </thead>
                   <tbody>
                   @foreach($order->items as $item)
                     <tr align="center">
-                      <td style="width:10%; vertical-align: middle;"><img src="{{  isset($item->product->photos) && $item->product->photos()->get()->toArray() ? asset('storage/products/'. $item->product->photos->first()->name) : 'https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png' }}" height="100px" alt=""></td>
-                      <td style="width:20%; vertical-align: middle;" class="text-wrap">{{ ucwords(strtolower($item->product->title)) }} - {{ $item->product_sku }}</td>
-                      <td style="width:20%; vertical-align: middle;">{{ cost($item->price) }} тг.</td>
-                      <td style="width:20%; vertical-align: middle;">{{ $item->amount }}</td>
-                      <td style="width:20%; vertical-align: middle;">{{ cost($item->price * $item->amount) }} тг.</td>
+                      <td style="width:10%; vertical-align: middle;"><img src="{{  $item->product->placeholder() }}" height="100px" alt=""></td>
+                      <td style="width:20%; vertical-align: middle;" class="text-wrap font-weight-bolder">{{ $item->product->title }}</td>
+                      <td style="width:20%; vertical-align: middle;">{{ $order->cost($item->price) }} тг.</td>
+                      <td style="width:20%; vertical-align: middle;">{{ $order->cost($item->price) }} тг.</td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -203,10 +188,10 @@
             </div>
             <div class="row mt-4 justify-content-lg-between px-md-4 px-0">
               <div class="col-12 col-md-auto h5">
-                <span class="font-weight-bold">Доставка:</span> {{ $order->expressCompany->name }} - {{ cost($order->ship_price) }} тг.
+                <span class="font-weight-bold">Доставка:</span> {{ $order->expressCompany->name }} - {{ $order->cost($order->ship_price) }} тг.
               </div>
               <div class="col-12 col-md-auto h5">
-                <span class="font-weight-bold">Сумма заказа:</span> {{ cost($order->total_amount + $order->ship_price) }} тг.
+                <span class="font-weight-bold">Сумма заказа:</span> {{ $order->cost($order->total_amount + $order->ship_price) }} тг.
               </div>
             </div>
           </form>

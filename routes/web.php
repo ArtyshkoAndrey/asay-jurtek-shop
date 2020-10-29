@@ -25,11 +25,23 @@ if ((new App\Models\Setting)->statusSite()) {
 
 function getAdminRoute() {
   Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('root');
     Route::put('status', [\App\Http\Controllers\Admin\DashboardController::class, 'status'])->name('root.status');
+
     Route::name('store.')->group(function () {
+
       Route::resource('order', App\Http\Controllers\Admin\OrderController::class);
       Route::delete('/order/all', [App\Http\Controllers\Admin\OrderController::class,'collectionsDestroy'])->name('order.collectionsDestroy');
+
+      Route::resource('express', App\Http\Controllers\Admin\ExpressController::class);
+      Route::put('/express/enabled/{id}', [App\Http\Controllers\Admin\ExpressController::class, 'enabled'])->name('express.enabled');
+
+      Route::resource('express-zone', App\Http\Controllers\Admin\ExpressZoneController::class);
+      Route::post('/express-zone/{id}/destroy', [App\Http\Controllers\Admin\ExpressZoneController::class, 'destroyCity'])->name('express-zone.destroyCity');
+
+      Route::resource('pay', App\Http\Controllers\Admin\PayController::class);
+
     });
   });
 }

@@ -25,4 +25,8 @@ class ExpressCompany extends Model
   public function zones() {
     return $this->hasMany(ExpressZone::class, 'company_id', 'id');
   }
+  public function cost ($num) {
+    return number_format($num, null, null, ' ');
+  }
+
 }

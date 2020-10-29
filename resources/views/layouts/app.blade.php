@@ -15,12 +15,14 @@
   @yield('style')
   <div id="app" class="px-md-5 pt-1 px-0">
     @if($errors->any())
-      <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert">
-        <strong>Ошибка!</strong> {{ $errors->first() }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      @foreach ($errors->all() as $error)
+        <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert">
+          <strong>Ошибка!</strong> {{ $error }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endforeach
     @endif
     <div class="container-fluid bg-white" id="navbar">
       <div class="row">
@@ -208,28 +210,34 @@
                 <div id="cart" class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncartLink">
                   @guest
                     <div class="row" v-for="item in $store.state.cart.items">
-                        <div class="col-3 col-sm-2">
-                          <img v-if="item.photos.length > 0" :src="'{{ asset('storage/items/') }}' + '/' + item.photos[0].name" :alt="item.title" class="img-fluid pb-2">
-                          <img v-else :src="'{{ asset('images/unnamed.png') }}'" :alt="item.title" class="img-fluid pb-2">
-                        </div>
-                        <div class="col-9 col-sm-10 border-bottom">
-                          <div class="row align-items-center h-100">
-                            <div class="col-12 col-sm-6">
-                              <p class="m-0">@{{ item.title }}</p>
-                            </div>
-                            <div class="col-auto ml-auto font-weight-bolder">
-                              <p class="m-0">@{{ $cost((item.on_sale ? item.price_sale : item.price) * $store.state.currency.ratio ) }} @{{ $store.state.currency.symbol }}</p>
-                            </div>
-                            <div class="col-2">
-                              <form class="" method="post">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
-                              </form>
-                            </div>
+                      <div class="col-3 col-sm-2">
+                        <img v-if="item.photos.length > 0" :src="'{{ asset('storage/items/') }}' + '/' + item.photos[0].name" :alt="item.title" class="img-fluid pb-2">
+                        <img v-else :src="'{{ asset('images/unnamed.png') }}'" :alt="item.title" class="img-fluid pb-2">
+                      </div>
+                      <div class="col-9 col-sm-10 border-bottom">
+                        <div class="row align-items-center h-100">
+                          <div class="col-12 col-sm-6">
+                            <p class="m-0">@{{ item.title }}</p>
+                          </div>
+                          <div class="col-auto ml-auto font-weight-bolder">
+                            <p class="m-0">@{{ $cost((item.on_sale ? item.price_sale : item.price) * $store.state.currency.ratio ) }} @{{ $store.state.currency.symbol }}</p>
+                          </div>
+                          <div class="col-2">
+                            <button type="button" @click="$store.commit('removeItem', item.id)" name="submit" class=" p-0 btn bg-transparent border-0 link"><i class="icon-trash icon-1_5x"></i></button>
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    <div class="mt-3 row align-items-center justify-content-between">
+                      <div class="col-auto">
+                        <p class="h5 font-weight-normal">Итого @{{ $cost($store.getters.priceAmount) }} @{{ $store.state.currency.symbol }}</p>
+                        <a href="javascript:;" class="text-decoration-none" @click="$store.commit('clearCart')">Очистить корзину</a>
+                      </div>
+                      <div class="col-auto">
+                        <a href="#" class="btn btn-orange">Перейти в корзину</a>
+                      </div>
+                    </div>
                   @else
                     @foreach($cartItems as $ci)
                       <div class="row @if(!$loop->first) mt-2 @endif">
@@ -255,21 +263,19 @@
                         </div>
                       </div>
                     @endforeach
+                    <div class="mt-3 row align-items-center justify-content-between">
+                      <div class="col-auto">
+                        <p class="h5 font-weight-normal">Итого {{ $priceAmount }} {{ $currency->symbol }}</p>
+                        <a href="#" class="text-decoration-none" onclick="event.preventDefault();document.getElementById('delete-all-items').submit();">Очистить корзину</a>
+                        <form id="delete-all-items" class="d-none" action="{{ route('product.removeAll') }}" method="post">
+                          @csrf
+                        </form>
+                      </div>
+                      <div class="col-auto">
+                        <a href="#" class="btn btn-orange">Перейти в корзину</a>
+                      </div>
+                    </div>
                   @endguest
-
-
-                  <div class="mt-3 row align-items-center justify-content-between">
-                    <div class="col-auto">
-                      <p class="h5 font-weight-normal">Итого {{ $priceAmount }} {{ $currency->symbol }}</p>
-                      <a href="#" class="text-decoration-none" onclick="event.preventDefault();document.getElementById('delete-all-items').submit();">Очистить корзину</a>
-                      <form id="delete-all-items" class="d-none" action="{{ route('product.removeAll') }}" method="post">
-                        @csrf
-                      </form>
-                    </div>
-                    <div class="col-auto">
-                      <a href="#" class="btn btn-orange">Перейти в корзину</a>
-                    </div>
-                  </div>
                 </div>
               </li>
             </ul>
@@ -284,6 +290,11 @@
     </main>
   </div>
   <script src="{{ asset('js/app.js') }}"></script>
+  <script>
+    document.getElementById("cart").addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
+  </script>
   @yield('js')
 </body>
 </html>

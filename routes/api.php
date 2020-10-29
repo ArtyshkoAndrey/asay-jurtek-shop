@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/currency/get/{id}', [App\Http\Controllers\ApiController::class, 'getCurrency']);
+Route::post('/products/check', [App\Http\Controllers\ApiController::class, 'productsCheck']);
+Route::post('city/{city}/{country?}', [App\Http\Controllers\ApiController::class, 'city'])->name('api.city');
+Route::post('country/{country}', [App\Http\Controllers\ApiController::class, 'country'])->name('api.country');

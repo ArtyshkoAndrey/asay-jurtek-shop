@@ -5,12 +5,12 @@
 {{--  <div class="col-sm-auto col-6 px-0 px-sm-2">--}}
 {{--    <a href="{{ route('admin.store.coupon.index') }}" class="{{ Route::currentRouteNamed('admin.store.coupon.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Промокоды</a>--}}
 {{--  </div>--}}
-{{--  <div class="col-sm-auto col-6 px-0 px-sm-2">--}}
-{{--    <a href="{{ route('admin.store.express.index') }}" class="{{ Route::currentRouteNamed('admin.store.express.*') || Route::currentRouteNamed('admin.store.express-zone.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Доставка</a>--}}
-{{--  </div>--}}
-{{--  <div class="col-sm-auto col-6 px-0 px-sm-2">--}}
-{{--    <a href="{{ route('admin.store.pay.index') }}" class="{{ Route::currentRouteNamed('admin.store.pay.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Оплата</a>--}}
-{{--  </div>--}}
+  <div class="col-sm-auto col-6 px-0 px-sm-2">
+    <a href="{{ route('admin.store.express.index') }}" class="{{ Route::currentRouteNamed('admin.store.express.*') || Route::currentRouteNamed('admin.store.express-zone.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Доставка</a>
+  </div>
+  <div class="col-sm-auto col-6 px-0 px-sm-2">
+    <a href="{{ route('admin.store.pay.index') }}" class="{{ Route::currentRouteNamed('admin.store.pay.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Оплата</a>
+  </div>
 {{--  <div class="col-sm-auto col-6 px-0 px-sm-2">--}}
 {{--    <a href="{{ route('admin.store.reports.index') }}" class="{{ Route::currentRouteNamed('admin.store.reports.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Отчеты</a>--}}
 {{--  </div>--}}

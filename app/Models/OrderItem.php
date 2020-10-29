@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderItem extends Model
 {
   use HasFactory;
-  protected $fillable   = ['amount', 'price', 'rating', 'review', 'reviewed_at', 'product_sku'];
-  protected $dates      = ['reviewed_at'];
+  protected $fillable   = ['price'];
   public    $timestamps = false;
 
   public function product() {

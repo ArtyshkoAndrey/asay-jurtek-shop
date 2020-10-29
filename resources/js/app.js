@@ -1,7 +1,7 @@
 import lodash from "lodash";
 import store from "./store";
 import Cookies from 'js-cookie';
-// import axios from 'axios';
+import Swal from 'sweetalert2'
 
 require('sweetalert');
 window._ = lodash;
@@ -38,13 +38,35 @@ const app = new Vue({
     }
   },
   async mounted  () {
-    if (this.$store.state.currency === null) {
+    let items = this.$store.getters.items
+    if (this.$store.state.currency === null || this.$store.state.currency.id !== Number(Cookies.get('cr'))) {
       await window.axios.post('/api/currency/get/' + Cookies.get('cr'))
         .then(response => {
           console.log(response);
           this.$store.commit('currency', response.data.currency)
+          document.location.reload();
         })
-        .cath(error => {
+        .catch(error => {
+          console.log(error)
+        })
+    }
+    if (items.length > 0) {
+      await window.axios.post('/api/products/check', {
+        ids: items.map(item => item.id)
+      })
+        .then(response => {
+          if (items.length > response.data.items.length)
+            Swal.fire({
+              title: 'Упс...',
+              text: 'Один из товаров в вашей корзине стал недоступен. Oн был автоматически удалён',
+              confirmButtonColor: "#CF6B37",
+            })
+          this.$store.commit('clearCart')
+          response.data.items.forEach(item => {
+            this.addItemCart(item)
+          })
+        })
+        .catch(error => {
           console.log(error)
         })
     }
