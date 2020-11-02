@@ -47,4 +47,37 @@ class ProductController extends Controller {
       return redirect()->back();
     }
   }
+
+  public function all (Request $request) {
+    $items = Product::query();
+    if ($sex = $request->input('sex', null)) {
+      if (in_array($sex, Product::SEX_ATTR_MAP)) {
+        $items = $items->where('sex', $sex);
+      }
+    }
+
+    if ($category = $request->input('category', null)) {
+      $items = $items->whereHas('categories', function ($query) use ($category) {
+        $query->whereHas('parents', function ($query) use ($category) {
+          $query->where('laravel_reserved_0.id', $category);
+        })->orWhere('categories.id', $category);
+      });
+    }
+
+    if ($brand = $request->input('brand', null)) {
+      $items = $items->whereHas('brands', function ($query) use ($brand) {
+        return $query->where('brands.id', $brand);
+      });
+    }
+
+    if ($size = $request->input('size', null)) {
+      $items = $items->whereHas('skus', function ($query) use ($size) {
+        $query->where('skuses.id', $size);
+      });
+    }
+    $items = $items->get();
+    $filter = ['sex' => $sex, 'category' => $category, 'size' => $size, 'brand' => $brand];
+    return view('all', compact('items', 'filter'));
+    dd($items->get());
+  }
 }

@@ -14,13 +14,13 @@
     <div class="col-auto">
       <p>
         <span class="text-muted">Размер:</span>
-        <span>М</span>
+        <span>{{ $item->skus->title }}</span>
       </p>
     </div>
     <div class="col-auto ml-auto">
       <p>
         <span class="text-muted">Состояние:</span>
-        <span>Винтаж</span>
+        <span>{{ $item->status }}</span>
       </p>
     </div>
   </div>

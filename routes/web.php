@@ -7,9 +7,11 @@ if ((new App\Models\Setting)->statusSite()) {
   Auth::routes();
 
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+  Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');
   Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
   Route::prefix('product')->name('product.')->group(function () {
+    Route::get('/all', [\App\Http\Controllers\ProductController::class, 'all'])->name('all');
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('show');
     Route::post('/all', [\App\Http\Controllers\ProductController::class, 'removeAllCart'])->name('removeAll');
     Route::post('/{id}', [\App\Http\Controllers\ProductController::class, 'addCart'])->name('addCart');
@@ -42,6 +44,23 @@ function getAdminRoute() {
 
       Route::resource('pay', App\Http\Controllers\Admin\PayController::class);
 
+
+
+    });
+
+    Route::name('production.')->group(function () {
+      Route::name('products.')->prefix('products')->group(function () {
+        Route::delete('/all', [App\Http\Controllers\Admin\ProductsController::class, 'collectionsDestroy'])->name('collectionsDestroy');
+        Route::post('/all', [App\Http\Controllers\Admin\ProductsController::class, 'collectionsRestore'])->name('collectionsRestore');
+        Route::post('/{id}/photo', [App\Http\Controllers\Admin\ProductsController::class, 'photo'])->name('photo');
+        Route::post('/photo-create', [App\Http\Controllers\Admin\ProductsController::class, 'photoCreate'])->name('photoCreate');
+        Route::post('/{id}/photo-delete', [App\Http\Controllers\Admin\ProductsController::class, 'photoDelete'])->name('photoDelete');
+        Route::post('/photo-delete-create', [App\Http\Controllers\Admin\ProductsController::class, 'photoDeleteCreate'])->name('photoDeleteCreate');
+
+      });
+      Route::resource('/products', App\Http\Controllers\Admin\ProductsController::class);
+      Route::resource('/attr', App\Http\Controllers\Admin\SkusController::class);
+      Route::resource('/skus-category', App\Http\Controllers\Admin\SkusCategoriesController::class);
     });
   });
 }

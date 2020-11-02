@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Currency;
@@ -42,6 +44,16 @@ class ApiController extends Controller
   public function country ($country) {
     $countries = Country::whereLike('name', $country)->get();
     return ['items' => $countries];
+  }
+
+  public function category ($category) {
+    $categories = Category::whereLike('name', $category)->get();
+    return ['items' => $categories];
+  }
+
+  public function brand ($brand) {
+    $brands = Brand::whereLike('name', $brand)->get();
+    return ['items' => $brands];
   }
 
 }

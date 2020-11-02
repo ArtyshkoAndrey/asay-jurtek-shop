@@ -48,7 +48,7 @@ body, .slick-overflow {
 a, .color-orange, .link {
   color: $link-color !important;
 }
-a:hover, .link:hover {
+a:hover, .link:hover, a.active {
   color: $link-color-hover !important;
 }
 a.inverse, .inverse {
@@ -57,6 +57,92 @@ a.inverse, .inverse {
 
 a.inverse:hover, .inverse:hover {
   color: $link-color !important;
+}
+
+a.link-category {
+  color: #A69C93 !important;
+  font-size: 32px;
+  line-height: 46px;
+  text-decoration: none;
+  transition: .2s;
+  border-bottom: 2px solid transparent;
+  &.active, &:hover {
+    color: #000!important;
+    border-bottom: 2px solid #CF6B37;
+  }
+}
+
+.border-hover {
+  padding: 10px;
+  border: 1px solid transparent;
+  transition: .2s;
+  &:hover {
+    border: 1px solid #A69C93;
+  }
+}
+
+.checkbox {
+  width: 100%;
+  position: relative;
+  display: block;
+  label {
+    position: relative;
+    min-height: 34px;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 4px;
+      width: 22px;
+      height: 22px;
+      transition: transform 0.28s ease;
+      border-radius: 3px;
+      border: 1px solid #A69C93;
+    }
+    &:after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 5px;
+      border-bottom: 2px solid white;
+      border-left: 2px solid white;
+      transform: rotate(-45deg) scale(0);
+      transition: transform ease 0.25s;
+      position: absolute;
+      top: 12px;
+      left: 10px;
+    }
+  }
+  input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+    &:checked ~ label{
+      &:before {
+        border: 1px solid #A69C93;
+        background: $link-color;
+      }
+      &:after {
+        transform: rotate(-45deg) scale(1);
+      }
+    }
+    &:focus + label::before {
+      outline: 0;
+    }
+  }
 }
 
 .bg-gray {
@@ -235,6 +321,7 @@ a.inverse:hover, .inverse:hover {
     width: 100%;
     transition: .5s;
     display: block;
+    height: 300px;
     &:hover {
       transform: scale(1.1);
     }

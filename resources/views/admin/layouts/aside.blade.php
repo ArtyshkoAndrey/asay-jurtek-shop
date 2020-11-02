@@ -32,14 +32,14 @@
 {{--          </a>--}}
 {{--        </li>--}}
 
-{{--        <li class="nav-item">--}}
-{{--          <a href="{{ route('admin.production.products.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.production.*') ? 'active' : '' }}">--}}
-{{--            <i class="fas fa-cube mr-3"></i>--}}
-{{--            <p>--}}
-{{--              Товары--}}
-{{--            </p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
+        <li class="nav-item">
+          <a href="{{ route('admin.production.products.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.production.*') ? 'active' : '' }}">
+            <i class="fas fa-cube mr-3"></i>
+            <p>
+              Товары
+            </p>
+          </a>
+        </li>
 
 {{--        <li class="nav-item">--}}
 {{--          <a href="{{ route('admin.store.order.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.user.*') ? 'active' : '' }}">--}}

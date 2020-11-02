@@ -115,7 +115,7 @@
                 </div>
               </li>
               <li class="nav-item d-none d-lg-block mr-lg-auto">
-                <a href="#" class="nav-link text-dark">Адресс и контакты</a>
+                <a href="{{ route('contacts') }}" class="nav-link text-dark">Адресс и контакты</a>
               </li>
 {{--              Поиск--}}
 <!--               <li class="nav-item d-none d-xl-flex">

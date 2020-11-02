@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Admin
 {
@@ -15,10 +16,12 @@ class Admin
    */
   public function handle($request, Closure $next)
   {
-    if(auth()->user()->is_admin){
-      return $next($request);
+    if (Auth::check()) {
+      if (auth()->user()->is_admin) {
+        return $next($request);
+      }
     }
 
-    return redirect('home')->with('error',"Доступно только администраторам!");
+    return redirect()->route('index')->withErrors(['error' => 'Доступно только администраторам!']);
   }
 }

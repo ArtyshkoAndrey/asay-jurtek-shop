@@ -26,4 +26,8 @@ class HomeController extends Controller
     $items = Product::where('on_new', true)->orderBy('created_at', 'desc')->take(4)->with('photos')->get();
     return view('index', compact('header', 'items'));
   }
+
+  public function contacts() {
+    return view('contacts');
+  }
 }

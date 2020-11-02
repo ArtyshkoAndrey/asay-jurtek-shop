@@ -25,6 +25,22 @@ class Product extends Model
   protected $with  = ['photos'];
   protected $dates = ['deleted_at'];
 
+  const SEX_ATTR_MALE = 'male';
+  const SEX_ATTR_FEMALE = 'female';
+  const SEX_ATTR_CHILDREN = 'children';
+
+  const SEX_ATTR_MAP = [
+    self::SEX_ATTR_MALE,
+    self::SEX_ATTR_FEMALE,
+    self::SEX_ATTR_CHILDREN,
+  ];
+
+  public static $sexAttrMap = [
+    self::SEX_ATTR_MALE      => 'Мужской',
+    self::SEX_ATTR_FEMALE   => 'Женский',
+    self::SEX_ATTR_CHILDREN => 'Детский'
+  ];
+
   public function categories() {
     return $this->belongsToMany(Category::class, 'products_categories', 'product_id', 'category_id');
   }
@@ -37,8 +53,13 @@ class Product extends Model
     return $this->hasMany(ProductsImage::class, 'product_id', 'id');
   }
 
-  public function cost (Currency $currency) {
-    return number_format($this->price * $currency->ratio, null, null, ' ');
+  public function skus() {
+    return $this->belongsTo(Skus::class);
+  }
+
+
+  public function cost (Currency $currency = null) {
+    return number_format($this->price * ($currency ? $currency->ratio : 1), null, null, ' ');
   }
 
   public function placeholder() {

@@ -35,7 +35,7 @@
         <div class="row ">
           <div class="col-12 mt-3 mt-lg-0 p-0">
             <h3 class="font-weight-normal">{{ $item->title }}</h3>
-            <p class="text-muted">{{ $item->description }}</p>
+            <div class="text-muted">{!! $item->description !!}</div>
           </div>
           <div class="col-12 mt-4 p-0">
             <div class="row">
@@ -76,11 +76,11 @@
                 </tr>
                 <tr>
                   <th class="text-muted font-weight-normal">Размер</th>
-                  <td class="font-weight-bolder">М</td>
+                  <td class="font-weight-bolder">{{ $item->skus->title }}</td>
                 </tr>
                 <tr>
                   <th class="text-muted font-weight-normal">Состояние</th>
-                  <td class="font-weight-bolder">Винтаж</td>
+                  <td class="font-weight-bolder">{{ $item->status }}</td>
                 </tr>
               </tbody>
             </table>
