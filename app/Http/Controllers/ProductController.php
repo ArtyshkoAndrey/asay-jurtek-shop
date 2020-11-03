@@ -2,21 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartItem;
+use App\Exceptions\InvalidRequestException;
 use App\Models\Product;
 use App\Services\CartService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller {
-
+  /**
+   * @var CartService $cartService
+   */
   protected $cartService;
 
+
+  /**
+   * ProductController constructor.
+   * @param CartService $cartService
+   */
   public function __construct(CartService $cartService)
   {
     parent::__construct($cartService);
   }
-  public function show ($id, Request $request) {
+
+
+  /**
+   * displays the selected product
+   *
+   * @param int $id
+   * @param Request $request
+   * @return View
+   */
+  public function show (int $id, Request $request): view
+  {
     $item = Product::with('photos')->find($id);
     $inCart = false;
     if ($user = $request->user()) {
@@ -26,21 +47,44 @@ class ProductController extends Controller {
     return view('item', compact('item', 'items', 'inCart'));
   }
 
-  public function addCart ($id) {
+  /**
+   * adds one item to the cart
+   *
+   * @param int $id
+   * @return RedirectResponse
+   * @throws InvalidRequestException
+   */
+  public function addCart (int $id): RedirectResponse
+  {
     if(Auth::check()) {
       $this->cartService->add($id);
       return redirect()->back();
     }
+    return redirect()->back()->withErrors(['auth' => 'Вы не авторизированы']);
   }
 
-  public function removeCart ($id) {
+  /**
+   * removes one item from the cart for authorized users
+   *
+   * @param int $id
+   * @return RedirectResponse
+   */
+  public function removeCart (int $id): RedirectResponse
+  {
     if(Auth::check()) {
       $this->cartService->remove($id);
       return redirect()->back();
     }
+    return redirect()->back()->withErrors(['auth' => 'Вы не авторизированы']);
   }
 
-  public function removeAllCart () {
+  /**
+   * removes items from the cart for authorized users
+   *
+   * @return RedirectResponse
+   */
+  public function removeAllCart (): RedirectResponse
+  {
     if(Auth::check()) {
       $this->cartService->deleteAll();
 
@@ -48,7 +92,12 @@ class ProductController extends Controller {
     }
   }
 
-  public function all (Request $request) {
+  /**
+   * display of all products by filter
+   *
+   * @param Request $request
+   * @return Application|Factory|View
+   */
   public function all (Request $request): view
   {
     $items = Product::query();
