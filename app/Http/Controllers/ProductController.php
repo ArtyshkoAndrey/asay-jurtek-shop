@@ -49,35 +49,76 @@ class ProductController extends Controller {
   }
 
   public function all (Request $request) {
+  public function all (Request $request): view
+  {
     $items = Product::query();
-    if ($sex = $request->input('sex', null)) {
-      if (in_array($sex, Product::SEX_ATTR_MAP)) {
-        $items = $items->where('sex', $sex);
+    $order = $request->input('order', 'sort-new');
+    $parentCategory = (int) $request->input('p', null);
+
+    if ($order) {
+      if ($order === 'sort-new') {
+        $items = $items->orderBy('created_at', 'desc');
+      } else if ($order === 'sort-old') {
+        $items = $items->orderBy('created_at', 'asc');
+      } else if ($order === 'sort-expensive') {
+        $items = $items->orderBy('price', 'desc');
+      } else if ($order === 'sort-cheap') {
+        $items = $items->orderBy('price', 'asc');
       }
     }
 
-    if ($category = $request->input('category', null)) {
-      $items = $items->whereHas('categories', function ($query) use ($category) {
-        $query->whereHas('parents', function ($query) use ($category) {
-          $query->where('laravel_reserved_0.id', $category);
-        })->orWhere('categories.id', $category);
+    if ($parentCategory) {
+      $items = $items->whereHas('categories', function ($query) use ($parentCategory) {
+        return $query->whereHas('parents', function ($query) use ($parentCategory) {
+          return $query->where('laravel_reserved_0.id', '=', $parentCategory);
+        });
       });
     }
 
-    if ($brand = $request->input('brand', null)) {
-      $items = $items->whereHas('brands', function ($query) use ($brand) {
-        return $query->where('brands.id', $brand);
-      });
+    if ($categoryArr = $request->input('category', [])) {
+      foreach ($categoryArr as $index => $category) {
+        if ($index == 0) {
+          $items = $items->whereHas('categories', function ($query) use ($category) {
+            return $query->where('categories.id', '=', $category);
+          });
+        } else {
+          $items = $items->orWhereHas('categories', function ($query) use ($category) {
+            return $query->where('categories.id', '=', $category);
+          });
+        }
+      }
     }
 
-    if ($size = $request->input('size', null)) {
-      $items = $items->whereHas('skus', function ($query) use ($size) {
-        $query->where('skuses.id', $size);
-      });
+    if ($sizeArr = $request->input('skus', [])) {
+      foreach ($sizeArr as $index => $size) {
+        if ($index == 0) {
+          $items = $items->whereHas('skus', function ($query) use ($size) {
+            return $query->where('id', '=', $size);
+          });
+        } else {
+          $items = $items->orWhereHas('skus', function ($query) use ($size) {
+            return $query->where('id', '=', $size);
+          });
+        }
+      }
     }
-    $items = $items->get();
-    $filter = ['sex' => $sex, 'category' => $category, 'size' => $size, 'brand' => $brand];
+
+    if ($sexArr = $request->input('sex', [])) {
+      foreach ($sexArr as $index => $sex) {
+        if (in_array($sex, Product::SEX_ATTR_MAP)) {
+          $items = $index == 0 ? $items->where('sex', '=', $sex) : $items->orWhere('sex', '=', $sex);
+        }
+      }
+    }
+
+    $items = $items->paginate(20);
+    $filter = [
+      'sex' => $sexArr,
+      'category' => $categoryArr,
+      'size' => $sizeArr,
+      'p' => $parentCategory,
+      'order' => $order
+    ];
     return view('all', compact('items', 'filter'));
-    dd($items->get());
   }
 }
