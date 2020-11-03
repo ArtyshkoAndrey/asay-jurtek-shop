@@ -374,6 +374,8 @@ a.link-category {
   }
   .navbar .dropdown-menu a>img.scale {
     transition-duration: .5s;
+    object-fit: cover;
+    width: 100%;
   }
   .navbar .dropdown-menu a>img.scale:hover {
     transform: scale(1.05);
