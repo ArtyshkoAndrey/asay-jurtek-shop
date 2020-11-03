@@ -90,6 +90,7 @@ class ProductController extends Controller {
 
       return redirect()->back();
     }
+    return redirect()->back()->withErrors(['auth' => 'Вы не авторизированы']);
   }
 
   /**
