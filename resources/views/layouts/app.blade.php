@@ -38,33 +38,33 @@
                   <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-4 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
-                        <div class="row">
+                        <div class="row h-100 align-items-stretch">
                           <div class="col-4">
                             <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
                           </div>
-                          <div class="col-12 mt-2">
+                          <div class="col-12 d-flex flex-column justify-content-end">
                             <p class="font-weight-bolder h5">Одежда и аксессуары</p>
-                            <a href="#" class="text-decoration-none">Смотреть все товары</a>
+                            <a href="{{ route('product.all', ['p' => 56]) }}" class="text-decoration-none">Смотреть все товары</a>
                           </div>
                         </div>
                       </div>
                       <div class="col border-left d-flex align-items-center">
-                        <div class="row pl-3">
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                        <div class="row pl-3" id="clothes-and-acc">
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'male']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/male.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Мужчинам</p>
+                          </a>
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'female']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/female.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Женщинам</p>
+                          </a>
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'children']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/children.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
+                          <a href="{{ route('product.all', ['p' => 56]) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/clothes.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Одежда</p>
                           </a>
                         </div>
                       </div>
@@ -80,33 +80,33 @@
                   <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
                     <div class="row">
                       <div class="col-xl-4 col-lg-6">
-                        <div class="row">
+                        <div class="row h-100">
                           <div class="col-4">
                             <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
                           </div>
-                          <div class="col-12 mt-2">
-                            <p class="font-weight-bolder h5">Одежда и аксессуары</p>
-                            <a href="#" class="text-decoration-none">Смотреть все товары</a>
+                          <div class="col-12 d-flex flex-column justify-content-end">
+                            <p class="font-weight-bolder h5">Мебель и аксессуары</p>
+                            <a href="{{ route('product.all', ['p' => 57]) }}" class="text-decoration-none">Смотреть все товары</a>
                           </div>
                         </div>
                       </div>
                       <div class="col border-left d-flex align-items-center">
-                        <div class="row pl-3">
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                        <div class="row pl-3" id="vintage-home">
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'male']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/male.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Мужчинам</p>
+                          </a>
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'female']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/female.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Женщинам</p>
+                          </a>
+                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'children']) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/children.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                             <p class="text-center m-0">Детям</p>
                           </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="#" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/navbar-images.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
+                          <a href="{{ route('product.all', ['p' => 56]) }}" class="col text-decoration-none inverse">
+                            <img src="{{ asset('images/clothes.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                            <p class="text-center m-0">Одежда</p>
                           </a>
                         </div>
                       </div>
@@ -294,6 +294,17 @@
     document.getElementById("cart").addEventListener('click', function (event) {
       event.stopPropagation();
     });
+
+    $(window).resize(function () {
+      $('#vintage-home .navbar-images-dropdown.scale').height($('#vintage-home .navbar-images-dropdown.scale').width())
+      $('#clothes-and-acc .navbar-images-dropdown.scale').height($('#clothes-and-acc .navbar-images-dropdown.scale').width())
+    })
+    $('.dropdown-toggle').click(function () {
+      setTimeout(() => {
+        $('#vintage-home .navbar-images-dropdown.scale').height($('#vintage-home .navbar-images-dropdown.scale').width())
+        $('#clothes-and-acc .navbar-images-dropdown.scale').height($('#clothes-and-acc .navbar-images-dropdown.scale').width())
+      }, 100)
+    })
   </script>
   @yield('js')
 </body>
