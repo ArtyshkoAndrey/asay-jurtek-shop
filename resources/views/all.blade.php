@@ -31,65 +31,98 @@
       </div>
     </div>
     <div class="row">
-      <a href="#" class="link-category col-md-auto col-12 ">Все товары</a>
-      <a href="#" class="link-category col-md-auto col-12">Clothes and accessories</a>
-      <a href="#" class="link-category col-md-auto col-12 active">Vintage home</a>
+      <a href="{{ route('product.all') }}" class="link-category col-md-auto col-12 {{ $filter['p'] === 0 ? 'active' : null }} ">Все товары</a>
+      @foreach(App\Models\Category::all() as $cat)
+        @if($cat->parents()->count() === 0)
+          <a href="{{ route('product.all', ['p'=> $cat->id]) }}" class="link-category col-md-auto col-12 {{ $filter['p'] === $cat->id ? 'active' : null }}">{{ $cat->name }}</a>
+        @endif
+      @endforeach
       <div class="col-12">
         <hr>
       </div>
     </div>
-    <div class="row align-items-center">
-      <div class="col-auto dropdown h-100">
-        <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none" role="button" id="dropdownSexLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Пол
-        </a>
-        <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownSexLink">
-          @foreach(\App\Models\Product::SEX_ATTR_MAP as $attr)
-            <div class="checkbox">
-              <input type="checkbox" class="form-check-input" id="sex-{{$attr}}" name="sex" value="{{ $attr }}">
-              <label class="form-check-label" for="sex-{{$attr}}">{{ \App\Models\Product::$sexAttrMap[$attr] }}</label>
-            </div>
+    <form action="{{ route('product.all') }}" method="get" id="product-all">
+      <input type="hidden" value="{{ $filter['p'] }}" name="p">
+      <input type="hidden" value="{{ $filter['order'] }}" name="order" id="order">
+      <div class="row align-items-center">
+        <div class="col-auto dropdown h-100">
+          <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none {{ count($filter['sex']) > 0 ? 'font-weight-bolder' : null }}" role="button" id="dropdownSexLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Пол
+          </a>
+          <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownSexLink">
+            @foreach(\App\Models\Product::SEX_ATTR_MAP as $attr)
+              <div class="checkbox">
+                <input type="checkbox" class="form-check-input" id="sex-{{$attr}}" name="sex[]" value="{{ $attr }}" {{ in_array($attr, $filter['sex']) ? 'checked' : null }}>
+                <label class="form-check-label" for="sex-{{$attr}}">{{ \App\Models\Product::$sexAttrMap[$attr] }}</label>
+              </div>
 
-          @endforeach
+            @endforeach
+          </div>
+        </div>
+
+        <div class="col-auto dropdown h-100">
+          <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none {{ count($filter['category']) > 0 ? 'font-weight-bolder' : null }}" role="button" id="dropdownCategoryLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Категория
+          </a>
+          <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4 overflow-auto" style="max-height: 300px; width: 250px" aria-labelledby="dropdownCategoryLink">
+            @foreach(\App\Models\Category::all() as $category)
+              <div class="checkbox">
+                <input type="checkbox" class="form-check-input" id="category-{{$category->id}}" name="category[]" value="{{ $category->id }}" {{ in_array($category->id, $filter['category']) ? 'checked' : null }}>
+                <label class="form-check-label" for="category-{{$category->id}}">{{ $category->name }}</label>
+              </div>
+
+            @endforeach
+          </div>
+        </div>
+
+        <div class="col-auto dropdown h-100">
+          <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none {{ count($filter['size']) > 0 ? 'font-weight-bolder' : null }}" role="button" id="dropdownSizeLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Размер
+          </a>
+          <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownSizeLink">
+            @foreach(\App\Models\Skus::all() as $skus)
+              <div class="checkbox">
+                <input type="checkbox" class="form-check-input" id="skus-{{$skus->id}}" name="skus[]" value="{{ $skus->id }}" {{ in_array($skus->id, $filter['size']) ? 'checked' : null }}>
+                <label class="form-check-label" for="skus-{{$skus->id}}">{{ $skus->title }}</label>
+              </div>
+
+            @endforeach
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <button type="submit" class="btn btn-orange w-100 mt-2 mt-md-0">Применить</button>
+  {{--        TODO: ОСтавляем кнопку, тут вью со списками что бы был реактивен, товары подгружать по api--}}
+        </div>
+
+        <div class="col-12">
+          <hr>
         </div>
       </div>
-
-      <div class="col-auto dropdown h-100">
-        <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none" role="button" id="dropdownCategoryLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Категория
-        </a>
-        <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4 overflow-auto" style="max-height: 300px" aria-labelledby="dropdownCategoryLink">
-          @foreach(\App\Models\Category::all() as $category)
-            <div class="checkbox">
-              <input type="checkbox" class="form-check-input" id="category-{{$category->id}}" name="category" value="{{ $category->id }}">
-              <label class="form-check-label" for="category-{{$category->id}}">{{ $category->name }}</label>
-            </div>
-
-          @endforeach
+    </form>
+    <div class="row">
+      @foreach($filter['sex'] as $value)
+        <div class="col-auto bg-gray px-2 py-1 m-1">
+          <span class="font-weight-light">{{ \App\Models\Product::$sexAttrMap[$value] }}</span>
+          <button class="color-orange btn border-none" onclick="uncheckProps($('#sex-{{$value}}'))"><i class="fal fa-times"></i></button>
         </div>
-      </div>
+      @endforeach
 
-      <div class="col-auto dropdown h-100">
-        <a href="#" class="text-dark dropdown-toggle border-hover text-decoration-none" role="button" id="dropdownSizeLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Размер
-        </a>
-        <div class="dropdown-menu dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownSizeLink">
-          @foreach(\App\Models\Skus::all() as $skus)
-            <div class="checkbox">
-              <input type="checkbox" class="form-check-input" id="skus-{{$skus->id}}" name="category" value="{{ $skus->id }}">
-              <label class="form-check-label" for="skus-{{$skus->id}}">{{ $skus->title }}</label>
-            </div>
-
-          @endforeach
+      @foreach($filter['category'] as $value)
+        <div class="col-auto bg-gray px-2 py-1 m-1">
+          <span class="font-weight-light">{{ \App\Models\Category::find($value)->name }}</span>
+          <button class="color-orange btn border-none" onclick="uncheckProps($('#category-{{$value}}'))"><i class="fal fa-times"></i></button>
         </div>
-      </div>
-      <div class="col-md-auto">
-        <button class="btn btn-orange w-100 mt-2 mt-md-0">Применить</button>
-{{--        TODO: ОСтавляем кнопку, тут вью со списками что бы был реактивен, товары подгружать по api--}}
-      </div>
+      @endforeach
 
-      <div class="col-12">
-        <hr>
+        @foreach($filter['size'] as $value)
+          <div class="col-auto bg-gray px-2 py-1 m-1">
+            <span class="font-weight-light">{{ \App\Models\Skus::find($value)->title }}</span>
+            <button class="color-orange btn border-none" onclick="uncheckProps($('#skus-{{$value}}'))"><i class="fal fa-times"></i></button>
+          </div>
+        @endforeach
+    </div>
+  </div>
+
       </div>
     </div>
   </div>
