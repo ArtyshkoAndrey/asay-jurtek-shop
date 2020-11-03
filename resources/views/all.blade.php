@@ -123,6 +123,14 @@
     </div>
   </div>
 
+  <div class="container-fluid">
+    <div class="row">
+      @foreach($items as $item)
+        <div class="col-lg-3 mt-4 col-sm-6 col-12 pl-sm-0">
+          @include('layouts.item', array('item'=>$item))
+        </div>
+      @endforeach
+    </div>
       </div>
     </div>
   </div>
