@@ -4,9 +4,15 @@ namespace App;
 
 use Carbon\Carbon;
 use App\Models\Currency;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use function PHPUnit\Framework\throwException;
 
 class Helpers
 {
@@ -88,5 +94,38 @@ class Helpers
       Log::info($e);
     }
     return $cr;
+  }
+
+  public static function paginate(Collection $results, $total, $pageSize)
+  {
+    $page = Paginator::resolveCurrentPage('page');
+
+    try {
+      return self::paginator($results->forPage($page, $pageSize), $total, $pageSize, $page, [
+        'path' => Paginator::resolveCurrentPath(),
+        'pageName' => 'page',
+      ]);
+    } catch (BindingResolutionException $e) {
+      return back()->withErrors(['error' => $e]);
+    }
+
+  }
+
+  /**
+   * Create a new length-aware paginator instance.
+   *
+   * @param Collection $items
+   * @param int $total
+   * @param int $perPage
+   * @param int $currentPage
+   * @param array $options
+   * @return LengthAwarePaginator
+   * @throws BindingResolutionException
+   */
+  protected static function paginator($items, $total, $perPage, $currentPage, $options)
+  {
+    return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
+      'items', 'total', 'perPage', 'currentPage', 'options'
+    ));
   }
 }
