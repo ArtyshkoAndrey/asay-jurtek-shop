@@ -11,7 +11,7 @@
       min-height: 500px;
     }
     #first-big-header::before {
-      background: url({{ asset('images/'.$header->image) }}) no-repeat left top;
+      background:  url({{ asset('storage/header/'.$header->image) }}) no-repeat left top;
       background-size: cover;
       min-height: 500px;
       content: '';
@@ -42,12 +42,12 @@
     }
 
     #secondPromotion {
-      background: url("{{ asset('images/7b7c7d98382e7221ab48a124b02f205c.jpg') }}");
+      background: url("{{ asset('images/female.jpg') }}");
       background-size: cover;
     }
 
     #therdPromotion {
-      background: url("{{ asset('images/7b7c7d98382e7221ab48a124b02f205c.jpg') }}");
+      background: url("{{ asset('images/female.jpg') }}");
       background-size: cover;
     }
 
@@ -59,7 +59,7 @@
         min-height: 400px;
       }
       #first-big-header {
-        background: linear-gradient(rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 100%), url({{ asset('images/'.$header->image) }}) no-repeat center top;
+        background: linear-gradient(rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 100%), url({{ asset('storage/header/'.$header->image) }}) no-repeat center top;
         background-size: cover;
         width: 100%;
       }
@@ -78,7 +78,7 @@
           <div class="col-lg-6 text-center text-white">
             <h1 class="font-weight-bolder">Asay Jurek</h1>
             <p>Селективный секонд хенд</p>
-            <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+            <a href="{{ route('product.all') }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
           </div>
         </div>
       </div>
@@ -86,8 +86,8 @@
       <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
         <div class="promotion h-100 h-100 d-flex" id="secondPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-white h3">Asay Jurek Vintage home</h4>
-          <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+          <h4 class="font-weight-bolder text-white h3">Asay Jurek Clothes and accessories</h4>
+          <a href="{{ route('product.all', ['p' => 56]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
         <div class="promotion h-100 h-100 d-flex" id="therdPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
           <h4 class="font-weight-bolder text-white h3">Asay Jurek Vintage home</h4>
-          <a href="#" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+          <a href="{{ route('product.all', ['p' => 57]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>
       </div>
