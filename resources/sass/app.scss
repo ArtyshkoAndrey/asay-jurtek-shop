@@ -255,6 +255,15 @@ a.link-category {
   }
 }
 
+.page-item.active .page-link {
+  background-color: $link-color !important;
+  color: white !important;
+  border-color: $link-color !important;
+}
+.page-item:last-child .page-link, .page-item:first-child .page-link {
+  border-radius: 0;
+}
+
 .btn-orange {
   color: white !important;
   font-weight:  normal;
