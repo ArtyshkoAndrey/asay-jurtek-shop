@@ -145,5 +145,15 @@
     $("#filtered .dropdown-menu").on('click', function (event) {
       event.stopPropagation();
     });
+
+    function uncheckProps (el) {
+      el.prop('checked', false )
+      $('#product-all').submit()
+    }
+
+    function orderSort (type) {
+      $('#order').val(type)
+      $('#product-all').submit()
+    }
   </script>
 @endsection
