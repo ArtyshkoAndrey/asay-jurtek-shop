@@ -131,6 +131,9 @@
         </div>
       @endforeach
     </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-auto">
+        {{ $items->onEachSide(1)->appends($filter)->links('vendor.pagination.bootstrap-4') }}
       </div>
     </div>
   </div>
