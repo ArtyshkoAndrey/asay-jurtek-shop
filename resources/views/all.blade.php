@@ -12,13 +12,21 @@
     <div class="row justify-content-end">
       <div class="col-auto dropdown">
         <a href="#" class="text-dark dropdown-toggle text-decoration-none" role="button" id="dropdownOrderLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-sort-amount-up"></i> Сначало новые
+          @if($filter['order'] === 'sort-old')
+            <i class="fas fa-sort-amount-down"></i> С начало старые
+          @elseif($filter['order'] === 'sort-new')
+            <i class="fas fa-sort-amount-up"></i> Сначало новые
+          @elseif($filter['order'] === 'sort-expensive')
+            <i class="fas fa-sort-amount-up"></i> С начало дорогие
+          @elseif($filter['order'] === 'sort-cheap')
+            <i class="fas fa-sort-amount-down"></i> С начало дешёвые
+          @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownOrderLink">
-          <a href="#" role="button" class="dropdown-item bg-transparent"><i class="fas fa-sort-amount-down"></i> С начало старые</a>
-          <a href="#" role="button" class="dropdown-item bg-transparent active"><i class="fas fa-sort-amount-up"></i> С начало новые</a>
-          <a href="#" role="button" class="dropdown-item bg-transparent"><i class="fas fa-sort-amount-up"></i> С начало дорогие</a>
-          <a href="#" role="button" class="dropdown-item bg-transparent"><i class="fas fa-sort-amount-down"></i> С начало дешёвые</a>
+          <a href="#" role="button" onclick="orderSort('sort-old')" class="dropdown-item bg-transparent {{ $filter['order'] === 'sort-old' ? 'active' : '' }}"><i class="fas fa-sort-amount-down"></i> С начало старые</a>
+          <a href="#" role="button" onclick="orderSort('sort-new')" class="dropdown-item bg-transparent {{ $filter['order'] === 'sort-new' ? 'active' : '' }}"><i class="fas fa-sort-amount-up"></i> С начало новые</a>
+          <a href="#" role="button" onclick="orderSort('sort-expensive')" class="dropdown-item bg-transparent {{ $filter['order'] === 'sort-expensive' ? 'active' : '' }}"><i class="fas fa-sort-amount-up"></i> С начало дорогие</a>
+          <a href="#" role="button" onclick="orderSort('sort-cheap')" class="dropdown-item bg-transparent {{ $filter['order'] === 'sort-cheap' ? 'active' : '' }}"><i class="fas fa-sort-amount-down"></i> С начало дешёвые</a>
         </div>
       </div>
     </div>
