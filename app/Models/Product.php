@@ -25,7 +25,7 @@ class Product extends Model
     'meta'    => 'object'   // Данные ля СЕО
   ];
 
-  protected $with  = ['photos'];
+  protected $with  = ['photos', 'skus'];
   protected $dates = ['deleted_at'];
 
   const SEX_ATTR_MALE = 'male';
