@@ -62,7 +62,7 @@ class Product extends Model
 
 
   public function cost (Currency $currency = null) {
-    return number_format($this->price * ($currency ? $currency->ratio : 1), null, null, ' ');
+    return number_format(($this->on_sale? $this->price_sale : $this->price) * ($currency ? $currency->ratio : 1), null, null, ' ');
   }
 
   public function placeholder() {
