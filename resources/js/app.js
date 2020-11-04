@@ -2,16 +2,49 @@ import lodash from "lodash";
 import store from "./store";
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2'
+import kebabCase from 'lodash/kebabCase'
 
 require('sweetalert');
 window._ = lodash;
 window.Vue = require('vue');
 Vue.config.productionTip = false
 
+const requireComponent = require.context(
+  // Относительный путь до каталога компонентов
+  './components',
+  // Обрабатывать или нет подкаталоги
+  true,
+  // Регулярное выражение для определения файлов базовых компонентов
+  /\w+\.(vue|js)$/
+)
+
+requireComponent.keys().forEach(fileName => {
+  // Получение конфигурации компонента
+  const componentConfig = requireComponent(fileName)
+
+  // Получение имени компонента в PascalCase
+  const componentName = kebabCase(
+    // Удаление из начала `./` и расширения из имени файла
+    fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
+  )
+  /* eslint-disable no-console */
+  // console.log('fileName',fileName,'=>',componentName);
+  /* eslint-enable no-console */
+  // Глобальная регистрация компонента
+  Vue.component(
+    componentName,
+    // Поиск опций компонента в `.default`, который будет существовать,
+    // если компонент экспортирован с помощью `export default`,
+    // иначе будет использован корневой уровень модуля.
+    componentConfig.default || componentConfig
+  )
+})
+
 try {
   window.Popper = require('popper.js').default;
   window.$ = window.jQuery = require('jquery');
   require('bootstrap');
+  require('select2');
   // require('flot');
   window.axios = require('axios');
   window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
