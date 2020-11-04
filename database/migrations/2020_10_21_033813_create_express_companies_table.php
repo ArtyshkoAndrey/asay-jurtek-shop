@@ -16,6 +16,7 @@ class CreateExpressCompaniesTable extends Migration
     Schema::create('express_companies', function (Blueprint $table) {
       $table->id();
       $table->string('name');
+      $table->text('description')->nullable();
       $table->boolean('enabled')->default(true);
       $table->string('cost_type')->default('Настраиваемая');
       $table->text('track_code')->nullable();
