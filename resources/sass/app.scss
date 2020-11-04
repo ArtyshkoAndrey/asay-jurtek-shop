@@ -1,6 +1,17 @@
 // Variables
 @import "fonts";
 @import "bootstrap";
+@import "~select2/src/scss/core";
+
+/* Make Select2 boxes match Bootstrap3 as well as Bootstrap4 heights: */
+.select2-selection__rendered {
+  line-height: 32px !important;
+}
+
+.select2-selection {
+  height: 40px !important;
+  border-radius: 0 !important;
+}
 
 $link-color: #CF6B37;
 $gray: #F9F9F9;
@@ -398,6 +409,12 @@ a.link-category {
 }
 .swal2-styled {
   border-radius: 0 !important;
+}
+
+.transport-link {
+  &:hover, &.active {
+    border-color: $link-color !important;
+  }
 }
 
 .login-page, .register-page, .password-request-page, .password-reset-page {
