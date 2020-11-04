@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+  // TODO: Изменить ретурн phpdov
 
   /**
    * Show the application dashboard.
@@ -20,6 +21,13 @@ class HomeController extends Controller
     return view('home');
   }
 
+  // TODO: Изменить ретурн phpdov
+
+  /**
+   * Get settings and dispay Index page
+   * 
+   * @return type
+   */
   public function index() {
     $headerTemp = Setting::where('key', 'header')->first();
     $header = json_decode($headerTemp->meta);
@@ -27,6 +35,12 @@ class HomeController extends Controller
     return view('index', compact('header', 'items'));
   }
 
+  // TODO: Изменить ретурн phpdov
+
+  /**
+   * Display Contact page
+   * @return type
+   */
   public function contacts() {
     return view('contacts');
   }
