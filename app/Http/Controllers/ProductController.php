@@ -126,6 +126,7 @@ class ProductController extends Controller {
     }
 
     if ($categoryArr = $request->input('category', [])) {
+      !is_array($categoryArr) ? $categoryArr = [$categoryArr] : null;
       foreach ($categoryArr as $index => $category) {
         if ($index == 0) {
           $items = $items->whereHas('categories', function ($query) use ($category) {
@@ -140,6 +141,7 @@ class ProductController extends Controller {
     }
 
     if ($sizeArr = $request->input('skus', [])) {
+      !is_array($sizeArr) ? $sizeArr = [$sizeArr] : null;
       foreach ($sizeArr as $index => $size) {
         if ($index == 0) {
           $items = $items->whereHas('skus', function ($query) use ($size) {
@@ -154,6 +156,7 @@ class ProductController extends Controller {
     }
 
     if ($sexArr = $request->input('sex', [])) {
+      !is_array($sexArr) ? $sexArr = [$sexArr] : null;
       foreach ($sexArr as $index => $sex) {
         if (in_array($sex, Product::SEX_ATTR_MAP)) {
           $items = $index == 0 ? $items->where('sex', '=', $sex) : $items->orWhere('sex', '=', $sex);
