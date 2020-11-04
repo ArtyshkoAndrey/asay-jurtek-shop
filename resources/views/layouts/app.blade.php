@@ -235,7 +235,7 @@
                         <a href="javascript:;" class="text-decoration-none" @click="$store.commit('clearCart')">Очистить корзину</a>
                       </div>
                       <div class="col-auto">
-                        <a href="#" class="btn btn-orange">Перейти в корзину</a>
+                        <a href="{{ route('order.index') }}" class="btn btn-orange">Перейти в корзину</a>
                       </div>
                     </div>
                   @else
@@ -272,7 +272,7 @@
                         </form>
                       </div>
                       <div class="col-auto">
-                        <a href="#" class="btn btn-orange">Перейти в корзину</a>
+                        <a href="{{ route('order.index') }}" class="btn btn-orange">Перейти в корзину</a>
                       </div>
                     </div>
                   @endguest
