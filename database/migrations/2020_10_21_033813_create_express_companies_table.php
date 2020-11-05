@@ -22,6 +22,7 @@ class CreateExpressCompaniesTable extends Migration
       $table->text('track_code')->nullable();
       $table->integer('min_cost')->default(0);
       $table->boolean('enabled_cash')->default(false);
+      $table->boolean('enabled_card')->default(true);
       $table->timestamps();
     });
   }
