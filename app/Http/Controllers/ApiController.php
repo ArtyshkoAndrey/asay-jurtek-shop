@@ -119,7 +119,8 @@ class ApiController extends Controller
     ]);
 
     $data = $request->all();
-    $express_companies = ExpressCompany::where('name', '!=', 'Самовывоз')->get();
+//    TODO: Убрать where
+    $express_companies = ExpressCompany::where('name', '!=', 'Самовывоз1')->get();
     $zones = ExpressZone::with('company')
       ->whereHas('cities', function ($qq) use ($data) {
         $qq->where('cities.id', $data['city']);
