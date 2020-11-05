@@ -129,7 +129,7 @@
   <script !src="">
     function deletedZone(id) {
       let form = document.createElement('form');
-      form.action = '{{ route('admin.store.express-zone.index') }}/' + id;
+      form.action = '{{ route('admin.store.express-zone.destroy', '') }}/' + id;
       form.method = 'POST';
       $(form).append('<input type="hidden" name="_token" value="'+ $('meta[name="csrf-token"]').attr('content') +'">')
       $(form).append('<input type="hidden" name="_method" value="delete">')

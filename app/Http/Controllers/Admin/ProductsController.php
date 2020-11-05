@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductsImage;
+use Exception;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,10 +13,12 @@ use Illuminate\View\View;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\File;
 
+/**
+ * Class ProductsController
+ * Class wor work Product and Photo
+ * @package App\Http\Controllers\Admin
+ */
 class ProductsController extends Controller {
-  public function __construct() {
-//
-  }
 
   /**
    * Display a listing of the resource.
@@ -23,7 +26,7 @@ class ProductsController extends Controller {
    * @param Request $request
    * @return Factory|View
    */
-  public function index(Request $request)
+  public function index(Request $request): View
   {
     $type     = $request->type;
     $search   = $request->search;
@@ -74,7 +77,7 @@ class ProductsController extends Controller {
    *
    * @return Factory|View
    */
-  public function create()
+  public function create(): View
   {
     return view('admin.products.create');
   }
@@ -85,7 +88,7 @@ class ProductsController extends Controller {
    * @param Request $request
    * @return RedirectResponse
    */
-  public function store(Request $request)
+  public function store(Request $request): RedirectResponse
   {
     $product              = new Product();
     $product->title       = $request->title;
@@ -116,10 +119,10 @@ class ProductsController extends Controller {
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return void
    */
-  public function show($id)
+  public function show(int $id)
   {
     //
   }
@@ -130,7 +133,7 @@ class ProductsController extends Controller {
    * @param int $id
    * @return Factory|View
    */
-  public function edit(int $id)
+  public function edit(int $id): View
   {
     $product = Product::withTrashed()->find($id);
     return view('admin.products.edit', compact('product'));
@@ -167,6 +170,7 @@ class ProductsController extends Controller {
    *
    * @param int $id
    * @return RedirectResponse
+   * @throws Exception
    */
   public function destroy(int $id) {
     $pr = Product::withTrashed()->find($id);
@@ -180,14 +184,14 @@ class ProductsController extends Controller {
 
   public function collectionsDestroy(Request $request) {
     Product::destroy($request->id);
-    return ['status' => 'success'];
+    return response()->json(['status' => 'success']);
   }
 
   public function collectionsRestore(Request $request) {
     foreach($request['data']['id'] as $id) {
       Product::withTrashed()->find($id)->restore();
     }
-    return ['status' => 'success'];
+    return response()->json(['status' => 'success']);
   }
 
   public function photo(Request $request, $id) {

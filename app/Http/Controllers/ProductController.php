@@ -12,12 +12,18 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+/**
+ * Class ProductController.
+ * Класс для продаваемых вещей
+ *
+ * @package App\Http\Controllers
+ */
 class ProductController extends Controller {
+
   /**
    * @var CartService $cartService
    */
   protected $cartService;
-
 
   /**
    * ProductController constructor.

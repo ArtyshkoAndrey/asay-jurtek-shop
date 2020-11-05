@@ -25,33 +25,45 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
   Route::name('store.')->group(function () {
 
-    Route::resource('order', App\Http\Controllers\Admin\OrderController::class);
+    Route::resource('order', App\Http\Controllers\Admin\OrderController::class)->except([
+      'create', 'store', 'show'
+    ]);
     Route::delete('/order/all', [App\Http\Controllers\Admin\OrderController::class,'collectionsDestroy'])->name('order.collectionsDestroy');
 
-    Route::resource('express', App\Http\Controllers\Admin\ExpressController::class);
+    Route::resource('express', App\Http\Controllers\Admin\ExpressController::class)->except([
+      'show'
+    ]);
     Route::put('/express/enabled/{id}', [App\Http\Controllers\Admin\ExpressController::class, 'enabled'])->name('express.enabled');
 
-    Route::resource('express-zone', App\Http\Controllers\Admin\ExpressZoneController::class);
+    Route::resource('express-zone', App\Http\Controllers\Admin\ExpressZoneController::class)->except([
+      'index', 'show'
+    ]);
     Route::post('/express-zone/{id}/destroy', [App\Http\Controllers\Admin\ExpressZoneController::class, 'destroyCity'])->name('express-zone.destroyCity');
+    Route::put('/express/set-city/{id}', [App\Http\Controllers\Admin\ExpressZoneController::class, 'setCity'])->name('express-zone.set-city');
 
-    Route::resource('pay', App\Http\Controllers\Admin\PayController::class);
-
-
+    Route::resource('pay', App\Http\Controllers\Admin\PayController::class)->except([
+      'create', 'store', 'show', 'destroy'
+    ]);
 
   });
 
   Route::name('production.')->group(function () {
+
     Route::name('products.')->prefix('products')->group(function () {
+
       Route::delete('/all', [App\Http\Controllers\Admin\ProductsController::class, 'collectionsDestroy'])->name('collectionsDestroy');
       Route::post('/all', [App\Http\Controllers\Admin\ProductsController::class, 'collectionsRestore'])->name('collectionsRestore');
       Route::post('/{id}/photo', [App\Http\Controllers\Admin\ProductsController::class, 'photo'])->name('photo');
       Route::post('/photo-create', [App\Http\Controllers\Admin\ProductsController::class, 'photoCreate'])->name('photoCreate');
       Route::post('/{id}/photo-delete', [App\Http\Controllers\Admin\ProductsController::class, 'photoDelete'])->name('photoDelete');
       Route::post('/photo-delete-create', [App\Http\Controllers\Admin\ProductsController::class, 'photoDeleteCreate'])->name('photoDeleteCreate');
-
     });
+
     Route::resource('/products', App\Http\Controllers\Admin\ProductsController::class);
+
     Route::resource('/attr', App\Http\Controllers\Admin\SkusController::class);
+
     Route::resource('/skus-category', App\Http\Controllers\Admin\SkusCategoriesController::class);
+
   });
 });

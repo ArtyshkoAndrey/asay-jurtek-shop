@@ -2,46 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers;
 use App\Models\Product;
 use App\Models\Setting;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
+/**
+ * Class HomeController.
+ * Класс для обычных страниц
+ *
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
-  // TODO: Изменить ретурн phpdov
 
   /**
-   * Show the application dashboard.
+   * Get settings and display Index page
    *
-   * @return \Illuminate\Contracts\Support\Renderable
+   * @return Application|Factory|View
    */
-  public function home()
+  public function index(): View
   {
-    return view('home');
-  }
-
-  // TODO: Изменить ретурн phpdov
-
-  /**
-   * Get settings and dispay Index page
-   * 
-   * @return type
-   */
-  public function index() {
     $headerTemp = Setting::where('key', 'header')->first();
     $header = json_decode($headerTemp->meta);
-    $items = Product::where('on_new', true)->orderBy('created_at', 'desc')->take(4)->with('photos')->get();
+    $items = Product::where('on_new', true)
+      ->orderBy('created_at', 'desc')
+      ->take(4)
+      ->with('photos')
+      ->get();
     return view('index', compact('header', 'items'));
   }
 
-  // TODO: Изменить ретурн phpdov
-
   /**
    * Display Contact page
-   * @return type
+   * @return Application|Factory|View
    */
-  public function contacts() {
+  public function contacts(): View
+  {
     return view('contacts');
   }
 }

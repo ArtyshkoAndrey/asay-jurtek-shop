@@ -3,21 +3,27 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+/**
+ * Class RegisterPassword
+ * Уведомления нового пароля и почты
+ * @package App\Notifications
+ */
 class RegisterPassword extends Notification
 {
   use Queueable;
   protected $email;
   protected $password;
+
   /**
    * Create a new notification instance.
    *
-   * @return void
+   * @param string $email
+   * @param string $password
    */
-  public function __construct($email, $password)
+  public function __construct(string $email, string $password)
   {
     $this->email = $email;
     $this->password = $password;
@@ -38,7 +44,7 @@ class RegisterPassword extends Notification
    * Get the mail representation of the notification.
    *
    * @param  mixed  $notifiable
-   * @return \Illuminate\Notifications\Messages\MailMessage
+   * @return MailMessage
    */
   public function toMail($notifiable)
   {

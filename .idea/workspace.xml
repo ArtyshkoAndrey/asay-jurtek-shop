@@ -20,30 +20,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/order.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Unit/ApiControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpressController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpressController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpressZoneController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ExpressZoneController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PayController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CurrencyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CurrencyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CartItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/City.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CityExpress.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CityExpress.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Country.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Country.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Currency.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Currency.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ExpressCompany.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExpressCompany.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ExpressZone.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ExpressZone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrderItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Pay.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Pay.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_21_033813_create_express_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_21_033813_create_express_companies_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductsImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ProductsImage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Skus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Skus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SkusCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SkusCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/PasswordReset.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/PasswordReset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/RegisterPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/RegisterPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/CartService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CartService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/express-zone/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/express-zone/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/express/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/express/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +223,7 @@
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -243,7 +264,7 @@
       <workItem from="1604307936898" duration="14270000" />
       <workItem from="1604376285157" duration="15107000" />
       <workItem from="1604463163482" duration="19329000" />
-      <workItem from="1604493322908" duration="3203000" />
+      <workItem from="1604493322908" duration="17993000" />
     </task>
     <servers />
   </component>
@@ -282,18 +303,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603353456165" />
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1604467171944">
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1604562754679">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604467171944" />
-    <state x="1170" y="283" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604395058782">
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604562754679" />
+    <state x="1170" y="283" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604554719136">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1170" y="283" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604395058782" />
+    <state x="1170" y="283" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604554719136" />
     <state x="1220" y="291" key="FileChooserDialogImpl" timestamp="1604394659269">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1220" y="291" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1604394659269" />
+    <state x="540" y="259" key="IDE.errors.dialog" timestamp="1604561442416">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="540" y="259" key="IDE.errors.dialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604561442416" />
     <state x="709" y="247" key="NewPhpClassDialog" timestamp="1603960376439">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -303,10 +328,10 @@
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1603547200186" />
     <state x="727" y="414" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604476284328" />
-    <state x="461" y="169" key="SettingsEditor" timestamp="1604466402369">
+    <state x="461" y="169" width="1363" height="708" key="SettingsEditor" timestamp="1604556731297">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="169" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1604466402369" />
+    <state x="461" y="169" width="1363" height="708" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1604556731297" />
     <state x="681" y="266" width="540" height="524" key="StructurePopup" timestamp="1604302893388">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -319,26 +344,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604391770682" />
-    <state x="715" y="332" width="490" height="601" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1604464366082">
+    <state x="715" y="332" width="580" height="601" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1604555053117">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="715" y="332" width="490" height="601" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604464366082" />
+    <state x="715" y="332" width="580" height="601" key="com.jetbrains.php.test.PhpNewTestDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604555053117" />
     <state x="0" y="0" width="844" height="1036" key="dock-window-1" timestamp="1603352200865">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="0" width="844" height="1036" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1603352200865" />
-    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1604315006317">
+    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1604556084838">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604315006317" />
+    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604556084838" />
     <state x="616" y="243" key="run.anything.popup" timestamp="1603792503641">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1603792503641" />
-    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1603350845168">
+    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1604549191733">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1603350845168" />
+    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604549191733" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

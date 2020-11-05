@@ -11,25 +11,32 @@ use Illuminate\View\View;
 
 class ExpressController extends Controller
 {
-  public function __construct()
-  {
-//    parent::__construct($cartService);
-  }
 
   /**
    * Display a listing of the resource.
    *
    * @return Factory|View
    */
-  public function index()
+  public function index(): View
   {
     $expresses = ExpressCompany::all();
     return view('admin.express.index', compact('expresses'));
   }
 
-  public function enabled(Request $request, $id) {
+  /**
+   * Set status Enabled in Company
+   * @param Request $request
+   * @param $id
+   * @return RedirectResponse
+   */
+  public function enabled(Request $request, $id): RedirectResponse
+  {
+    $request->validate([
+      'enabled' => 'required|bool'
+    ]);
+    $data = $request->all();
     $express = ExpressCompany::find($id);
-    $express->enabled = $request->enabled;
+    $express->enabled = $data['enabled'];
     $express->save();
     return redirect()->route('admin.store.express.index');
   }
@@ -39,7 +46,7 @@ class ExpressController extends Controller
    *
    * @return Factory|View
    */
-  public function create()
+  public function create(): View
   {
     return view('admin.express.create');
   }
@@ -50,7 +57,7 @@ class ExpressController extends Controller
    * @param Request $request
    * @return RedirectResponse
    */
-  public function store(Request $request)
+  public function store(Request $request): RedirectResponse
   {
     $request->validate([
       'name' => 'required|unique:express_companies,name',
@@ -68,10 +75,10 @@ class ExpressController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return void
    */
-  public function show($id)
+  public function show(int $id)
   {
     //
   }
@@ -79,10 +86,10 @@ class ExpressController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  int  $id
+   * @param int $id
    * @return Factory|View
    */
-  public function edit($id)
+  public function edit(int $id): View
   {
     $express = ExpressCompany::find($id);
     return view('admin.express.edit', compact('express'));
@@ -92,10 +99,10 @@ class ExpressController extends Controller
    * Update the specified resource in storage.
    *
    * @param Request $request
-   * @param  int  $id
+   * @param int $id
    * @return RedirectResponse
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, int $id): RedirectResponse
   {
     $request->validate([
       'name' => 'required|unique:express_companies,name,' . $id,
@@ -106,7 +113,6 @@ class ExpressController extends Controller
     $express = ExpressCompany::find($id);
     $request['enabled'] = $express->enabled;
     $request['enabled_cash'] = $request->has('enabled_cash');
-//    dd($request->all());
     $express->update($request->all());
     return redirect()->route('admin.store.express.edit', $express->id);
   }
@@ -114,10 +120,10 @@ class ExpressController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  int  $id
+   * @param int $id
    * @return RedirectResponse
    */
-  public function destroy($id)
+  public function destroy(int $id): RedirectResponse
   {
     $company = ExpressCompany::find($id);
     $company->delete();

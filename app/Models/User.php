@@ -5,9 +5,18 @@ namespace App\Models;
 use App\Notifications\PasswordReset;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Class User
+ * Класс Модель для Пользователя
+ *
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
   use HasFactory, Notifiable;
@@ -49,42 +58,88 @@ class User extends Authenticatable
     'is_admin' => 'boolean'
   ];
 
-  public function getFullAddress () {
+  /**
+   * Получить полный адресс в виде строки
+   * @return string
+   */
+  public function getFullAddress (): string
+  {
     return "{$this->country->name}, {$this->city->name}, {$this->street}";
   }
 
-  public function getIOName () {
+  /**
+   * Получить Имя Фамилию пользователя
+   * @return string
+   */
+  public function getIOName (): string
+  {
     return "{$this->first_name} {$this->second_name}";
   }
 
-  public function getPhoto () {
+  /**
+   * Получить фотографи
+   * @return string
+   */
+  public function getPhoto (): string
+  {
     return $this->avatar ? asset('public/avatar/avatar/thumbnail/' . $this->avatar) : asset('images/person.png');
   }
 
 
-  public function currency () {
+  /**
+   * Валюта пользователя
+   * @return BelongsTo
+   */
+  public function currency (): BelongsTo
+  {
     return $this->belongsTo(Currency::class);
   }
 
-  public function city () {
+  /**
+   * Город пользователя
+   * @return BelongsTo
+   */
+  public function city (): BelongsTo
+  {
     return $this->belongsTo(City::class);
   }
 
-  public function country () {
-    return $this->balongsTo(Country::class);
+  /**
+   * Страна пользователя
+   * @return BelongsTo
+   */
+  public function country (): BelongsTo
+  {
+    return $this->belongsTo(Country::class);
   }
 
-  public function favoriteProducts () {
-    return $this->belongsToMany(Product::class, 'user_favorite_products')
+  /**
+   * Товары в избраных
+   * @return BelongsToMany
+   */
+  public function favoriteProducts (): BelongsToMany
+  {
+    return $this
+      ->belongsToMany(Product::class, 'user_favorite_products')
       ->withTimestamps()
       ->orderBy('user_favorite_products.created_at', 'desc');
   }
 
-  public function cartItems () {
+  /**
+   * Товары в корзине
+   * @return HasMany
+   */
+  public function cartItems (): HasMany
+  {
     return $this->hasMany(CartItem::class);
   }
 
-  public function sendPasswordResetNotification ($token) {
+  /**
+   * Уведомления о сбросе пароля
+   * @param string $token
+   */
+  public function sendPasswordResetNotification ($token)
+  {
     $this->notify(new PasswordReset($token));
   }
 }

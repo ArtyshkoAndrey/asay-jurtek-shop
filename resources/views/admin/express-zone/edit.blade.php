@@ -192,7 +192,7 @@
 @section('js')
   <script>
     function addColumn() {
-      axios.put('{{ route('admin.store.express-zone.update', $zone->id) }}',
+      axios.put('{{ route('admin.store.express-zone.set-city', $zone->id) }}',
         {
           city_id: $('#city').val()
         })

@@ -10,6 +10,7 @@ try {
   window.$ = window.jQuery = require('jquery');
   require('bootstrap');
   require('select2');
+  require('icheck');
   // require('flot');
   window.axios = require('axios');
   window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

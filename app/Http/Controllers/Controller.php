@@ -9,21 +9,30 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+/**
+ * Class Controller. Контроллер, принимает CartService и в шаблоны раздаёт
+ * валюту, корзину, общую стоимость, и кол-во товаров
+ *
+ * @package App\Http\Controllers
+ */
 class Controller extends BaseController
 {
   use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+  /**
+   * Var for shared user data
+   * @var CartService
+   */
   protected $cartService;
 
   /**
-   * Contructor, shared vars in views
-   * 
-   * @param CartService $cartService 
-   * @return type
+   * construct, shared vars in views
+   *
+   * @param CartService $cartService
    */
   public function __construct (CartService $cartService) {
-    $this
-      ->cartService = $cartService;
-      ->middleware(function ($request, $next) {
+    $this->cartService = $cartService;
+    $this->middleware(function ($request, $next) {
         $currency = Helpers::currency();
         $cartItems = [];
         $amount = 0;

@@ -2,19 +2,57 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class Order
+ * Класс Модель для Заказов
+ *
+ * @package App\Models
+ * @method static find(int $id)
+ */
 class Order extends Model
 {
   use HasFactory;
 
+  /**
+   * Статус заказа Обработка
+   * @var string
+   */
   const SHIP_STATUS_PENDING   = 'pending';
+
+  /**
+   * Статус заказа Не оплачен
+   * @var string
+   */
   const SHIP_STATUS_PAID      = 'paid';
+
+  /**
+   * Статус заказа Отправлен
+   * @var string
+   */
   const SHIP_STATUS_DELIVERED = 'delivered';
+
+  /**
+   * Статус заказа Получен
+   * @var string
+   */
   const SHIP_STATUS_RECEIVED  = 'received';
+
+  /**
+   * Статус заказа Отменён
+   * @var string
+   */
   const SHIP_STATUS_CANCEL    = 'cancel';
 
+  /**
+   * Вспомогательный масив статусов
+   * @var string[]
+   */
   const SHIP_STATUS_MAP = [
     self::SHIP_STATUS_PENDING,
     self::SHIP_STATUS_PAID,
@@ -23,14 +61,31 @@ class Order extends Model
     self::SHIP_STATUS_CANCEL
   ];
 
+  /**
+   * Метод оплаты Наличные
+   * @var string
+   */
   const PAYMENT_METHODS_CASH = 'cash';
+
+  /**
+   * Метод оплаты Картой
+   * @var string
+   */
   const PAYMENT_METHODS_CARD = 'card';
 
+  /**
+   * Массив методов оплаты на Русском
+   * @var string[]
+   */
   public static $paymentMethodsMap = [
     self::PAYMENT_METHODS_CASH  => 'Оплата в магазине',
     self::PAYMENT_METHODS_CARD  => 'Оплата картой',
   ];
 
+  /**
+   * Массив статуса заказов на Русском
+   * @var string[]
+   */
   public static $shipStatusMap = [
     self::SHIP_STATUS_PAID      => 'Не оплачен',
     self::SHIP_STATUS_PENDING   => 'В обработке',
@@ -39,6 +94,10 @@ class Order extends Model
     self::SHIP_STATUS_CANCEL    => 'Отменён',
   ];
 
+  /**
+   * Поля в таблицы для работы
+   * @var string[]
+   */
   protected $fillable = [
     'no',
     'address',
@@ -54,6 +113,10 @@ class Order extends Model
     'ship_price'
   ];
 
+  /**
+   * Массив типов данных
+   * @var string[]
+   */
   protected $casts = [
     'closed'    => 'boolean',
     'reviewed'  => 'boolean',
@@ -61,10 +124,18 @@ class Order extends Model
     'ship_data' => 'json',
   ];
 
+  /**
+   * Тип дата для полей
+   * @var string[]
+   */
   protected $dates = [
     'paid_at',
   ];
 
+
+  /**
+   * Перегразка boot. Создание номера заказа
+   */
   protected static function boot()
   {
     parent::boot();
@@ -82,20 +153,42 @@ class Order extends Model
     });
   }
 
-  public function user ()
+  /**
+   * Пользовател заказа
+   *
+   * @return BelongsTo
+   */
+  public function user (): BelongsTo
   {
     return $this->belongsTo(User::class);
   }
 
+  /**
+   * Продукты в заказе
+   *
+   * @return HasMany
+   */
   public function items ()
   {
     return $this->hasMany(OrderItem::class);
   }
+
+  /**
+   * Компания доставки заказа
+   *
+   * @return BelongsTo
+   */
   public function expressCompany ()
   {
     return $this->belongsTo(ExpressCompany::class, 'id_express_company', 'id');
   }
 
+  /**
+   * Генерация номера заказа
+   *
+   * @return false|string
+   * @throws Exception
+   */
   public static function findAvailableNo ()
   {
     // Префикс серийного номера заказа
@@ -112,15 +205,13 @@ class Order extends Model
 
     return false;
   }
-  public static function getAvailableRefundNo ()
-  {
-    do {
-      // Класс Uuid может быть использован для генерации уникальных строк с высокой вероятностью
-      $no = Uuid::uuid4()->getHex();
-      // Чтобы избежать повторения, мы запрашиваем базу данных после генерации, чтобы узнать, существует ли такой же номер заказа на возврат.
-    } while (self::query()->where('refund_no', $no)->exists());
-    return $no;
-  }
+
+  /**
+   * Форматирование стоимости
+   *
+   * @param $num
+   * @return string
+   */
   public function cost ($num) {
     return number_format($num, null, null, ' ');
   }
