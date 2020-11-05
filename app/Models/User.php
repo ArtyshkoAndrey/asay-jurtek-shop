@@ -16,6 +16,8 @@ use Illuminate\Notifications\Notifiable;
  * Класс Модель для Пользователя
  *
  * @package App\Models
+ * @method static find()
+ * @method static where(string $string, $email)
  */
 class User extends Authenticatable
 {
@@ -141,5 +143,9 @@ class User extends Authenticatable
   public function sendPasswordResetNotification ($token)
   {
     $this->notify(new PasswordReset($token));
+  }
+
+  public function orders () {
+    return $this->hasMany(Order::class);
   }
 }
