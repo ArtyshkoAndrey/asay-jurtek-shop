@@ -33,16 +33,18 @@ class Controller extends BaseController
   public function __construct (CartService $cartService) {
     $this->cartService = $cartService;
     $this->middleware(function ($request, $next) {
-        $currency = Helpers::currency();
-        $cartItems = [];
-        $amount = 0;
-        $priceAmount = 0;
-        auth()->user() ? extract($this->cartService->get(), EXTR_REFS) : null;
-        view()->share('currency', $currency);
-        view()->share('cartItems', $cartItems);
-        view()->share('priceAmount', number_format($priceAmount * $currency->ratio, null, null, ' '));
-        view()->share('amount', $amount);
-        return $next($request);
-      });
+      if (auth()->check())
+        Helpers::updateOrders();
+      $currency = Helpers::currency();
+      $cartItems = [];
+      $amount = 0;
+      $priceAmount = 0;
+      auth()->user() ? extract($this->cartService->get(), EXTR_REFS) : null;
+      view()->share('currency', $currency);
+      view()->share('cartItems', $cartItems);
+      view()->share('priceAmount', number_format($priceAmount * $currency->ratio, null, null, ' '));
+      view()->share('amount', $amount);
+      return $next($request);
+    });
   }
 }
