@@ -54,7 +54,7 @@ class RegisterPassword extends Notification
       ->line('Вы успешно зарегестрировались')
       ->line('Ваш логин: ' . $this->email)
       ->line('Ваш пароль: ' . $this->password)
-      ->action('Просмотреть новые товары', route('products.all', ['order' => 'new_desc']))
+      ->action('Просмотреть новые товары', route('product.all'))
       ->success();
   }
 
