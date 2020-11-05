@@ -48,7 +48,7 @@
               <div class="col-md">
                 <label for="company_id">Компания</label>
                 <select name="company_id" class="form-control rounded-0 {{ $errors->has('company_id') ? ' is-invalid' : '' }}" id="company_id">
-                  @foreach(App\Models\ExpressCompany::where('cost_type', 'Настраиваемая')->get() as $company)
+                  @foreach(App\Models\ExpressCompany::get() as $company)
                     <option value="{{$company->id}}" {{old('company_id') == $company->id ? 'selected' : null}}>{{$company->name}}</option>
                   @endforeach
                 </select>

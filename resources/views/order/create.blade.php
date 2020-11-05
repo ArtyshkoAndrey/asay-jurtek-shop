@@ -31,7 +31,7 @@
                   <select name="city" v-model="city" class="form-control w-100" id="city"></select>
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" name="address" id="address" class="form-control rounded-0" placeholder="Точный адрес*">
+                  <input type="text" v-model="address" name="address" id="address" class="form-control rounded-0" placeholder="Точный адрес*">
                 </div>
               </div>
             </div>
@@ -42,16 +42,16 @@
             <div class="col-md-10">
               <div class="row">
                 <div class="col-md-6 mt-2">
-                  <input type="text" name="firstname" id="firstname" class="form-control rounded-0" placeholder="Имя*">
+                  <input type="text" v-model="firstname" name="firstname" id="firstname" class="form-control rounded-0" placeholder="Имя*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" name="lastname" id="lastname" class="form-control rounded-0" placeholder="Фамилия*">
+                  <input type="text" v-model="lastname" name="lastname" id="lastname" class="form-control rounded-0" placeholder="Фамилия*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" name="phone" id="phone" class="form-control rounded-0" placeholder="Телефон*">
+                  <input type="text" v-model="phone" name="phone" id="phone" class="form-control rounded-0" placeholder="Телефон*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="email" name="email" id="email" class="form-control rounded-0" placeholder="E-mail *">
+                  <input type="email" v-model="email" name="email" id="email" class="form-control rounded-0" placeholder="E-mail *">
                 </div>
               </div>
             </div>
@@ -70,7 +70,9 @@
                         <p class="mb-0">@{{ company.description }}</p>
                       </div>
                       <div class="col my-auto">
-                        <p class="m-0 h6 font-weight-bolder text-right">@{{ company.costedTransfer === 0 ? 'Бесплатно' : ($cost(company.costedTransfer * $store.state.currency.ratio) + ' ' + $store.state.currency.symbol) }}</p>
+                        <p class="m-0 h6 font-weight-bolder text-right">
+                          @{{ company.costedTransfer === 0 ? 'Бесплатно' : ($cost(company.costedTransfer * (!auth ? $store.state.currency.ratio : {!! $currency->ratio !!})) + ' ' + (!auth ? $store.state.currency.symbol : '{!! $currency->symbol !!}')) }}
+                        </p>
                       </div>
                     </div>
                   </a>
@@ -83,38 +85,50 @@
             <div class="col-12 mt-3">
               <p class="h4 font-weight-bolder">Оплата</p>
             </div>
-            <div class="col-md-6 mt-3">
-              <a href="javascript:" class="d-block text-decoration-none text-dark border p-3 active transport-link">
-                <div class="row">
-                  <div class="col-md-8">
-                    <p class="h5 font-weight-bolder">Оплата при получении</p>
-                    <p class="mb-0">Оплатите курьеру или в магазине после получения</p>
-                  </div>
+
+            <div class="col-12" v-if="getCompany !== null">
+              <div class="row">
+                <div class="col-md-6 mt-3" v-if="getCompany.enabled_cash">
+                  <a href="javascript:" @click="setMethodPay('cash')" :class="'d-block text-decoration-none text-dark border p-3 transport-link h-100' + (getMethodPay === 'cash' ? ' active' : '' )">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <p class="h5 font-weight-bolder">Оплата при получении</p>
+                        <p class="mb-0">Оплатите курьеру или в магазине после получения</p>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-            <div class="col-md-6 mt-3">
-              <a href="javascript:" class="d-block text-decoration-none text-dark border p-3 transport-link">
-                <div class="row">
-                  <div class="col-md-8">
-                    <p class="h5 font-weight-bolder">Оплата картой</p>
-                    <p class="mb-0">Оплатите онлайн любым удобным способом</p>
-                  </div>
+
+                <div class="col-md-6 h-100 mt-3" v-if="getCompany.enabled_card">
+                  <a href="javascript:" @click="setMethodPay('card')" :class="'d-block text-decoration-none text-dark border p-3 transport-link h-100' + (getMethodPay === 'card' ? ' active' : '' )">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <p class="h5 font-weight-bolder">Оплата картой</p>
+                        <p class="mb-0">Оплатите онлайн любым удобным способом</p>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </a>
+              </div>
             </div>
 
-            <div class="col-12 mt-3">
-              <button class="btn btn-orange">Завершить и оплатить 20 000 тг.</button>
+            <div class="col-12 mt-5">
+              @guest
+                <button @click="createOrder()" class="btn btn-orange">Завершить и оплатить @{{ $cost(getCost * $store.state.currency.ratio) }} @{{ $store.state.currency.symbol }}</button>
+              @else
+                <button @click="createOrder()" class="btn btn-orange">Завершить и оплатить @{{ $cost(getCost * {!! $currency->ratio !!}) }} {{ $currency->symbol }}</button>
+              @endguest
             </div>
           </div>
         </div>
         <div class="col-md-4 mt-5 mt-md-0">
-          <div class="row justify-content-end">
-            <div class="col-auto">
-              <a href="{{ route('login') }}" class="text-decoration-none">Войдите в аккаунт, чтобы оплачивать быстрее</a>
+          @guest
+            <div class="row justify-content-end">
+              <div class="col-auto">
+                <a href="{{ route('login') }}" class="text-decoration-none">Войдите в аккаунт, чтобы оплачивать быстрее</a>
+              </div>
             </div>
-          </div>
+          @endguest
           @auth
             <div class="row mt-2">
               <div class="col-12 border p-3">
@@ -124,11 +138,12 @@
                 </div>
                 <div class="row m-0 justify-content-between">
                   <p>Доставка</p>
-                  <p>20 000 тг.</p>
+                  <p v-if="getCompany !== null">@{{ getCostCompany > 0 ? $cost(getCostCompany * {!! $currency->ratio !!}) : 'Бесплатно' }} @{{ getCostCompany > 0 ? '{!! $currency->symbol !!}' : null }}</p>
+                  <p v-else> - </p>
                 </div>
                 <div class="row m-0 justify-content-between">
                   <p class="font-weight-bolder mb-0">Итог заказа</p>
-                  <p class="font-weight-bolder mb-0">20 000 тг.</p>
+                  <p class="font-weight-bolder mb-0">@{{ $cost(getCost * {!! $currency->ratio !!}) }} {{ $currency->symbol }}</p>
                 </div>
               </div>
             </div>
@@ -141,11 +156,12 @@
                 </div>
                 <div class="row m-0 justify-content-between">
                   <p>Доставка</p>
-                  <p>20 000 тг.</p>
+                  <p v-if="getCompany !== null">@{{ getCostCompany > 0 ? $cost(getCostCompany * $store.state.currency.ratio) : 'Бесплатно' }} @{{ getCostCompany > 0 ? $store.state.currency.symbol : null }}</p>
+                  <p v-else> - </p>
                 </div>
                 <div class="row m-0 justify-content-between">
                   <p class="font-weight-bolder mb-0">Итог заказа</p>
-                  <p class="font-weight-bolder mb-0">20 000 тг.</p>
+                  <p class="font-weight-bolder mb-0">@{{ $cost(getCost * $store.state.currency.ratio) }} @{{ $store.state.currency.symbol }}</p>
                 </div>
               </div>
             </div>

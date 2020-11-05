@@ -156,6 +156,12 @@ a.link-category {
   }
 }
 
+#profile {
+  .nav-link.active {
+    background-color: white !important;
+  }
+}
+
 .bg-gray {
   background-color: $gray;
 }

@@ -192,7 +192,7 @@
                     <form id="logout-form" class="d-none" action="{{ route('logout') }}" method="POST">
                       {{ csrf_field() }}
                     </form>
-                    <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="#">
+                    <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="{{ route('order.orders') }}">
                       <i class="icon icon-list icon-1_5x ml-0 mr-2"></i>
                       Мои заказы
                     </a>

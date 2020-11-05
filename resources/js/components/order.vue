@@ -5,16 +5,17 @@ export default {
     return {
       city: null,
       country: null,
-      firstname: '',
-      lastname: '',
-      address: '',
-      phone: '',
-      email: '',
+      firstname: null,
+      lastname: null,
+      address: null,
+      phone: null,
+      email: null,
       companies: [],
       stepMin: 0.5, // Мин вес для покупки
       cost: 0,
       items: [],
-      company: null
+      company: null,
+      methodPay: null
     }
   },
   props: {
@@ -47,6 +48,8 @@ export default {
   },
   watch: {
     'city': function (after, before) {
+      this.setCompany(null)
+      this.setMethodPay(null)
       axios.post('/api/companies', {city: this.city})
         .then(response => {
           response.data.length > 0 ? this.companies = response.data : this.companies = []
@@ -81,6 +84,8 @@ export default {
     'country': function (after, before) {
       $('#city').text(null).val(null)
       this.city = null
+      this.setCompany(null)
+      this.setMethodPay(null)
     },
   },
   computed: {
@@ -108,11 +113,68 @@ export default {
     },
     getCompany () {
       return this.company
+    },
+    getCostCompany () {
+      return this.company.costedTransfer
+    },
+    getCost() {
+      return this.company !== null ? this.cost + this.company.costedTransfer : this.cost
+    },
+    getMethodPay () {
+      return this.methodPay
     }
   },
   methods: {
     setCompany (company) {
       this.company = company
+      this.setMethodPay(null)
+    },
+    setMethodPay (methodPay) {
+      this.methodPay = methodPay
+    },
+    createOrder () {
+      if (this.getCompany
+        && this.getMethodPay
+        && this.country
+        && this.city
+        && this.firstname
+        && this.lastname
+        && this.address
+        && this.phone
+        && this.email) {
+
+        axios.post('/order', {
+          address: this.address,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          city: this.city,
+          country: this.country,
+          phone: this.phone,
+          email: this.email,
+          company: this.getCompany.id,
+          method_pay: this.methodPay,
+          cost_transfer: this.getCostCompany,
+          cost: this.cost,
+          items_id: this.items.map(item => {return item.id})
+        })
+          .then(response => {
+            window.location = response.data.link
+          })
+          .catch(e => {
+            swal({
+              icon: 'error',
+              title: 'Упс...',
+              text: 'Ошибка',
+            })
+          })
+      } else {
+        swal({
+          icon: 'error',
+          title: 'Упс...',
+          text: 'Заполните все поля',
+        })
+      }
+
     }
   }
 }

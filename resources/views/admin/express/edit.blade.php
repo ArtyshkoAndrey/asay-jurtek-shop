@@ -35,6 +35,11 @@
                 <input type="text" name="name" id="name" class="w-100 px-2 form-control rounded-0 {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ $express->name }}" required>
                 <span id="name-error" class="error invalid-feedback">{{ $errors->first('name') }}</span>
               </div>
+              <div class="col-md-3">
+                <label for="description">Описание</label>
+                <input type="text" name="description" id="description" class="w-100 px-2 form-control rounded-0 {{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ $express->description }}" required>
+                <span id="description-error" class="error invalid-feedback">{{ $errors->first('description') }}</span>
+              </div>
               <div class="col-md-2">
                 <label for="min_cost">Минимальная стоимость</label>
                 <input type="number" min="0" name="min_cost" id="min_cost" class="w-100 px-2 form-control rounded-0 {{ $errors->has('min_cost') ? ' is-invalid' : '' }}" value="{{ $express->min_cost }}" required>
@@ -54,7 +59,13 @@
                   <label class="custom-control-label" for="customSwitch">Наличные</label>
                 </div>
               </div>
-              <div class="col-md-3 align-items-end d-flex">
+              <div class="col-auto d-flex">
+                <div class="custom-control align-items-center mb-2 custom-switch">
+                  <input type="checkbox" name="enabled_card" {{ $express->enabled_card ? 'checked' : '' }} class="custom-control-input" id="customSwitch1">
+                  <label class="custom-control-label" for="customSwitch1">Карта</label>
+                </div>
+              </div>
+              <div class="col-md-12 justify-content-end align-items-end d-flex mt-2">
                 <a href="{{ route('admin.store.express-zone.create') }}" class="btn bg-dark rounded-0">Создать зону</a>
               </div>
             </div>
