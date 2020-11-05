@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Класс Модель для стран
  *
  * @method static whereLike(string $string, string $country)
+ * @method static find($country)
  */
 class Country extends Model
 {

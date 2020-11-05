@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @method static whereLike(string $string, string $city)
  * @method static whereHas(string $string, \Closure $param)
+ * @method static find($city)
  */
 class City extends Model
 {
