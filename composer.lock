@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0811e8fad65a13190ba77f7a309737b4",
+    "content-hash": "8c6f8b220342fe8c51aaa3d77bc81604",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1827,6 +1827,87 @@
                 "random"
             ],
             "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "payboxmoney/core",
+            "version": "1.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PayBox/PayboxCore.git",
+                "reference": "692af18525064c11706545b3e23e23dd0a17ea91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PayBox/PayboxCore/zipball/692af18525064c11706545b3e23e23dd0a17ea91",
+                "reference": "692af18525064c11706545b3e23e23dd0a17ea91",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Paybox\\Core\\": "src/",
+                    "Paybox\\Core\\Abstractions\\": "src/abstractions/",
+                    "Paybox\\Core\\Exceptions\\": "src/exceptions/",
+                    "Paybox\\Core\\Interfaces\\": "src/interfaces/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Astapenko",
+                    "email": "sa@paybox.money"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/PayBox/PayboxCore/tree/version-1.2.x"
+            },
+            "time": "2019-02-21T09:03:29+00:00"
+        },
+        {
+            "name": "payboxmoney/pay",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PayBox/PayboxPay.git",
+                "reference": "30ad4575ccbf0b01d7b07a718e5c6787b884b002"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PayBox/PayboxPay/zipball/30ad4575ccbf0b01d7b07a718e5c6787b884b002",
+                "reference": "30ad4575ccbf0b01d7b07a718e5c6787b884b002",
+                "shasum": ""
+            },
+            "require": {
+                "payboxmoney/core": "^1.2.0",
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Paybox\\Pay\\": "src/",
+                    "Paybox\\Pay\\Models\\": "src/models/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Astapenko",
+                    "email": "sa@paybox.money"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/PayBox/PayboxPay/tree/version-1.2.x"
+            },
+            "time": "2018-12-21T08:56:19+00:00"
         },
         {
             "name": "phpoption/phpoption",
