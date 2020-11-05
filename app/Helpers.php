@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Order;
 use Carbon\Carbon;
 use App\Models\Currency;
 use Illuminate\Container\Container;
@@ -12,6 +13,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use Paybox\Pay\Facade as Paybox;
 use function PHPUnit\Framework\throwException;
 
 class Helpers
@@ -127,5 +129,34 @@ class Helpers
     return Container::getInstance()->makeWith(LengthAwarePaginator::class, compact(
       'items', 'total', 'perPage', 'currentPage', 'options'
     ));
+  }
+
+  public static function updateOrders () {
+    $user = auth()->user();
+    $paybox = new Paybox();
+    $paybox->getMerchant()
+      ->setId(534792)
+      ->setSecretKey('WRwktO9QjJeMw32h');
+    $orders = $user->orders()->where('ship_status', Order::SHIP_STATUS_PAID)->get();
+    ob_start ();
+    foreach ($orders as $order) {
+      $paybox->order->id = $order->id;
+      $paymentStatus = $paybox->getStatus(); //partial/pending/ok/failed/revoked/incomplete
+      if (!!$paymentStatus) {
+        switch ($paymentStatus) {
+          case 'ok':
+            $order->ship_status = Order::SHIP_STATUS_PENDING;
+            $order->save();
+            break;
+          case 'failed':
+            $order->close();
+            break;
+        }
+      } else {
+        $order->close();
+      }
+    }
+    ob_get_clean ();
+
   }
 }
