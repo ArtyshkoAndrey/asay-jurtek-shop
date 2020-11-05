@@ -13,7 +13,10 @@ if ((new App\Models\Setting)->statusSite()) {
     Route::post('/{id}', [\App\Http\Controllers\ProductController::class, 'addCart'])->name('addCart');
     Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'removeCart'])->name('removeCart');
   });
-  Route::resource('/order', \App\Http\Controllers\OrderController::class);
+  Route::resource('/order', \App\Http\Controllers\OrderController::class)->except([
+    'update', 'edit', 'show', 'destroy'
+  ]);
+  Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders'])->name('order.orders');
 }
 
 Auth::routes();
