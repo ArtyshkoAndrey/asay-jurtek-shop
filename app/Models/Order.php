@@ -212,7 +212,16 @@ class Order extends Model
    * @param $num
    * @return string
    */
-  public function cost ($num) {
+  public function cost ($num): string
+  {
     return number_format($num, null, null, ' ');
+  }
+
+  public function close (): bool
+  {
+    $this->ship_status = Order::SHIP_STATUS_CANCEL;
+    $this->save();
+    $products = Product::withTrashed()->whereIn('id', $this->items()->pluck('product_id'))->restore();
+    return true;
   }
 }
