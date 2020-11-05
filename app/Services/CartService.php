@@ -23,9 +23,13 @@ class CartService {
     $priceAmount = 0;
     $items = [];
     foreach ($cartItems as $cartItem) {
-      $product = $cartItem->product;
-      array_push($items, $product);
-      $priceAmount += $product->on_sale ? $product->price_sale : $product->price;
+      if ($cartItem->product) {
+        $product = $cartItem->product;
+        array_push($items, $product);
+        $priceAmount += $product->on_sale ? $product->price_sale : $product->price;
+      } else {
+        $cartItem->delete();
+      }
     }
     $amount = count($cartItems);
     return ['amount'=> $amount, 'priceAmount' => $priceAmount, 'cartItems' => $items];
