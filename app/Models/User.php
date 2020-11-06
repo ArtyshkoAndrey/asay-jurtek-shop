@@ -84,7 +84,7 @@ class User extends Authenticatable
    */
   public function getPhoto (): string
   {
-    return $this->avatar ? asset('public/avatar/avatar/thumbnail/' . $this->avatar) : asset('images/person.png');
+    return $this->avatar ? asset('storage/avatar/' . $this->avatar) : asset('images/person.png');
   }
 
 

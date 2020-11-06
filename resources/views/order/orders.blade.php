@@ -14,7 +14,7 @@
         <div class="row mx-0">
           <div class="col-md-3 bg-gray m-0 p-0">
             <div class="nav flex-column nav-pills h-100 m-0" role="tablist" aria-orientation="vertical">
-              <a class="nav-link border-0 rounded-0 py-4" href="#" aria-selected="true"><i class="fal fa-user pr-1"></i> Мой профиль</a>
+              <a class="nav-link border-0 rounded-0 py-4" href="{{ route('profile.index') }}" aria-selected="true"><i class="fal fa-user pr-1"></i> Мой профиль</a>
               <a class="nav-link active border-0 rounded-0 py-4" href="{{ route('order.orders') }}" aria-selected="true"><i class="fal fa-tasks pr-1"></i> Мои заказы</a>
             </div>
           </div>

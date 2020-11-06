@@ -160,6 +160,24 @@ a.link-category {
   .nav-link.active {
     background-color: white !important;
   }
+
+  #add-photo {
+    padding: 0.9em 1rem !important;
+    bottom: 2em;
+    right: 1em;
+  }
+  @media (min-width: 768px) {
+    #add-photo {
+      bottom: 2em;
+      right: -1em;
+    }
+  }
+  @media (min-width: 991px) {
+    #add-photo {
+      bottom: 2em;
+      right: -1em;
+    }
+  }
 }
 
 .bg-gray {

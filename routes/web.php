@@ -16,7 +16,18 @@ if ((new App\Models\Setting)->statusSite()) {
   Route::resource('/order', \App\Http\Controllers\OrderController::class)->except([
     'update', 'edit', 'show', 'destroy'
   ]);
-  Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders'])->name('order.orders');
+
+  Route::middleware(['auth'])->group(function () {
+    Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders'])->name('order.orders');
+    Route::prefix('profile')->name('profile.')->group(function () {
+      Route::get('/', [\App\Http\Controllers\ProfileController::class, 'index'])->name('index');
+      Route::put('/', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update');
+      Route::put('/photo', [\App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update.photo');
+      Route::put('/password', [\App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('update.password');
+    });
+  });
+
+
 }
 
 Auth::routes();
