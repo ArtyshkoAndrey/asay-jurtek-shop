@@ -24,16 +24,16 @@
         </div>
       @endforeach
     @endif
-      @if (session()->has('success'))
-        @foreach (session('success') as $message)
-          <div class="alert alert-success alert-dismissible fade show position-absolute" id="error-alert" role="alert">
-            <strong>Успешно!</strong> {{ $message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        @endforeach
-      @endif
+    @if (session()->has('success'))
+      @foreach (session('success') as $message)
+        <div class="alert alert-success alert-dismissible fade show position-absolute" id="error-alert" role="alert">
+          <strong>Успешно!</strong> {{ $message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endforeach
+    @endif
     <div class="container-fluid bg-white" id="navbar">
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">

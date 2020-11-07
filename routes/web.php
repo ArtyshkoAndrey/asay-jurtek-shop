@@ -36,7 +36,9 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
   Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('root');
   Route::put('status', [\App\Http\Controllers\Admin\DashboardController::class, 'status'])->name('root.status');
-
+  Route::resource('/users', App\Http\Controllers\Admin\UserController::class)->except([
+    'create', 'store', 'show'
+  ]);
   Route::name('store.')->group(function () {
 
     Route::resource('order', App\Http\Controllers\Admin\OrderController::class)->except([
@@ -59,6 +61,8 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
       'create', 'store', 'show', 'destroy'
     ]);
 
+    Route::resource('/report', App\Http\Controllers\Admin\ReportController::class);
+
   });
 
   Route::name('production.')->group(function () {
@@ -78,6 +82,17 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
     Route::resource('/attr', App\Http\Controllers\Admin\SkusController::class);
 
     Route::resource('/skus-category', App\Http\Controllers\Admin\SkusCategoriesController::class);
+
+    Route::resource('/skus', App\Http\Controllers\Admin\SkusController::class);
+
+    Route::resource('/category', App\Http\Controllers\Admin\CategoryController::class);
+
+  });
+
+  Route::name('setting.')->prefix('setting')->group(function () {
+
+    Route::get('/menu', [App\Http\Controllers\Admin\SettingController::class, 'menuIndex'])->name('menu.index');
+    Route::put('/menu/{id}', [App\Http\Controllers\Admin\SettingController::class, 'menuUpdate'])->name('menu.update');
 
   });
 });

@@ -26,7 +26,7 @@ class Setting extends Model
    * @var string[]
    */
   protected $casts = [
-    'meta' => 'string',
+    'meta' => "object",
     'key' => 'string'
   ];
 

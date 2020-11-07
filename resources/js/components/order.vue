@@ -158,7 +158,7 @@ export default {
           items_id: this.items.map(item => {return item.id})
         })
           .then(response => {
-            window.location = response.data.link
+            // cwindow.location = response.data.link
           })
           .catch(e => {
             swal({

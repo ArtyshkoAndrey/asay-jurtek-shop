@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "admin-lte": "^3.0.5",
+    "flot": "^4.2.1",
     "icheck": "^1.0.2",
     "js-cookie": "^2.2.1",
     "select2": "~4.0",

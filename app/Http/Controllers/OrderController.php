@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Paybox\Pay\Facade as Paybox;
+use App\Models\Pay;
 
 /**
  * Class OrderController.
@@ -118,17 +119,18 @@ class OrderController extends Controller
     );
 //    TODO: Данные с бд, в заказе не сохраняется номер телефона
     $paybox = new Paybox();
-    $paybox->merchant->id = 534792;
-    $paybox->merchant->secretKey = 'WRwktO9QjJeMw32h';
+    $pay = Pay::first();
+    $paybox->merchant->id = $pay->pg_merchant_id;
+    $paybox->merchant->secretKey = $pay->code;
     $paybox->order->id = $order->id;
-    $paybox->order->description = 'Покупка товара в магазине "Asay Jurek"';
+    $paybox->order->description = $pay->description;
     $paybox->order->amount = $request->cost + $request->cost_transfer;
-    $paybox->config->isTestingMode = false;
+    $paybox->config->isTestingMode = (bool) $pay->pg_testing_mode;
     $paybox->customer->userEmail = $user->email;
     $paybox->customer->id = $user->id;
     $paybox->config->successUrlMethod = 'GET';
     $paybox->config->successUrl = route('index');
-
+    dd($paybox->redirectUrl);
     if ($paybox->init())
       return response()->json(['link' => $paybox->redirectUrl], 200);
     else

@@ -103,11 +103,12 @@
               <td style="vertical-align: middle;">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</td>
               <td style="vertical-align: middle;"><span class="font-weight-bold h5">{{ $order->cost($order->total_amount + $order->ship_price) }} тг.</span></td>
               <td style="vertical-align: middle;">
-                <form action="{{ route('admin.store.order.destroy', $order->id) }}" method="post">
+                <form action="{{ route('admin.store.order.destroy', $order->id) }}" method="post" >
                   @csrf
                   @method('delete')
                   <button class="bg-transparent border-0 rounded-0" style="color: #F33C3C" type="submit"><i style="font-size: 1.5rem" class="fal fa-trash"></i></button>
-                </form></td>
+                </form>
+              </td>
             </tr>
             @empty
               <tr>
@@ -123,6 +124,7 @@
 @endsection
 
 @section('js')
+
   <script>
     let filters = {!! json_encode($filters) !!};
     $(document).ready(() => {

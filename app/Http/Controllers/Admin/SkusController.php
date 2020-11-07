@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Skus;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use App\Models\SkusCategory;
 
 class SkusController extends Controller
 {
@@ -77,7 +78,10 @@ class SkusController extends Controller
     ]);
 
     $sku = new Skus();
-    $sku->create($request->all());
+    $sku->skus_category()->associate($request->skus_category_id);
+    $sku->title = $request->title;
+    $sku->weight = $request->weight;
+    $sku->save();
 
 //    return redirect()->route('admin.production.attr.index');
     return redirect()->route('admin.production.skus-category.edit', $request->skus_category_id);
@@ -103,7 +107,8 @@ class SkusController extends Controller
     public function edit($id)
     {
       $sku = Skus::find($id);
-      return view('admin.skus.edit', compact('sku'));
+      $skus_categories = SkusCategory::all();
+      return view('admin.skus.edit', compact('sku', 'skus_categories'));
     }
 
     /**
@@ -122,12 +127,13 @@ class SkusController extends Controller
       ]);
 
       $sku = Skus::find($id);
+      $sku->skus_category()->associate($request->skus_category_id);
       $sku->update($request->all());
 //      dd($request->all());
       $sku->save();
 
 //      return redirect()->route('admin.production.attr.index');
-      return redirect()->route('admin.production.skus-category.edit', $sku->category->id);
+      return redirect()->route('admin.production.skus-category.edit', $sku->skus_category->id);
     }
 
   /**

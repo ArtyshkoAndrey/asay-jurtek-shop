@@ -11,7 +11,8 @@ try {
   require('bootstrap');
   require('select2');
   require('icheck');
-  // require('flot');
+  require('flot');
+
   window.axios = require('axios');
   window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   let token = document.head.querySelector('meta[name="csrf-token"]');

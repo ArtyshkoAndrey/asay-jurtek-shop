@@ -41,14 +41,14 @@
           </a>
         </li>
 
-{{--        <li class="nav-item">--}}
-{{--          <a href="{{ route('admin.store.order.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.user.*') ? 'active' : '' }}">--}}
-{{--            <i class="fas fa-user mr-3"></i>--}}
-{{--            <p>--}}
-{{--              Пользователи--}}
-{{--            </p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
+       <li class="nav-item">
+         <a href="{{ route('admin.users.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.users.*') ? 'active' : '' }}">
+           <i class="fas fa-user mr-3"></i>
+           <p>
+             Пользователи
+           </p>
+         </a>
+       </li>
 
 
 {{--        <li class="nav-item">--}}
@@ -60,41 +60,34 @@
 {{--          </a>--}}
 {{--        </li>--}}
 
-{{--        <li class="nav-item has-treeview {{ Route::currentRouteNamed('admin.header-mobile.*') || Route::currentRouteNamed('admin.header.*') ? 'menu-open' : '' }}">--}}
-{{--          <a href="#" class="nav-link">--}}
-{{--            <i class="fas fa-cog mr-3"></i>--}}
-{{--            <p>Настройки</p>--}}
-{{--            <i class="fas fa-angle-left right"></i>--}}
-{{--          </a>--}}
-{{--          <ul class="nav nav-treeview">--}}
-{{--            <li class="nav-item">--}}
-{{--              <a href="{{ route('admin.header.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.header.*') ? 'active' : '' }}">--}}
-{{--                <i class="fas fa-cog mr-3"></i>--}}
-{{--                <p>--}}
-{{--                  Настройки шапки--}}
-{{--                </p>--}}
-{{--              </a>--}}
-{{--            </li>--}}
+       <li class="nav-item has-treeview {{ Route::currentRouteNamed('admin.setting.*') ? 'menu-open' : '' }}">
+         <a href="#" class="nav-link">
+           <i class="fas fa-cog mr-3"></i>
+           <p>Настройки</p>
+           <i class="fas fa-angle-left right"></i>
+         </a>
+         <ul class="nav nav-treeview">
+           <li class="nav-item">
+             <a href="{{ route('admin.setting.menu.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.setting.menu.*') ? 'active' : '' }}">
+               <i class="fas fa-cog mr-3"></i>
+               <p>
+                 Настройки шапки
+               </p>
+             </a>
+           </li>
 
-{{--            <li class="nav-item">--}}
-{{--              <a href="{{ route('admin.header-mobile.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.header-mobile.*') ? 'active' : '' }}">--}}
-{{--                <i class="fas fa-cog mr-3"></i>--}}
-{{--                <p>--}}
-{{--                  Настройки (mobile)--}}
-{{--                </p>--}}
-{{--              </a>--}}
-{{--            </li>--}}
-{{--          </ul>--}}
-{{--        </li>--}}
 
-{{--        <li class="nav-item">--}}
-{{--          <a href="{{ route('telescope') }}" class="nav-link rounded-0">--}}
-{{--            <i class="fal fa-debug mr-3"></i>--}}
-{{--            <p>--}}
-{{--              Telescope--}}
-{{--            </p>--}}
-{{--          </a>--}}
-{{--        </li>--}}
+         </ul>
+       </li>
+
+       <li class="nav-item">
+         <a href="{{ route('telescope') }}" class="nav-link rounded-0">
+           <i class="fal fa-debug mr-3"></i>
+           <p>
+             Telescope
+           </p>
+         </a>
+       </li>
 
       </ul>
     </nav>

@@ -107,15 +107,6 @@ class Product extends Model
   }
 
   /**
-   * Бренды товара
-   * @return BelongsToMany
-   */
-  public function brands(): BelongsToMany
-  {
-    return $this->belongsToMany(Brand::class, 'products_brands', 'product_id', 'brand_id');
-  }
-
-  /**
    * Фотографии товара
    * @return HasMany
    */

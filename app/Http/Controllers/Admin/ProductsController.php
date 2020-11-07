@@ -102,7 +102,6 @@ class ProductsController extends Controller {
     $product->skus()->associate($request->skus);
     $product->save();
     $product->categories()->sync($request->category);
-    $product->brands()->sync($request->brands);
 
 
     foreach ($request->photo as $key => $photo) {
@@ -157,7 +156,6 @@ class ProductsController extends Controller {
     $product->on_new      = isset($request->on_new) ? 1 : 0;
     $product->on_sale     = isset($request->on_sale) ? 1 : 0;
     $product->meta        = $request->meta;
-    $product->brands()->sync($request->brands);
     $product->categories()->sync($request->category);
     $product->skus()->associate($request->skus);
     $product->save();

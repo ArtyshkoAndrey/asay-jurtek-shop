@@ -118,7 +118,7 @@
                           @endif
                         </div>
                         <div class="col-md-6 col-12 mb-4">
-                          <select id="country" name="country rounded-0" class="w-100 h-100 form-control">
+                          <select id="country" name="country" class="rounded-0 w-100 h-100 form-control">
                             @if(isset($user->country))
                               <option value="{{ $user->country->id }}" selected>{{ $user->country->name }}</option>
                             @endif

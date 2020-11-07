@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Paybox\Pay\Facade as Paybox;
 use function PHPUnit\Framework\throwException;
+use App\Models\Pay;
 
 class Helpers
 {
@@ -132,11 +133,12 @@ class Helpers
   }
 
   public static function updateOrders () {
+    $pay = Pay::first();
     $user = auth()->user();
     $paybox = new Paybox();
     $paybox->getMerchant()
-      ->setId(534792)
-      ->setSecretKey('WRwktO9QjJeMw32h');
+      ->setId($pay->pg_merchant_id)
+      ->setSecretKey($pay->code);
     $orders = $user->orders()->where('ship_status', Order::SHIP_STATUS_PAID)->get();
     ob_start ();
     foreach ($orders as $order) {
@@ -158,5 +160,10 @@ class Helpers
     }
     ob_get_clean ();
 
+  }
+
+  public static function cost(int $num): string
+  {
+    return number_format($num, null, null, ' ');
   }
 }

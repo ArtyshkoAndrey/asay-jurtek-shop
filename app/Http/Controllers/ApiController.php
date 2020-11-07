@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
@@ -92,18 +91,6 @@ class ApiController extends Controller
   {
     $categories = Category::whereLike('name', $category)->get();
     return response()->json(['items' => $categories]);
-  }
-
-  /**
-   * get brands by filters name
-   *
-   * @param string $brand
-   * @return JsonResponse
-   */
-  public function brand (string $brand): JsonResponse
-  {
-    $brands = Brand::whereLike('name', $brand)->get();
-    return response()->json(['items' => $brands]);
   }
 
   /**

@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
       $table->string('first_name');
       $table->string('second_name');
       $table->string('patronymic')->nullable();
-      $table->string('street');
+      $table->string('street')->nullable();
       $table->text('avatar')->nullable();
-      $table->string('contact_phone');
+      $table->string('contact_phone')->nullable();
       $table->unsignedBigInteger('city_id')->nullable();
       $table->unsignedBigInteger('country_id')->nullable();
       $table->unsignedBigInteger('currency_id')->nullable();

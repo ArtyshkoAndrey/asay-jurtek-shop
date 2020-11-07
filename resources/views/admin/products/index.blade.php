@@ -28,7 +28,7 @@
                 Удаленные ({{App\Models\Product::onlyTrashed()->count()}})
               </a>
             </div>
-            <div class="col-auto ml-auto">{{ $products->appends($filters)->links() }}</div>
+            <div class="col-auto ml-auto">{{ $products->appends($filters)->links('vendor.pagination.bootstrap-4') }}</div>
           </div>
           <div class="row align-items-center">
             <div class="col-md-auto col-12 mt-2 mt-md-0">

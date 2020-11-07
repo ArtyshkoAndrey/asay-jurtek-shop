@@ -23,5 +23,4 @@ Route::post('/products/check', [App\Http\Controllers\ApiController::class, 'prod
 Route::post('city/{city}/{country?}', [App\Http\Controllers\ApiController::class, 'city'])->name('api.city');
 Route::post('country/{country}', [App\Http\Controllers\ApiController::class, 'country'])->name('api.country');
 Route::post('category/{category}', [App\Http\Controllers\ApiController::class, 'category'])->name('api.category');
-Route::post('brand/{brand}', [App\Http\Controllers\ApiController::class, 'brand'])->name('api.brand');
 Route::post('companies', [App\Http\Controllers\ApiController::class, 'companies'])->name('api.companies');

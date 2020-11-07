@@ -35,11 +35,6 @@ class ApiControllerTest extends TestCase
 
   }
 
-  public function testBrand()
-  {
-
-  }
-
   public function testCity()
   {
 

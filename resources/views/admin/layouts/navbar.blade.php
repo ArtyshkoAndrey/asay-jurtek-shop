@@ -9,13 +9,13 @@
   </ul>
   <ul class="navbar-nav w-100">
     <li class="nav-item row ml-auto mr-auto">
-      <img src="{{ asset('public/images/logo.png') }}" height="40" alt="">
+      <img src="{{ asset('public/images/new-logo.png') }}" height="40" alt="">
     </li>
     <li class="nav-item dropdown row">
       <section class="col">
         <a class="row nav-link p-0 h-auto" id="name" style="cursor: pointer" role="button">{{ auth()->user()->getIOName() }}</a>
         <div class="row">
-          <a href="{{ route('admin.store.order.index') }}" style="font-size: 12px; color: #F33C3C; line-height: 12px; z-index: 1000">
+          <a href="{{ route('admin.users.edit', auth()->user()->id) }}" style="font-size: 12px; color: #F33C3C; line-height: 12px; z-index: 1000">
             настройки пользователя
           </a>
         </div>

@@ -56,9 +56,9 @@
                     <div class="input-group-prepend bg-white rounded-0">
                       <span class="input-group-text rounded-0  bg-white" id="nav-icon-search"><i class="icon-user"></i></span>
                     </div>
-                    <label for="last_name" class="font-weight-bolder d-none">last_name</label>
-                    <input type="text" class="form-control rounded-0 @error('last_name') is-invalid @enderror" id="last_name" name="last_name" placeholder="Фамия" value="{{ old('last_name') }}" required>
-                    @error('last_name')
+                    <label for="second_name" class="font-weight-bolder d-none">last_name</label>
+                    <input type="text" class="form-control rounded-0 @error('second_name') is-invalid @enderror" id="second_name" name="second_name" placeholder="Фамия" value="{{ old('second_name') }}" required>
+                    @error('second_name')
                     <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
