@@ -25,7 +25,7 @@ class HomeController extends Controller
   public function index(): View
   {
     $headerTemp = Setting::where('key', 'header')->first();
-    $header = json_decode($headerTemp->meta);
+    $header = $headerTemp->meta;
     $items = Product::where('on_new', true)
       ->orderBy('created_at', 'desc')
       ->take(4)

@@ -103,4 +103,20 @@ label {
   color: white;
 }
 
+.btn-transparent {
+  border: 1px solid #FFF;
+  padding: 10px 24px;
+
+}
+
+.btn-transparent.btn-text-white, .btn-transparent.btn-text-white:hover {
+  border: 1px solid #FFF;
+  color: #FFFFFF !important;
+}
+
+.btn-transparent.btn-text-black, .btn-transparent.btn-text-black:hover {
+  border: 1px solid #000;
+  color: #000 !important;
+}
+
 

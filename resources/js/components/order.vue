@@ -5,11 +5,11 @@ export default {
     return {
       city: null,
       country: null,
-      firstname: null,
-      lastname: null,
-      address: null,
-      phone: null,
-      email: null,
+      firstname: $('input[id=firstname]').val(),
+      lastname: $('input[id=lastname]').val(),
+      address: $('input[id=address]').val(),
+      phone: $('input[id=phone]').val(),
+      email: $('input[id=email]').val(),
       companies: [],
       stepMin: 0.5, // Мин вес для покупки
       cost: 0,
@@ -27,8 +27,12 @@ export default {
       required: true
     }
   },
+  beforeMount() {
+    this.country = $('select[id=country]').val()
+  },
   mounted () {
     let self = this
+
     $('#city').select2().on('change', function (e) {
       self.city = this.value
     })
@@ -50,42 +54,47 @@ export default {
     'city': function (after, before) {
       this.setCompany(null)
       this.setMethodPay(null)
-      axios.post('/api/companies', {city: this.city})
-        .then(response => {
-          response.data.length > 0 ? this.companies = response.data : this.companies = []
-          this.companies.forEach(com => {
-            if (typeof com.costedTransfer === "number" || typeof com.costedTransfer === "string") {
-              if ((this.getWeight - this.stepMin) > 0) {
-                console.log('Вес ' + this.getWeight)
-                let p = this.getWeight - this.stepMin
-                let i = 0
-                console.log('Перевес на ' + p, 'Шаг перевеса ' + com.step_unlim)
-                while(p > 0) {
-                  p = p - com.step_unlim
-                  i++
+      if (after !== null)
+        axios.post('/api/companies', {city: this.city})
+          .then(response => {
+            response.data.length > 0 ? this.companies = response.data : this.companies = []
+            this.companies.forEach(com => {
+              if (typeof com.costedTransfer === "number" || typeof com.costedTransfer === "string") {
+                if ((this.getWeight - this.stepMin) > 0) {
+                  console.log('Вес ' + this.getWeight)
+                  let p = this.getWeight - this.stepMin
+                  let i = 0
+                  console.log('Перевес на ' + p, 'Шаг перевеса ' + com.step_unlim)
+                  while(p > 0) {
+                    p = p - com.step_unlim
+                    i++
+                  }
+                  console.log('Кол-во шагов перевеса ' + i);
+                  com.costedTransfer = Number(com.costedTransfer) + Number(com.step_cost_unlim) * i
+                  console.log('-----')
                 }
-                console.log('Кол-во шагов перевеса ' + i);
-                com.costedTransfer = Number(com.costedTransfer) + Number(com.step_cost_unlim) * i
-                console.log('-----')
+              } else if (typeof com.costedTransfer === "object" && com.costedTransfer !== null) {
+                let costs = com.costedTransfer.slice()
+                com.costedTransfer = null
+                costs.some(cost => {
+                  if (this.getWeight >= cost.weight_to && this.getWeight < cost.weight_from) {
+                    com.costedTransfer = Number(cost.cost)
+                    return false;
+                  }
+                })
               }
-            } else if (typeof com.costedTransfer === "object" && com.costedTransfer !== null) {
-              let costs = com.costedTransfer.slice()
-              com.costedTransfer = null
-              costs.some(cost => {
-                if (this.getWeight >= cost.weight_to && this.getWeight < cost.weight_from) {
-                  com.costedTransfer = Number(cost.cost)
-                  return false;
-                }
-              })
-            }
+            })
           })
-        })
     },
     'country': function (after, before) {
-      $('#city').text(null).val(null)
-      this.city = null
-      this.setCompany(null)
-      this.setMethodPay(null)
+      if (this.city == null) {
+        this.city = $('select[id=city]').val()
+      } else {
+        $('#city').text(null).val(null)
+        this.city = null
+        this.setCompany(null)
+        this.setMethodPay(null)
+      }
     },
   },
   computed: {
@@ -158,13 +167,13 @@ export default {
           items_id: this.items.map(item => {return item.id})
         })
           .then(response => {
-            // cwindow.location = response.data.link
+            window.location = response.data.link
           })
           .catch(e => {
             swal({
               icon: 'error',
               title: 'Упс...',
-              text: 'Ошибка',
+              text: e.response.data.error,
             })
           })
       } else {

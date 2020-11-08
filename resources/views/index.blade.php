@@ -6,7 +6,9 @@
     #first-big-header {
       position: relative;
       @if($header->gradient)
-        background: linear-gradient({{ $header->gradient_position === 'right-to-left' ? '270deg' : '90deg' }}, {{ $header->color_gradient }} 50%, rgba(209, 188, 138, 0) 100%);
+        background: linear-gradient({{ $header->gradient_position === 'right-to-left' ? '270deg' : '90deg' }}, {{ $header->color_gradient }} {{ (100 - $header->width) . '%' }}, rgba(209, 188, 138, 0) 100%);
+      @else
+          background: linear-gradient(rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 100%);
       @endif
       min-height: 500px;
     }
@@ -74,11 +76,11 @@
   <div class="container-fluid">
     <div class="row m-0">
       <div class="col-12 d-flex align-items-center" id="first-big-header">
-        <div class="row w-100 m-0">
+        <div class="row w-100 m-0 {{$header->text_center ? 'justify-content-center' : ($header->position === 'left' ? 'justify-content-end' : 'justify-content-start')}}">
           <div class="col-lg-6 text-center text-white">
-            <h1 class="font-weight-bolder">Asay Jurek</h1>
-            <p>Селективный секонд хенд</p>
-            <a href="{{ route('product.all') }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+            <h1 class="font-weight-bolder">{{ $header->text }}</h1>
+            <p>{{ $header->description }}</p>
+            <a href="{{ $header->link_btn }}" class="btn btn-transparent btn-text-white rounded-0">{{ $header->text_btn }}</a>
           </div>
         </div>
       </div>
@@ -86,7 +88,7 @@
       <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
         <div class="promotion h-100 h-100 d-flex" id="secondPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-white h3">Asay Jurek Clothes and accessories</h4>
+          <h4 class="font-weight-bolder text-center text-white h3">Asay Jurek Clothes and accessories</h4>
           <a href="{{ route('product.all', ['p' => 56]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>
@@ -95,7 +97,7 @@
       <div class="col-lg-6 col-12 p-0 mt-4 pl-lg-3">
         <div class="promotion h-100 h-100 d-flex" id="therdPromotion">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-white h3">Asay Jurek Vintage home</h4>
+          <h4 class="font-weight-bolder text-center text-white h3">Asay Jurek Vintage home</h4>
           <a href="{{ route('product.all', ['p' => 57]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
         </div>
         </div>

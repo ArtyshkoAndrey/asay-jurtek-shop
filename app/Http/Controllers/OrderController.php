@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Notifications\RegisterPassword;
 use App\Services\CartService;
@@ -13,9 +14,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Paybox\Pay\Facade as Paybox;
 use App\Models\Pay;
+use Swift_TransportException;
 
 /**
  * Class OrderController.
@@ -98,14 +101,23 @@ class OrderController extends Controller
     $user->first_name = $request->firstname;
     $user->second_name = $request->lastname;
     $user->street = $request->address;
+    $user->country()->associate($request->country);
+    $user->city()->associate($request->city);
+    $user->currency()->associate(1);
     if (!$user->created_at) {
       $user->password = Hash::make($password);
       $user->save();
-      $user->notify(new RegisterPassword($user->email, $password));
+      try {
+        $user->notify(new RegisterPassword($user->email, $password));
+      } catch (Swift_TransportException $e) {
+
+      }
     } else
       $user->save();
 
     $items = Product::findMany($request->items_id);
+    if (count($items) !== count($request->items_id))
+      return response()->json(['error' => 'Некоторые товар возможно недоступны'], 401);
 
     $order = $this->orderService->store($user,
       $request->address,
@@ -115,26 +127,37 @@ class OrderController extends Controller
       $request->method_pay,
       $request->company,
       $request->cost_transfer,
-      $request->cost
+      $request->cost,
+      $request->phone
     );
-//    TODO: Данные с бд, в заказе не сохраняется номер телефона
-    $paybox = new Paybox();
-    $pay = Pay::first();
-    $paybox->merchant->id = $pay->pg_merchant_id;
-    $paybox->merchant->secretKey = $pay->code;
-    $paybox->order->id = $order->id;
-    $paybox->order->description = $pay->description;
-    $paybox->order->amount = $request->cost + $request->cost_transfer;
-    $paybox->config->isTestingMode = (bool) $pay->pg_testing_mode;
-    $paybox->customer->userEmail = $user->email;
-    $paybox->customer->id = $user->id;
-    $paybox->config->successUrlMethod = 'GET';
-    $paybox->config->successUrl = route('index');
-    dd($paybox->redirectUrl);
-    if ($paybox->init())
-      return response()->json(['link' => $paybox->redirectUrl], 200);
-    else
-      return response()->json(['error' => 'Ошибка'], 404);
+
+    if ($order->payment_method === 'card') {
+//    TODO: в заказе не сохраняется номер телефона
+      $paybox = new Paybox();
+      $pay = Pay::first();
+      $paybox->merchant->id = $pay->pg_merchant_id;
+      $paybox->merchant->secretKey = $pay->code;
+      $paybox->order->id = $order->id;
+      $paybox->order->description = $pay->pg_description;
+      $paybox->order->amount = $request->cost + $request->cost_transfer;
+      $paybox->config->isTestingMode = (bool) $pay->pg_testing_mode;
+      $paybox->customer->userEmail = $user->email;
+      $paybox->customer->id = $user->id;
+      $paybox->config->successUrlMethod = 'GET';
+      $paybox->config->successUrl = route('index');
+
+      if ($paybox->init()) {
+        Auth::login($user, true);
+        return response()->json(['link' => $paybox->redirectUrl], 200);
+      } else
+        return response()->json(['error' => 'Ошибка для перехода оплаты'], 401);
+    } else if ($order->payment_method === 'cash') {
+      $order->ship_status = Order::SHIP_STATUS_PENDING;
+      $order->save();
+      Auth::login($user, true);
+      return response()->json(['link' => route('order.orders')], 200);
+    }
+    return response()->json(['error' => 'Ошибка'], 401);
   }
 
   /**

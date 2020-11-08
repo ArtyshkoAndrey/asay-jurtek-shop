@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  *
  * @method static find($value)
  * @method static whereLike(string $string, string $category)
+ * @method static where(string $string, bool $true)
  */
 class Category extends Model
 {
@@ -76,5 +77,10 @@ class Category extends Model
   public function products(): BelongsToMany
   {
     return $this->belongsToMany(Product::class, 'products_categories', 'category_id', 'product_id');
+  }
+
+  public function linksFilter ()
+  {
+    return $this->hasMany(LinkMenu::class);
   }
 }

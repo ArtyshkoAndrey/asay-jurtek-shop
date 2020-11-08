@@ -9,8 +9,10 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ProductController.
@@ -40,10 +42,17 @@ class ProductController extends Controller {
    *
    * @param int $id
    * @param Request $request
-   * @return View
+   * @return Application|View|RedirectResponse|Redirector
    */
-  public function show (int $id, Request $request): view
+  public function show (int $id, Request $request)
   {
+    $validator = Validator::make(['product_id' => $id], [
+      'product_id' => 'required|exists:products,id,deleted_at,NULL',
+    ]);
+    if ($validator->fails()) {
+      return redirect('/')
+        ->withErrors($validator);
+    }
     $item = Product::with('photos')->find($id);
     $inCart = false;
     if ($user = $request->user()) {

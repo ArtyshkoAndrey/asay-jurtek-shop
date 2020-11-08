@@ -37,7 +37,8 @@
                     <label for="created_at">Дата заказа</label>
                   </div>
                   <div class="col-12">
-                    <input type="datetime-local" name="created_at" id="created_at" class="form-control w-auto" value="{{ $order->created_at->format('Y-m-d\TH:i') }}" required>
+                    <input type="datetime-local" name="created_at" id="created_at" class="form-control w-auto {{ $errors->has('created_at') ? ' is-invalid' : '' }}"" value="{{ old('created_at', $order->created_at->format('Y-m-d\TH:i')) }}" required>
+                    <span id="created_at-error" class="error invalid-feedback">{{ $errors->first('created_at') }}</span>
                   </div>
                 </div>
 
@@ -46,39 +47,38 @@
                     <label for="ship_status">Стутас заказа</label>
                   </div>
                   <div class="col-12">
-                    @if($order->ship_status === \App\Models\Order::SHIP_STATUS_CANCEL)
-                      <select name="ship_status" id="ship_status" class="form-control w-auto" required disabled>
-                        <option value="{{ $order->ship_status }}">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</option>
+                    @if(old('ship_status', $order->ship_status) === \App\Models\Order::SHIP_STATUS_CANCEL)
+                      <select name="ship_status" id="ship_status" class="form-control w-auto {{ $errors->has('ship_status') ? ' is-invalid' : '' }}" required readonly>
+                        <option value="{{ old('ship_status', $order->ship_status) }}">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</option>
                       </select>
                     @else
-                      <select name="ship_status" id="ship_status" class="form-control w-auto" required>
+                      <select name="ship_status" id="ship_status" class="form-control w-auto {{ $errors->has('ship_status') ? ' is-invalid' : '' }}" required>
                         @foreach(\App\Models\Order::SHIP_STATUS_MAP as $ship)
-                          <option value="{{ $ship }}" {{ $order->ship_status === $ship ? 'selected' : '' }}>{{ \App\Models\Order::$shipStatusMap[$ship] }}</option>
+                          <option value="{{ $ship }}" {{ old('ship_status', $order->ship_status) === $ship ? 'selected' : '' }}>{{ \App\Models\Order::$shipStatusMap[$ship] }}</option>
                         @endforeach
                       </select>
                     @endif
+                      <span id="ship_status-error" class="error invalid-feedback">{{ $errors->first('ship_status') }}</span>
                   </div>
                 </div>
 
                 <div class="row mt-2">
                   <div class="col-12">
                     <label for="user">Клиент</label>
-                  </div>
-                  <div class="col-12">
-                    <select name="user" id="user" class="form-control w-auto" required>
+                    <select name="user" id="user" class="form-control w-auto {{ $errors->has('user') ? ' is-invalid' : '' }}" required>
                       @foreach(\App\Models\User::all() as $user)
-                        <option value="{{ $user->id }}" {{ $order->user->id === $user->id ? 'selected' : '' }}>{{ $user->getIOName() }}</option>
+                        <option value="{{ old('user', $order->user->id) }}" {{ old('user', $order->user->id) === $user->id ? 'selected' : '' }}>{{ $user->getIOName() }}</option>
                       @endforeach
                     </select>
+                    <span id="user-error" class="error invalid-feedback">{{ $errors->first('user') }}</span>
                   </div>
                 </div>
 
                 <div class="row mt-2">
                   <div class="col-12">
                     <label for="express_no">Трек номер</label>
-                  </div>
-                  <div class="col-12">
-                    <input type="text" name="express_no" id="express_no" class="form-control" value="{{ $order->ship_data['express_no'] ? $order->ship_data['express_no'] : '' }}">
+                    <input type="text" name="express_no" id="express_no" class="form-control {{ $errors->has('express_no') ? ' is-invalid' : '' }}" value="{{ old('express_no', $order->ship_data['express_no']) }}">
+                    <span id="express_no-error" class="error invalid-feedback">{{ $errors->first('express_no') }}</span>
                   </div>
                 </div>
               </div>

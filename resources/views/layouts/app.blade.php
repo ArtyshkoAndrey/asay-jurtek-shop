@@ -16,7 +16,7 @@
   <div id="app" class="px-md-5 pt-1 px-0">
     @if($errors->any())
       @foreach ($errors->all() as $error)
-        <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert" style="z-index: 1;">
           <strong>Ошибка!</strong> {{ $error }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -26,7 +26,7 @@
     @endif
     @if (session()->has('success'))
       @foreach (session('success') as $message)
-        <div class="alert alert-success alert-dismissible fade show position-absolute" id="error-alert" role="alert">
+        <div class="alert alert-success alert-dismissible fade show position-absolute" id="error-alert" role="alert" style="z-index: 1;">
           <strong>Успешно!</strong> {{ $message }}
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -41,89 +41,43 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav w-100">
-              <li class="nav-item d-none d-lg-block">
 
-                <div class="dropdown">
-                  <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownfirstLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clothes and accessories</a>
-                  <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-4 px-4" aria-labelledby="dropdownfirstLink" id="firstLink">
-                    <div class="row">
-                      <div class="col-xl-4 col-lg-6">
-                        <div class="row h-100 align-items-stretch">
-                          <div class="col-4">
-                            <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
-                          </div>
-                          <div class="col-12 d-flex flex-column justify-content-end">
-                            <p class="font-weight-bolder h5">Одежда и аксессуары</p>
-                            <a href="{{ route('product.all', ['p' => 56]) }}" class="text-decoration-none">Смотреть все товары</a>
+              @foreach($categoriesMenu = App\Models\Category::where('to_menu', true)->get() as $categoryMenu)
+                <li class="nav-item d-none d-lg-block">
+                  <div class="dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownCategoryLink-{{$categoryMenu->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $categoryMenu->name }}</a>
+                    <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownCategoryLink-{{$categoryMenu->id}}">
+                      <div class="row">
+                        <div class="col-xl-4 col-lg-6">
+                          <div class="row h-100">
+                            <div class="col-4">
+                              <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
+                            </div>
+                            <div class="col-12 d-flex flex-column justify-content-end">
+                              <p class="font-weight-bolder h5">{{ $categoryMenu->description }}</p>
+                              <a href="{{ route('product.all', ['p' => $categoryMenu->id]) }}" class="text-decoration-none">Смотреть все товары</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col border-left d-flex align-items-center">
-                        <div class="row pl-3" id="clothes-and-acc">
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'male']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/male.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Мужчинам</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'female']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/female.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Женщинам</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'children']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/children.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56]) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/clothes.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Одежда</p>
-                          </a>
+                        <div class="col border-left d-flex align-items-center">
+                          <div class="row pl-3" id="category-row-{{ $categoryMenu->id }}">
+
+                            @foreach($categoryMenu->linksFilter as $linkMenu)
+                              <a href="{{ $linkMenu->link }}" class="col text-decoration-none inverse">
+                                <img src="{{ $linkMenu->getPhoto() }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
+                                <p class="text-center m-0">{{ $linkMenu->name }}</p>
+                              </a>
+                            @endforeach
+
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              @endforeach
 
-              <li class="nav-item d-none d-lg-block">
 
-                <div class="dropdown">
-                  <a class="nav-link dropdown-toggle text-dark" href="#" role="button" id="dropdownsecondLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asay Jurek Vintage home</a>
-                  <div class="dropdown-menu dropdown-shadow navbar-dropdown-big rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownsecondLink">
-                    <div class="row">
-                      <div class="col-xl-4 col-lg-6">
-                        <div class="row h-100">
-                          <div class="col-4">
-                            <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
-                          </div>
-                          <div class="col-12 d-flex flex-column justify-content-end">
-                            <p class="font-weight-bolder h5">Мебель и аксессуары</p>
-                            <a href="{{ route('product.all', ['p' => 57]) }}" class="text-decoration-none">Смотреть все товары</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col border-left d-flex align-items-center">
-                        <div class="row pl-3" id="vintage-home">
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'male']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/male.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Мужчинам</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'female']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/female.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Женщинам</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56, 'sex' => 'children']) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/children.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Детям</p>
-                          </a>
-                          <a href="{{ route('product.all', ['p' => 56]) }}" class="col text-decoration-none inverse">
-                            <img src="{{ asset('images/clothes.jpg') }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
-                            <p class="text-center m-0">Одежда</p>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
               <li class="nav-item d-none d-lg-block mr-lg-auto">
                 <a href="{{ route('contacts') }}" class="nav-link text-dark">Адресс и контакты</a>
               </li>
@@ -183,7 +137,8 @@
                       Войти
                     </a>
                     <a class="dropdown-item px-0 bg-transparent d-flex align-items-center inverse" href="{{ route('register') }}">
-                      <i class="icon icon-log_out icon-1_5x ml-0 mr-2"></i>
+                      <i class="icon icon-register icon-1_5x ml-0 mr-2"></i>
+
                       Регистрация
                     </a>
 
@@ -206,6 +161,13 @@
                       <i class="icon icon-list icon-1_5x ml-0 mr-2"></i>
                       Мои заказы
                     </a>
+                    @if (auth()->user()->is_admin)
+                      <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="{{ route('admin.root') }}">
+{{--                        <i class="icon icon-list icon-1_5x ml-0 mr-2"></i>--}}
+                        <i class="far fa-tachometer-slowest mr-3 ml-1"></i>
+                        Административная панель
+                      </a>
+                    @endif
                     <a class="dropdown-item bg-transparent d-flex align-items-center inverse" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                       <i class="icon icon-log_out icon-1_5x ml-0 mr-2"></i>
                       Выйти
@@ -306,13 +268,16 @@
     });
 
     $(window).resize(function () {
-      $('#vintage-home .navbar-images-dropdown.scale').height($('#vintage-home .navbar-images-dropdown.scale').width())
-      $('#clothes-and-acc .navbar-images-dropdown.scale').height($('#clothes-and-acc .navbar-images-dropdown.scale').width())
+      @foreach($categoriesMenu as $categoryMenu)
+        $('#category-row-{{ $categoryMenu->id }} .navbar-images-dropdown.scale').height($('#category-row-{{ $categoryMenu->id }} .navbar-images-dropdown.scale').width())
+      @endforeach
     })
     $('.dropdown-toggle').click(function () {
       setTimeout(() => {
-        $('#vintage-home .navbar-images-dropdown.scale').height($('#vintage-home .navbar-images-dropdown.scale').width())
-        $('#clothes-and-acc .navbar-images-dropdown.scale').height($('#clothes-and-acc .navbar-images-dropdown.scale').width())
+        @foreach($categoriesMenu as $categoryMenu)
+          $('#category-row-{{ $categoryMenu->id }} .navbar-images-dropdown.scale').height($('#category-row-{{ $categoryMenu->id }} .navbar-images-dropdown.scale').width())
+        @endforeach
+
       }, 100)
     })
   </script>

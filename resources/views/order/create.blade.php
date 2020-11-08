@@ -25,13 +25,21 @@
             <div class="col-md-10">
               <div class="row">
                 <div class="col-md-6 mt-2">
-                  <select name="country" v-model="country" class="form-control w-100 h-100" id="country"></select>
+                  <select name="country" class="form-control w-100 h-100" id="country">
+                    @auth
+                      <option value="{{ auth()->user()->country->id }}" selected>{{ auth()->user()->country->name }}</option>
+                    @endauth
+                  </select>
                 </div>
                 <div class="col-md-6 mt-2">
-                  <select name="city" v-model="city" class="form-control w-100" id="city"></select>
+                  <select name="city" class="form-control w-100" id="city">
+                    @auth
+                      <option value="{{ auth()->user()->city->id }}" selected>{{ auth()->user()->city->name }}</option>
+                    @endauth
+                  </select>
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" v-model="address" name="address" id="address" class="form-control rounded-0" placeholder="Точный адрес*">
+                  <input type="text" v-model="address" @auth value="{{ auth()->user()->street }}" @endauth name="address" id="address" class="form-control rounded-0" placeholder="Точный адрес*">
                 </div>
               </div>
             </div>
@@ -42,16 +50,16 @@
             <div class="col-md-10">
               <div class="row">
                 <div class="col-md-6 mt-2">
-                  <input type="text" v-model="firstname" name="firstname" id="firstname" class="form-control rounded-0" placeholder="Имя*">
+                  <input type="text" v-model="firstname" @auth value="{{ auth()->user()->first_name }}" @endauth name="firstname" id="firstname" class="form-control rounded-0" placeholder="Имя*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" v-model="lastname" name="lastname" id="lastname" class="form-control rounded-0" placeholder="Фамилия*">
+                  <input type="text" v-model="lastname" @auth value="{{ auth()->user()->second_name }}" @endauth name="lastname" id="lastname" class="form-control rounded-0" placeholder="Фамилия*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="text" v-model="phone" name="phone" id="phone" class="form-control rounded-0" placeholder="Телефон*">
+                  <input type="text" v-model="phone" @auth value="{{ auth()->user()->contact_phone }}" @endauth name="phone" id="phone" class="form-control rounded-0" placeholder="Телефон*">
                 </div>
                 <div class="col-md-6 mt-2">
-                  <input type="email" v-model="email" name="email" id="email" class="form-control rounded-0" placeholder="E-mail *">
+                  <input type="email" v-model="email" @auth value="{{ auth()->user()->email }}" @endauth name="email" id="email" class="form-control rounded-0" placeholder="E-mail *">
                 </div>
               </div>
             </div>

@@ -10,16 +10,16 @@ use App\Models\Order;
 
 class OrderService
 {
-  public function store(User $user, $address, $city, $country, $items, $payment_method, $company, $cost_transfer, $cost)
+  public function store(User $user, $address, $city, $country, $items, $payment_method, $company, $cost_transfer, $cost, $phone)
   {
 
-    return \DB::transaction(function () use ($user, $address, $city, $country, $items, $payment_method, $company, $cost_transfer, $cost) {
+    return \DB::transaction(function () use ($user, $address, $city, $country, $items, $payment_method, $company, $cost_transfer, $cost, $phone) {
 
       $order   = new Order([
         'address'      => [
           'address'       => ''.Country::find($country)->name.','.City::find($city)->name.','. $address,
           'contact_name'  => $user->getIOName(),
-          'contact_phone' => $user->phone,
+          'contact_phone' => $phone,
         ],
         'total_amount' => $cost,
         'id_express_company' => $company,

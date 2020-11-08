@@ -1,6 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+Route::get('/test', function () {
+  (new App\Models\Setting)->setHeader();
+});
+
 if ((new App\Models\Setting)->statusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
   Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
@@ -91,8 +95,17 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
   Route::name('setting.')->prefix('setting')->group(function () {
 
-    Route::get('/menu', [App\Http\Controllers\Admin\SettingController::class, 'menuIndex'])->name('menu.index');
-    Route::put('/menu/{id}', [App\Http\Controllers\Admin\SettingController::class, 'menuUpdate'])->name('menu.update');
+    Route::resource('menu-categories', App\Http\Controllers\Admin\MenuCategoryController::class);
+
+    Route::resource('link-menu', App\Http\Controllers\Admin\LinkMenuController::Class);
+
+    Route::name('first-sector.')->prefix('fist-sector')->group(function () {
+
+      Route::get('/', [\App\Http\Controllers\Admin\FirstSectorController::class, 'index'])->name('index');
+      Route::put('/', [\App\Http\Controllers\Admin\FirstSectorController::class, 'update'])->name('update');
+
+
+    });
 
   });
 });

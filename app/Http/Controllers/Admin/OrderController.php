@@ -154,7 +154,10 @@ class OrderController extends Controller
     $order->ship_data = ['express_no' => $request->express_no];
     $order->user()->associate($request->user);
     $order->save();
-    return redirect()->route('admin.store.order.index');
+    if ($request->ship_status === Order::SHIP_STATUS_CANCEL) {
+      $order->close();
+    }
+    return redirect()->route('admin.store.order.index')->withSuccess(['Заказ № ' . $order->no . ' был обновлён']);
   }
 
   /**

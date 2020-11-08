@@ -77,7 +77,7 @@
               </tr>
             @empty
               <tr>
-                <td colspan="8" class="text-center">Нет категорий атрибутов</td>
+                <td colspan="8" class="text-center">Нет пользователей</td>
               </tr>
             @endforelse
             </tbody>

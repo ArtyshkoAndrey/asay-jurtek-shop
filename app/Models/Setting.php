@@ -51,14 +51,19 @@ class Setting extends Model
   {
     $s = new Setting();
     $s->key = 'header';
-    $s->meta = json_encode(array(
+    $s->meta = array(
       'image' => 'http://zakaz/images/586e6940ea673b0ebbdc6668f59ca32a.jpg',
       'position' => 'right', //left
       'width' => '50',
       'color_gradient' => '#D1BC8A',
       'gradient_position' => 'left-to-right', //right-to-left
-      'gradient' => true
-    ));
+      'gradient' => true,
+      'text' => 'Asay Jurek',
+      'description' => 'Селективный секонд хенд',
+      'text_btn' => 'Перекти к покупкам',
+      'link_btn' => '/product/all',
+      'text_center' => false
+    );
     $s->save();
   }
 }
