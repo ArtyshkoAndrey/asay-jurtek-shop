@@ -66,7 +66,7 @@ class User extends Authenticatable
    */
   public function getFullAddress (): string
   {
-    if ($this->country && $this->name && $this->street)
+    if ($this->country && $this->city && $this->street)
       return "{$this->country->name}, {$this->city->name}, {$this->street}";
 
     return 'Нет данных';
