@@ -38,7 +38,7 @@ class OrderController extends Controller
     if ($search)
       $orders = $orders->orWhereHas('user', function($q) use ($search) {
           $q->where(function($q) use ($search) {
-            $q->where('name', 'LIKE', '%' . $search . '%');
+            $q->where('first_name', 'LIKE', '%' . $search . '%');
           });
         })
         ->orWhere('no', 'LIKE', '%'.$search.'%')
