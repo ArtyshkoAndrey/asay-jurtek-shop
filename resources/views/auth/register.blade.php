@@ -96,7 +96,7 @@
                     <input type="password" class="form-control rounded-0" id="password_confirmation" name="password_confirmation" placeholder="Повторите пароль" required>
                   </div>
 
-                  <button class="btn rounded-0 text-white bg-gray-50 d-block mt-3 ml-auto">Зарегистрироваться</button>
+                  <button id="submitter" class="btn rounded-0 btn-orange text-white bg-orange d-block mt-3 ml-auto" type="submit" disabled>Зарегистрироваться</button>
                 </form>
               </div>
             </div>
@@ -109,11 +109,43 @@
 
 @section('js')
   <script>
+    let checker = {
+      first_name: false,
+      second_name: false,
+      password: false,
+      password_confirmation: false,
+      email: false
+    }
+
     $( "input" ).focus(function() {
       $(this).parent().addClass('focus')
     });
     $('input').focusout(function() {
       $(this).parent().removeClass('focus')
     });
+    for (let key in checker) {
+      $('#'+key).on('keydown keyup change', function () {
+        let charLength = $(this).val().length;
+        if (charLength >= 3) {
+          checker[key] = true
+          console.log(disabled(checker))
+          if(disabled(checker)) {
+            $('#submitter').attr('disabled', false)
+          } else {
+            $('#submitter').attr('disabled', true)
+          }
+        }
+      })
+    }
+
+    function disabled(checker) {
+      let v = true
+      for (let key in checker) {
+        if (!checker[key]) {
+          v = false
+        }
+      }
+      return v
+    }
   </script>
 @endsection
