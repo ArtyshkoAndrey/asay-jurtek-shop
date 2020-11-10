@@ -59,7 +59,7 @@
                   </a>
                 </td>
                 <td style="vertical-align: middle;">
-                  {{ $user->country->name }}
+                  {{ $user->country ? $user->country->name : 'Нет страны' }}
                 </td>
                 <td style="vertical-align: middle;">
                   {{ $user->orders->count() }} шт.
