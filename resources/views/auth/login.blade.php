@@ -19,24 +19,27 @@
           </div>
           <div class="card-body p-4">
             <div class="row">
-              <div class="col-12">
-                <h5 class="text-center w-100">Войдите черз соц сеть</h5>
-              </div>
-              <div class="col-12">
-                <div class="row p-0 m-0">
-                  <div class="col-4 p-0 pr-1">
-                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center h-100" id="google"><i class="icon icon-google"></i> <span class="d-none d-md-block">Google</span></a>
-                  </div>
-                  <div class="col-4 p-0 px-1">
-                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center h-100" id="fb"><i class="icon icon-facebook"></i> <span class="d-none d-md-block">Facebook</span></a>
-                  </div>
-                  <div class="col-4 p-0 pl-1">
-                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center align-items-center h-100" id="vk"><i class="fab fa-vk mr-md-1"></i> <span class="d-none d-md-block">VKontakte</span></a>
-                  </div>
-                </div>
-              </div>
+{{--              <div class="col-12">--}}
+{{--                <h5 class="text-center w-100">Войдите черз соц сеть</h5>--}}
+{{--              </div>--}}
+{{--              <div class="col-12">--}}
+{{--                <div class="row p-0 m-0">--}}
+{{--                  <div class="col-4 p-0 pr-1">--}}
+{{--                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center h-100" id="google"><i class="icon icon-google"></i> <span class="d-none d-md-block">Google</span></a>--}}
+{{--                  </div>--}}
+{{--                  <div class="col-4 p-0 px-1">--}}
+{{--                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center h-100" id="fb"><i class="icon icon-facebook"></i> <span class="d-none d-md-block">Facebook</span></a>--}}
+{{--                  </div>--}}
+{{--                  <div class="col-4 p-0 pl-1">--}}
+{{--                    <a href="#" class="btn d-block btn-outline-social rounded-0 d-flex justify-content-center align-items-center h-100" id="vk"><i class="fab fa-vk mr-md-1"></i> <span class="d-none d-md-block">VKontakte</span></a>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--              <div class="col-12 mt-3">--}}
+{{--                <h5 class="text-center">Или укажите свой логин и пароль</h5>--}}
+{{--              </div>--}}
               <div class="col-12 mt-3">
-                <h5 class="text-center">Или укажите свой логин и пароль</h5>
+                <h5 class="text-center">Укажите свой логин и пароль</h5>
               </div>
               <div class="col-12 mt-3">
                 <form action="{{ route('login') }}" method="post">
