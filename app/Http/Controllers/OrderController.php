@@ -8,6 +8,7 @@ use App\Notifications\RegisterPassword;
 use App\Services\CartService;
 use App\Services\OrderService;
 use App\Models\User;
+use Carbon\Traits\Date;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -208,7 +209,12 @@ class OrderController extends Controller
 
   }
 
-  public function check (Request $request) {
-    Log::debug((string)$request->all());
+  public function check (Request $request, int $id) {
+    $order = Order::find($id);
+    if ($request->pg_result === 1) {
+      $order->ship_status = Order::SHIP_STATUS_PENDING;
+      $order->paid_at = Date::now();
+      $order->save();
+    }
   }
 }
