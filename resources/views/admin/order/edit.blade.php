@@ -77,7 +77,7 @@
                 <div class="row mt-2">
                   <div class="col-12">
                     <label for="express_no">Трек номер</label>
-                    <input type="text" name="express_no" id="express_no" class="form-control {{ $errors->has('express_no') ? ' is-invalid' : '' }}" value="{{ old('express_no', $order->ship_data['express_no']) }}">
+                    <input type="text" name="express_no" id="express_no" class="form-control {{ $errors->has('express_no') ? ' is-invalid' : '' }}" value="{{ old('express_no', $order->ship_data['express_no'] ? $order->ship_data['express_no'] : null) }}">
                     <span id="express_no-error" class="error invalid-feedback">{{ $errors->first('express_no') }}</span>
                   </div>
                 </div>
