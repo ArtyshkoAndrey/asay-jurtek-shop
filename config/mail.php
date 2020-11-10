@@ -40,7 +40,7 @@ return [
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
             'username' => env('MAIL_USERNAME', 'order@wallridestore.com'),
-            'password' => env('MAIL_PASSWORD', 'H7m823ko9!'),
+            'password' => env('MAIL_PASSWORD', 'qwerty123456'),
             'timeout' => null,
             'auth_mode' => null,
         ],
