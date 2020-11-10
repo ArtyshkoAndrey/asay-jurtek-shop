@@ -146,7 +146,8 @@ class OrderController extends Controller
       $paybox->customer->id = $user->id;
       $paybox->config->successUrlMethod = 'GET';
       $paybox->config->successUrl = route('index');
-      $paybox->config->resultUrl = route('order.update', $order->id);
+      $paybox->config->resultUrl = route('order.check', $order->id);
+      $paybox->config->requestMethod = 'GET';
 
       if ($paybox->init()) {
         Auth::login($user, true);
@@ -204,6 +205,10 @@ class OrderController extends Controller
    */
   public function destroy(int $id)
   {
-      //
+
+  }
+
+  public function check (Request $request) {
+    Log::debug((string)$request->all());
   }
 }
