@@ -6,7 +6,7 @@
       <div class="col-lg-5 col-md-6 col-12">
         <div class="row justify-content-center">
           <div class="col-md-3 col-6">
-            <img src="{{ asset('images/new-logo.png') }}" alt="logo" class="img-fluid mb-5 mx-auto d-block">
+            <img src="{{ asset('images/new-logo-selected.png') }}" alt="logo" class="img-fluid mb-5 mx-auto d-block">
           </div>
         </div>
         <div class="card rounded-0">

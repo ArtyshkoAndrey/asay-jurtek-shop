@@ -9,7 +9,7 @@
   </ul>
   <ul class="navbar-nav w-100">
     <li class="nav-item row ml-auto mr-auto">
-      <img src="{{ asset('public/images/new-logo.png') }}" height="40" alt="">
+      <img src="{{ asset('public/images/new-logo-selected.png') }}" height="40" alt="">
     </li>
     <li class="nav-item dropdown row">
       <section class="col">

@@ -37,7 +37,7 @@
     <div class="container-fluid bg-white" id="navbar">
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">
-          <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}" alt="logo" class="h-100 w-auto"></a>
+          <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/new-logo-selected.jpg') }}" alt="logo" class="h-100 w-auto"></a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav w-100">
@@ -51,7 +51,7 @@
                         <div class="col-xl-4 col-lg-6">
                           <div class="row h-100">
                             <div class="col-4">
-                              <img src="{{ asset('images/logo.jpg') }}" alt="logo" class="img-fluid">
+                              <img src="{{ $categoryMenu->title === 'Clothes and accessories' ? asset('images/new-logo-selected.jpg') : asset('images/new-logo-vintage.jpg') }}" alt="logo" class="img-fluid">
                             </div>
                             <div class="col-12 d-flex flex-column justify-content-end">
                               <p class="font-weight-bolder h5">{{ $categoryMenu->description }}</p>
