@@ -63,7 +63,7 @@
                           <div class="row pl-3" id="category-row-{{ $categoryMenu->id }}">
 
                             @foreach($categoryMenu->linksFilter as $linkMenu)
-                              <a href="{{ $linkMenu->link }}" class="col text-decoration-none inverse">
+                              <a href="{{ url($linkMenu->link) }}" class="col text-decoration-none inverse">
                                 <img src="{{ $linkMenu->getPhoto() }}" alt="navbar-images" class="img-fluid navbar-images-dropdown scale">
                                 <p class="text-center m-0">{{ $linkMenu->name }}</p>
                               </a>

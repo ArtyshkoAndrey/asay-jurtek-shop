@@ -99,6 +99,8 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
     Route::resource('link-menu', App\Http\Controllers\Admin\LinkMenuController::Class);
 
+    Route::resource('second-section', App\Http\Controllers\Admin\SecondSectionController::Class);
+
     Route::name('first-sector.')->prefix('fist-sector')->group(function () {
 
       Route::get('/', [\App\Http\Controllers\Admin\FirstSectorController::class, 'index'])->name('index');

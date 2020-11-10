@@ -43,15 +43,13 @@
       opacity: 1;
     }
 
-    #secondPromotion {
-      background: url("{{ asset('images/female.jpg') }}");
-      background-size: cover;
-    }
+    @foreach($secondSections as $section)
+      #secondPromotion-{{$section->id}} {
+        background: url("{{ asset('storage/header/'.$section->meta->image) }}");
+        background-size: cover;
+      }
+    @endforeach
 
-    #therdPromotion {
-      background: url("{{ asset('images/female.jpg') }}");
-      background-size: cover;
-    }
 
     @media screen and (max-width: 992px) {
       .promotion>div {
@@ -85,23 +83,16 @@
         </div>
       </div>
 
+      @foreach($secondSections as $section)
       <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
-        <div class="promotion h-100 h-100 d-flex" id="secondPromotion">
+        <div class="promotion h-100 h-100 d-flex" id="secondPromotion-{{$section->id}}">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-center text-white h3">Asay Jurek Clothes and accessories</h4>
-          <a href="{{ route('product.all', ['p' => 56]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
+          <h4 class="font-weight-bolder text-center text-white h3">{{ $section->meta->title }}</h4>
+          <a href="{{ url($section->meta->link) }}" class="btn btn-transparent btn-text-white rounded-0">{{ $section->meta->btn_text }}</a>
         </div>
         </div>
       </div>
-
-      <div class="col-lg-6 col-12 p-0 mt-4 pl-lg-3">
-        <div class="promotion h-100 h-100 d-flex" id="therdPromotion">
-          <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-center text-white h3">Asay Jurek Vintage home</h4>
-          <a href="{{ route('product.all', ['p' => 57]) }}" class="btn btn-transparent btn-text-white rounded-0">Перейти к покупкам</a>
-        </div>
-        </div>
-      </div>
+      @endforeach
 
     </div>
   </div>

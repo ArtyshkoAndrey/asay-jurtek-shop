@@ -26,12 +26,13 @@ class HomeController extends Controller
   {
     $headerTemp = Setting::where('key', 'header')->first();
     $header = $headerTemp->meta;
+    $secondSections = Setting::where('key', 'second-section')->get();
     $items = Product::where('on_new', true)
       ->orderBy('created_at', 'desc')
       ->take(4)
       ->with('photos')
       ->get();
-    return view('index', compact('header', 'items'));
+    return view('index', compact('header', 'items', 'secondSections'));
   }
 
   /**
