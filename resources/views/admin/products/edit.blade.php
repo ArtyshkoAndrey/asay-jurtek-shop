@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form action="{{ route('admin.production.products.update', $product->id) }}" method="post">
+          <form action="{{ route('admin.production.products.update', $product->id) }}" id="form" method="post">
             @csrf
             @method('PUT')
             <div class="row justify-content-end">
@@ -50,7 +50,8 @@
             <div class="row">
               <div class="col-md-8">
                 <label for="title">Наименование</label>
-                <input type="text" class="form-control rounded-0" name="title" id="title" value="{{ $product->title }}">
+                <input type="text" class="form-control rounded-0 {{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="title" value="{{ old('title', $product->title) }}" required>
+                <span id="title-error" class="error invalid-feedback">{{ $errors->first('title') }}</span>
               </div>
               <div class="col-12 ml-md-4 ml-2">
 {{--                <p class="font-smaller">Ссылка: <a href="{{ route('products.show', $product->id) }}" target="_blank" class="text-red" style="text-decoration: underline">{{ route('products.show', $product->id) }}</a></p>--}}
@@ -60,33 +61,48 @@
                 <div class="row">
                   <div class="col-12">
                     <label for="description">Описание</label>
-                    <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{ $product->description }}</textarea>
+                    <textarea name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" cols="30" rows="10" required>{{ old('description', $product->description) }}</textarea>
+                    <span id="description-error" class="error invalid-feedback">{{ $errors->first('description') }}</span>
                   </div>
                   <div class="col-12 col-md-6 mt-2">
                     <label for="category">Категории</label>
-                    <select name="category[]" class="form-control rounded-0" multiple id="category">
+                    <select name="category[]" class="form-control rounded-0 {{ $errors->has('category') ? ' is-invalid' : '' }}" multiple id="category">
                       @foreach($product->categories as $category)
                         <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                       @endforeach
                     </select>
+                    <span id="category-error" class="error invalid-feedback">{{ $errors->first('category') }}</span>
                   </div>
                   <div class="col-md-6 mt-2">
                     <label for="price">Цена</label>
-                    <input type="number" min="0" name="price" class="form-control rounded-0" id="price" value="{{ $product->price }}">
+                    <input type="number" min="0" name="price" class="form-control rounded-0 {{ $errors->has('price') ? ' is-invalid' : '' }}" id="price" value="{{ old('price', $product->price) }}" required>
+                    <span id="price-error" class="error invalid-feedback">{{ $errors->first('price') }}</span>
                   </div>
                   <div class="col-md-6 mt-2">
                     <label for="price_sale">Цена со скидкой</label>
-                    <input type="number" min="0" name="price_sale" class="form-control rounded-0" id="price_sale" value="{{ $product->price_sale }}">
+                    <input type="number" min="0" name="price_sale" class="form-control rounded-0 {{ $errors->has('price_sale') ? ' is-invalid' : '' }}" id="price_sale" value="{{ old('price_sale', $product->price_sale) }}">
+                    <span id="price_sale-error" class="error invalid-feedback">{{ $errors->first('price_sale') }}</span>
+                  </div>
+
+                  <div class="col-md-6 mt-2">
+                    <label for="sex">Пол</label>
+                    <select name="sex" id="sex" class="form-control rounded-0 {{ $errors->has('sex') ? ' is-invalid' : '' }}" required>
+                      @foreach(\App\Models\Product::SEX_ATTR_MAP as $sex)
+                        <option value="{{ $sex }}" {{ old('sex', $product->sex) === $sex ? 'selected' : null }}>{{ \App\Models\Product::$sexAttrMap[$sex] }}</option>
+                      @endforeach
+                    </select>
+                    <span id="sex-error" class="error invalid-feedback">{{ $errors->first('sex') }}</span>
                   </div>
 
                   <div class="col-md-6 mt-2">
                     <label for="stock">Статус</label>
-                    <input type="text" name="status" class="form-control rounded-0" id="status" value="{{ $product->status }}">
+                    <input type="text" name="status" class="form-control rounded-0 {{ $errors->has('status') ? ' is-invalid' : '' }}" id="status" value="{{ old('status', $product->status) }}" required>
+                    <span id="status-error" class="error invalid-feedback">{{ $errors->first('status') }}</span>
                   </div>
 
                   <div class="col-md-6 mt-2">
                     <label for="weight">Вес товара (кг)</label>
-                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0" id="weight" value="{{ $product->weight }}">
+                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0" id="weight" value="{{ old('weight', $product->weight) }}" required>
                   </div>
 
                   {{-- Meta --}}
@@ -168,7 +184,7 @@
           </div>
           <div class="row mt-3 justify-content-end">
             <div class="col-auto">
-              <button class="btn btn-dark rounded-0 border-0 px-3 py-2" type="submit">Обновить</button>
+              <button class="btn btn-dark rounded-0 border-0 px-3 py-2" onclick="$('#form').submit()" type="submit">Обновить</button>
             </div>
           </div>
         </div>

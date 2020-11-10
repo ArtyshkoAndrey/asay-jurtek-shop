@@ -34,7 +34,8 @@ class Product extends Model
     'price',
     'skus',
     'meta',
-    'on_new'
+    'on_new',
+    'sex'
   ];
 
   /**

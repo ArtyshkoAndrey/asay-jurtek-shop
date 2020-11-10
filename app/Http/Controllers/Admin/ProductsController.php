@@ -99,6 +99,7 @@ class ProductsController extends Controller {
     $product->on_new      = isset($request->on_new) ? 1 : 0;
     $product->on_sale     = isset($request->on_sale) ? 1 : 0;
     $product->meta        = $request->meta;
+    $product->sex         = $request->sex;
     $product->skus()->associate($request->skus);
     $product->save();
     $product->categories()->sync($request->category);
@@ -156,6 +157,7 @@ class ProductsController extends Controller {
     $product->on_new      = isset($request->on_new) ? 1 : 0;
     $product->on_sale     = isset($request->on_sale) ? 1 : 0;
     $product->meta        = $request->meta;
+    $product->sex         = $request->sex;
     $product->categories()->sync($request->category);
     $product->skus()->associate($request->skus);
     $product->save();

@@ -74,13 +74,25 @@
                   </div>
 
                   <div class="col-md-6 mt-2">
-                    <label for="weight">Вес товара (кг)</label>
-                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0" id="weight" value="0">
+                    <label for="sex">Пол</label>
+                    <select name="sex" id="sex" class="form-control rounded-0 {{ $errors->has('sex') ? ' is-invalid' : '' }}">
+                      @foreach(\App\Models\Product::SEX_ATTR_MAP as $sex)
+                        <option value="{{ $sex }}" {{ old('sex') === $sex ? 'selected' : null }}>{{ \App\Models\Product::$sexAttrMap[$sex] }}</option>
+                      @endforeach
+                    </select>
+                    <span id="sex-error" class="error invalid-feedback">{{ $errors->first('sex') }}</span>
                   </div>
+
+
 
                   <div class="col-md-6 mt-2">
                     <label for="status">Статус</label>
                     <input type="text" name="status" class="form-control rounded-0" id="status">
+                  </div>
+
+                  <div class="col-md-6 mt-2">
+                    <label for="weight">Вес товара (кг)</label>
+                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0" id="weight" value="0">
                   </div>
 
                   {{-- Meta --}}
