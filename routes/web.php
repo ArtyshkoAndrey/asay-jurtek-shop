@@ -18,7 +18,7 @@ if ((new App\Models\Setting)->statusSite()) {
     Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'removeCart'])->name('removeCart');
   });
   Route::resource('/order', \App\Http\Controllers\OrderController::class)->except([
-    'update', 'edit', 'show', 'destroy'
+    'edit', 'show', 'destroy'
   ]);
 
   Route::middleware(['auth'])->group(function () {
