@@ -8,19 +8,18 @@ use App\Notifications\RegisterPassword;
 use App\Services\CartService;
 use App\Services\OrderService;
 use App\Models\User;
-use Carbon\Traits\Date;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Paybox\Pay\Facade as Paybox;
 use App\Models\Pay;
 use Swift_TransportException;
+use Carbon\Carbon;
 
 /**
  * Class OrderController.
@@ -209,11 +208,11 @@ class OrderController extends Controller
 
   }
 
-  public function check (Request $request, int $id) {
+  public function check (Request $request,int $id) {
     $order = Order::find($id);
     if ((int) $request->pg_result === 1) {
       $order->ship_status = Order::SHIP_STATUS_PENDING;
-      $order->paid_at = Date::now();
+      $order->paid_at = Carbon::now();
       $order->save();
     }
   }

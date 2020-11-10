@@ -17,10 +17,11 @@ if ((new App\Models\Setting)->statusSite()) {
     Route::post('/{id}', [\App\Http\Controllers\ProductController::class, 'addCart'])->name('addCart');
     Route::delete('/{id}', [\App\Http\Controllers\ProductController::class, 'removeCart'])->name('removeCart');
   });
+  Route::get('/order/check/{id}', [\App\Http\Controllers\OrderController::class, 'check'])->name('order.check');
   Route::resource('/order', \App\Http\Controllers\OrderController::class)->except([
     'edit', 'show', 'destroy', 'update'
   ]);
-  Route::get('/order/check/{id}', [\App\Http\Controllers\OrderController::class, 'check'])->name('order.check');
+
 
   Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [\App\Http\Controllers\OrderController::class, 'orders'])->name('order.orders');
