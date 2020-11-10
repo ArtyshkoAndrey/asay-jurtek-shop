@@ -211,7 +211,7 @@ class OrderController extends Controller
 
   public function check (Request $request, int $id) {
     $order = Order::find($id);
-    if ($request->pg_result === 1) {
+    if ((int) $request->pg_result === 1) {
       $order->ship_status = Order::SHIP_STATUS_PENDING;
       $order->paid_at = Date::now();
       $order->save();
