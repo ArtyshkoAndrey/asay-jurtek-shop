@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Paybox\Pay\Facade as Paybox;
 use App\Models\Pay;
 use Swift_TransportException;
@@ -145,6 +146,7 @@ class OrderController extends Controller
       $paybox->customer->id = $user->id;
       $paybox->config->successUrlMethod = 'GET';
       $paybox->config->successUrl = route('index');
+      $paybox->config->resultUrl = route('order.update', $order->id);
 
       if ($paybox->init()) {
         Auth::login($user, true);
@@ -191,7 +193,7 @@ class OrderController extends Controller
    */
   public function update(Request $request, int $id)
   {
-      //
+    Log::debug((string)$request->all());
   }
 
   /**
