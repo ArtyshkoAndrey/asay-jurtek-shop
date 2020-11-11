@@ -39,8 +39,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
-            'username' => env('MAIL_USERNAME', 'order@wallridestore.com'),
-            'password' => env('MAIL_PASSWORD', 'qwerty123456'),
+            'username' => env('MAIL_USERNAME', 'no-reply@asayjurek.kz'),
+            'password' => env('MAIL_PASSWORD', 'H7m823ko9!'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'order@wallridestore.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@asayjurek.kz'),
         'name' => env('MAIL_FROM_NAME', 'Asay Jurek'),
     ],
 
