@@ -67,10 +67,10 @@
                     <p><span class="font-weight-bolder">Email:</span> {{ $user->email}}</p>
                   </div>
                   <div class="col-md-12">
-                    <p><span class="font-weight-bolder">Страна:</span> {{ $user->country ? $user->country->name }}</p>
+                    <p><span class="font-weight-bolder">Страна:</span> {{ $user->country ? $user->country->name : '' }}</p>
                   </div>
                   <div class="col-md-12">
-                    <p><span class="font-weight-bolder">Город:</span> {{ $user->city ? $user->city->name }}</p>
+                    <p><span class="font-weight-bolder">Город:</span> {{ $user->city ? $user->city->name : '' }}</p>
                   </div>
                   <div class="col-md-12">
                     <p><span class="font-weight-bolder">Адресс:</span> {{ $user->street }}</p>
