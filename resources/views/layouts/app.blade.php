@@ -37,7 +37,9 @@
     <div class="container-fluid bg-white" id="navbar">
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">
-          <a class="navbar-brand h-100" href="{{ url('/') }}"><img src="{{ asset('images/new-logo-selected.png') }}" alt="logo" class="h-100 w-auto"></a>
+          <a class="navbar-brand h-100 d-flex align-items-center" href="{{ url('/') }}">
+            <img src="{{ asset('images/new-logo-selected.png') }}" alt="logo" class="w-auto" style="height: 50px;">
+          </a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav w-100">
@@ -178,7 +180,18 @@
               @endguest
 
               <li class="nav-item dropdown pl-md-3 pl-1 px-md-3 border-md-left">
-                <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon-cart icon-1_5x"></i></a>
+                <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="rounded-circle bg-danger m-0 p-0 text-center text-white d-flex justify-content-center align-items-center position-absolute border border-white" style="font-size: 10px; width: 15px; height: 15px; right: 25px; top: 6px">
+
+                    @auth
+                      {{ count($cartItems) }}
+                    @else
+                    @{{  $store.state.cart.items.length }}
+                    @endauth
+
+                  </span>
+                  <i class="icon-cart icon-1_5x"></i>
+                </a>
                 <div id="cart" class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdowncartLink">
                   @guest
                     <div class="row" v-for="item in $store.state.cart.items">
