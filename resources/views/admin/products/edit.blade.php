@@ -283,13 +283,13 @@
       $('.second-toolbar').css('border-radius','0px')
       <?php $i = 0;?>
       @foreach($product->photos as $photo)
-      var mockFile = { name: '{{ $photo->name }}', size: 0 };
-      uploader.emit("addedfile", mockFile);
-      uploader.emit("thumbnail", mockFile, '{{ asset('storage/items/') . '/' . $photo->name }}');
-      uploader.emit("complete", mockFile);
-      uploader.files.push(mockFile)
-      fileList.push({"serverFileName": '{{ $photo->name }}', "fileName":'{{ $photo->name }}', "fileId": {{ $i }}});
-      <?php $i++?>
+        var mockFile = { name: '{{ $photo->name }}', size: 0 };
+        uploader.emit("addedfile", mockFile);
+        uploader.emit("thumbnail", mockFile, '{{ asset('storage/items/') . '/' . $photo->name }}');
+        uploader.emit("complete", mockFile);
+        uploader.files.push(mockFile)
+        fileList.push({"serverFileName": '{{ $photo->name }}', "fileName":'{{ $photo->name }}', "fileId": {{ $i }}});
+        <?php $i++?>
       @endforeach
     });
 
