@@ -274,6 +274,7 @@
       @yield('content')
     </main>
   </div>
+  @include('layouts.footer')
   <script src="{{ asset('js/app.js') }}"></script>
   <script>
     document.getElementById("cart").addEventListener('click', function (event) {
