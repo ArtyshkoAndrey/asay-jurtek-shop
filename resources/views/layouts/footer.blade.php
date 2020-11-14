@@ -14,8 +14,8 @@
          </div>
        </div>
       </div>
-      <div class="col-md-6">
-        <div class="row justify-content-end">
+      <div class="col-md-6 mt-3 mt-md-0">
+        <div class="row justify-content-start justify-content-md-end">
           <div class="col-auto">
             <a href="https://www.vk.com/fulliton" target="_blank" class="text-white text-decoration-none">Powered by <span class="text-danger">Fulliton</span></a>
           </div>
