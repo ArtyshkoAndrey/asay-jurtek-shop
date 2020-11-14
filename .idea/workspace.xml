@@ -20,7 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CreateProductRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateProductRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/OrderService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/order/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/order/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/order/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +192,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shop/wp-content/themes/zass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -232,6 +247,7 @@
       <workItem from="1605099005052" duration="741000" />
       <workItem from="1605099827974" duration="1727000" />
       <workItem from="1605120447589" duration="17000" />
+      <workItem from="1605350590489" duration="9156000" />
     </task>
     <servers />
   </component>
@@ -274,10 +290,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603353456165" />
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1604834310856">
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1605355308259">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604834310856" />
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605355308259" />
+    <state x="673" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605365904333">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="673" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605365904333" />
     <state x="1170" y="283" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604897047066">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -290,10 +310,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="540" y="259" key="IDE.errors.dialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604561442416" />
-    <state x="709" y="247" key="NewPhpClassDialog" timestamp="1604999109760">
+    <state x="709" y="247" key="NewPhpClassDialog" timestamp="1605366364087">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="709" y="247" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1604999109760" />
+    <state x="709" y="247" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605366364087" />
     <state x="727" y="414" key="NewPhpFileDialog" timestamp="1604899161747">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -311,10 +331,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1603707026676" />
-    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604989665705">
+    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605351490781">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1604989665705" />
+    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605351490781" />
     <state x="715" y="332" width="580" height="601" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1604555053117">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -323,10 +343,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="0" width="844" height="1036" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1603352200865" />
-    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1604992133654">
+    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1605351852815">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1604992133654" />
+    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1605351852815" />
     <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1604575901637">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
