@@ -128,7 +128,6 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="row">
-                          <?php $ch = 'disabled'; ?>
                           <div class="accordion col-12" id="sc">
                             @foreach(App\Models\SkusCategory::all() as $sc)
                             <div class="card">
@@ -160,9 +159,9 @@
                           </div>
                         </div>
                       </div>
-                      <input type="hidden" name="photo[0]" value="">
-                      <input type="hidden" name="photo[1]" value="">
-                      <input type="hidden" name="photo[2]" value="">
+                      <input type="hidden" name="photo[0]" value="{{ old('photo') ? old('photo')[0] : null }}">
+                      <input type="hidden" name="photo[1]" value="{{ old('photo') ? old('photo')[1] : null }}">
+                      <input type="hidden" name="photo[2]" value="{{ old('photo') ? old('photo')[2] : null }}">
                     </div>
                   </div>
                 </div>
@@ -287,11 +286,24 @@
 
 
     $(document).ready(function() {
-      $('.select2-selection').css('border-radius','0px')
-      $('.fr-toolbar').css('border-radius','0px')
-      $('.second-toolbar').css('border-radius','0px')
-    });
+      $('.select2-selection').css('border-radius', '0px')
+      $('.fr-toolbar').css('border-radius', '0px')
+      $('.second-toolbar').css('border-radius', '0px')
+      <?php $i = 0;?>
+      let mockFile;
 
+      @foreach(old('photo', []) as $photo)
+        @if ($photo != null)
+          mockFile = {name: '{{ $photo }}', size: 0};
+          uploader.emit("addedfile", mockFile);
+          uploader.emit("thumbnail", mockFile, '{{ asset('storage/items/') . '/' . $photo }}');
+          uploader.emit("complete", mockFile);
+          uploader.files.push(mockFile)
+          fileList.push({"serverFileName": '{{ $photo }}', "fileName": '{{ $photo }}', "fileId": {{ $i }}});
+          <?php $i++?>
+        @endif
+      @endforeach
+    })
   </script>
   {{-- <script>
     $('#title').val('Test')
