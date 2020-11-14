@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductsImage;
 use Exception;
@@ -85,10 +87,10 @@ class ProductsController extends Controller {
   /**
    * Store a newly created resource in storage.
    *
-   * @param Request $request
+   * @param CreateProductRequest $request
    * @return RedirectResponse
    */
-  public function store(Request $request): RedirectResponse
+  public function store(CreateProductRequest $request): RedirectResponse
   {
     $product              = new Product();
     $product->title       = $request->title;
@@ -100,20 +102,27 @@ class ProductsController extends Controller {
     $product->on_sale     = isset($request->on_sale) ? 1 : 0;
     $product->meta        = $request->meta;
     $product->sex         = $request->sex;
-    $product->skus()->associate($request->skus);
+    $product->status      = $request->status;
+    $product
+      ->skus()
+      ->associate($request->skus);
     $product->save();
-    $product->categories()->sync($request->category);
+    $product
+      ->categories()
+      ->sync($request->category);
 
 
     foreach ($request->photo as $key => $photo) {
       if ($photo !== null && $photo !== '') {
         $ph = ProductsImage::where('name', $photo)->first();
-        $ph->product()->associate($product);
+        $ph
+          ->product()
+          ->associate($product);
         $ph->save();
       }
     }
 
-    return redirect()->route('admin.production.products.index');
+    return redirect()->route('admin.production.products.index')->withSuccess(['Товар успешно создан']);
   }
 
   /**
@@ -146,7 +155,7 @@ class ProductsController extends Controller {
    * @param int $id
    * @return RedirectResponse
    */
-  public function update(Request $request, int $id)
+  public function update(UpdateProductRequest $request, int $id)
   {
     $product              = Product::withTrashed()->find($id);
     $product->title       = $request->title;
@@ -158,11 +167,17 @@ class ProductsController extends Controller {
     $product->on_sale     = isset($request->on_sale) ? 1 : 0;
     $product->meta        = $request->meta;
     $product->sex         = $request->sex;
-    $product->categories()->sync($request->category);
-    $product->skus()->associate($request->skus);
-    $product->save();
+    $product->status      = $request->status;
+    $product
+      ->categories()
+      ->sync($request->category);
+    $product
+      ->skus()
+      ->associate($request->skus);
+    $product
+      ->save();
 
-    return redirect()->route('admin.production.products.edit', $id);
+    return redirect()->route('admin.production.products.edit', $id)->withSuccess(['Товар успешно обновлён']);
   }
 
   /**
@@ -201,7 +216,9 @@ class ProductsController extends Controller {
     $ph              = new ProductsImage();
     $ph['name']      = $name;
     $pr              = Product::withTrashed()->find($id);
-    $ph->product()->associate($pr);
+    $ph
+      ->product()
+      ->associate($pr);
     $ph->save();
     echo $name;
   }
@@ -215,9 +232,9 @@ class ProductsController extends Controller {
 
   public function photoCreate(Request $request) {
     // read image from temporary file
-    $name = $this->cropImage($request->file('file'));
-    $ph              = new ProductsImage();
-    $ph['name']      = $name;
+    $name       = $this->cropImage($request->file('file'));
+    $ph         = new ProductsImage();
+    $ph['name'] = $name;
     $ph->save();
     echo $name;
   }
@@ -231,7 +248,7 @@ class ProductsController extends Controller {
   }
 
   private function cropImage ($image) {
-    $file = $image->getClientOriginalName();
+    $file            = $image->getClientOriginalName();
     $destinationPath = public_path('storage/items/');
     $name            = pathinfo($file, PATHINFO_FILENAME) . '.webp';
     $img             = Image::make($image->getRealPath())->encode('webp', 75);
