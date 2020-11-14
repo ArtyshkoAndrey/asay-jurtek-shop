@@ -13,7 +13,7 @@
 </head>
 <body class="{{ \App\Helpers::route_class() }}-page">
   @yield('style')
-  <div id="app" class="px-md-5 pt-1 px-0">
+  <div id="app" class="px-md-5 pt-1 px-0" style="min-height: 100vh">
     @if($errors->any())
       @foreach ($errors->all() as $error)
         <div class="alert alert-warning alert-dismissible fade show position-absolute" id="error-alert" role="alert" style="z-index: 1;">
