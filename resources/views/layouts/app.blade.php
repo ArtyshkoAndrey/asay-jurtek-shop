@@ -152,7 +152,7 @@
                   <div class="dropdown-menu dropdown-menu-right dropdown-shadow rounded-0 border-0 py-3 px-4" aria-labelledby="dropdownuserLink">
                     <a class="dropdown-item bg-transparent inverse" href="{{ route('profile.index') }}">
                       <img src="{{ auth()->user()->getPhoto() }}" class="img-fluid rounded-circle mr-2" width="25px" height="25px" alt="avatar" style="object-fit: cover">
-                      {{ auth()->user()->getIOName() }}
+                      {{ auth()->user()->getFSName() }}
                     </a>
                     <form id="logout-form" class="d-none" action="{{ route('logout') }}" method="POST">
                       {{ csrf_field() }}

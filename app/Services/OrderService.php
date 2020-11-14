@@ -18,7 +18,7 @@ class OrderService
       $order   = new Order([
         'address'      => [
           'address'       => ''.Country::find($country)->name.','.City::find($city)->name.','. $address,
-          'contact_name'  => $user->getIOName(),
+          'contact_name'  => $user->getFSName(),
           'contact_phone' => $phone,
         ],
         'total_amount' => $cost,

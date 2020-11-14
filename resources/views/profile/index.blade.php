@@ -37,7 +37,7 @@
                 </form>
               </div>
               <div class="col-md-9 pl-md-5 pl-0 px-3 mt-4 mt-md-0">
-                <h4 class="font-weight-bold">{{ $user->getIOName() }}</h4>
+                <h4 class="font-weight-bold">{{ $user->getFSName() }}</h4>
                   <p class="font-weight-light mb-0">{{ $user->getFullAddress() }}</p>
                   <p class="font-weight-light mb-0">Валюта: {{ $user->currency->name }}</p>
                   <p class="font-weight-light mb-0">{{ $user->contact_phone }}</p>

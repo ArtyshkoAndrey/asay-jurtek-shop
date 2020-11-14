@@ -76,7 +76,7 @@ class User extends Authenticatable
    * Получить Имя Фамилию пользователя
    * @return string
    */
-  public function getIOName (): string
+  public function getFSName (): string
   {
     return "{$this->first_name} {$this->second_name}";
   }
@@ -106,7 +106,9 @@ class User extends Authenticatable
    */
   public function city (): BelongsTo
   {
-    return $this->belongsTo(City::class);
+    return $this
+      ->belongsTo(City::class)
+      ->withDefault();;
   }
 
   /**
@@ -115,7 +117,9 @@ class User extends Authenticatable
    */
   public function country (): BelongsTo
   {
-    return $this->belongsTo(Country::class);
+    return $this
+      ->belongsTo(Country::class)
+      ->withDefault();
   }
 
   /**
@@ -148,6 +152,10 @@ class User extends Authenticatable
     $this->notify(new PasswordReset($token));
   }
 
+  /**
+   * Заказы пользователя
+   * @return HasMany
+   */
   public function orders () {
     return $this->hasMany(Order::class);
   }

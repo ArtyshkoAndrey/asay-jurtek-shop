@@ -5,7 +5,7 @@
   <div class="container-fluid pt-5 px-4">
     <div class="row">
       <div class="col-12">
-        <h2>Пользователь {{ $user->getIOName() }}</h2>
+        <h2>Пользователь {{ $user->getFSName() }}</h2>
       </div>
     </div>
     <div class="row mt-0 pt-0">
@@ -135,7 +135,7 @@
               @forelse($user->orders as $order)
               <tr class="align-items-center">
                 <td style="vertical-align: middle;"><a href="{{ route('admin.store.order.edit', $order->id) }}" class="text-red">№ {{ $order->no }}</a></td>
-                <td style="vertical-align: middle;">{{ $order->user->getIOName() }}</td>
+                <td style="vertical-align: middle;">{{ $order->user->getFSName() }}</td>
                 <td style="vertical-align: middle;">{{ $order->created_at->format('d.m.Y') }}</td>
                 <td style="vertical-align: middle;">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</td>
                 <td style="vertical-align: middle;"><span class="font-weight-bold h5">{{ $order->cost($order->total_amount + $order->ship_price) }} тг.</span></td>

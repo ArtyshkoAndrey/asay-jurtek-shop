@@ -55,7 +55,7 @@
               <tr class="align-items-center">
                 <td style="vertical-align: middle;">
                   <a href="{{ route('admin.users.edit', $user->id) }}" class="text-red">
-                    {{ $user->getIOName() }}
+                    {{ $user->getFSName() }}
                   </a>
                 </td>
                 <td style="vertical-align: middle;">

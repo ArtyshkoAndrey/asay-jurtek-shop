@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Exception as ExceptionAlias;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,14 +17,13 @@ class UserController extends Controller
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @return Application|Factory|View|Response
    */
   public function index(Request $request)
   {
     $users = User::query();
-    if (($type = $request->input('type', 'all')) === 'all') {
-      $users = $users;
-    } else if ($type === 'admin') {
+    if (($type = $request->input('type', 'all')) === 'admin') {
       $users = $users->where('is_admin', true);
     }
 
@@ -36,7 +40,7 @@ class UserController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return void
    */
   public function create()
   {
@@ -46,8 +50,8 @@ class UserController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @return void
    */
   public function store(Request $request)
   {
@@ -57,10 +61,10 @@ class UserController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return void
    */
-  public function show($id)
+  public function show(int $id)
   {
       //
   }
@@ -68,8 +72,8 @@ class UserController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param User $user
+   * @return Application|Factory|View|Response
    */
   public function edit(User $user)
   {
@@ -79,12 +83,13 @@ class UserController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param Request $request
+   * @param User $user
+   * @return Response
    */
   public function update(Request $request, User $user)
   {
+
     $data = $request->all();
     if (isset($request->password)) {
       $request->validate([
@@ -103,18 +108,19 @@ class UserController extends Controller
       unset($data['password']);
     }
     $user->update($data);
-    return redirect()->route('admin.users.index')->withSuccess(['Пользователь '. $user->getIOName() . ' был изменён']);
+    return redirect()->route('admin.users.index')->withSuccess(['Пользователь '. $user->getFSName() . ' был изменён']);
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param User $user
+   * @return Response
+   * @throws ExceptionAlias
    */
   public function destroy(User $user)
   {
-    $name = $user->getIOName();
+    $name = $user->getFSName();
     $user->delete();
     return redirect()->route('admin.users.index')->withSuccess(['Пользователь '. $name . ' был удалён']);
   }

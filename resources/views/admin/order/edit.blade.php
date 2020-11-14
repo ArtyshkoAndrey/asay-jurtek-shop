@@ -67,7 +67,7 @@
                     <label for="user">Клиент</label>
                     <select name="user" id="user" class="form-control w-auto {{ $errors->has('user') ? ' is-invalid' : '' }}" required>
                       @foreach(\App\Models\User::all() as $user)
-                        <option value="{{ old('user', $order->user->id) }}" {{ old('user', $order->user->id) === $user->id ? 'selected' : '' }}>{{ $user->getIOName() }}</option>
+                        <option value="{{ old('user', $order->user->id) }}" {{ old('user', $order->user->id) === $user->id ? 'selected' : '' }}>{{ $user->getFSName() }}</option>
                       @endforeach
                     </select>
                     <span id="user-error" class="error invalid-feedback">{{ $errors->first('user') }}</span>
