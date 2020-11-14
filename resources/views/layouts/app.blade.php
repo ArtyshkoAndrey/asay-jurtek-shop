@@ -181,7 +181,7 @@
 
               <li class="nav-item dropdown pl-md-3 pl-1 px-md-3 border-md-left">
                 <a class="nav-link dropdown-toggle not-arrow text-dark" href="#" role="button" id="dropdowncartLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="rounded-circle bg-danger m-0 p-0 text-center text-white d-flex justify-content-center align-items-center position-absolute border border-white" style="font-size: 10px; width: 15px; height: 15px; right: 25px; top: 6px">
+                  <span class="rounded-circle bg-danger m-0 p-0 text-center text-white d-flex justify-content-center align-items-center position-absolute border border-white mb-3" id="counter-items">
 
                     @auth
                       {{ count($cartItems) }}

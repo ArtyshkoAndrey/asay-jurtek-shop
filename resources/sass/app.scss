@@ -83,6 +83,10 @@ a.link-category {
   }
 }
 
+#counter-items {
+  font-size: 10px; width: 15px; height: 15px; right: 25px;
+}
+
 .border-hover {
   padding: 10px;
   border: 1px solid transparent;
@@ -398,6 +402,7 @@ a.link-category {
   .w-md-100 {
     width: 100%;
   }
+
   .w-md-50 {
     width: 50% !important;
   }
