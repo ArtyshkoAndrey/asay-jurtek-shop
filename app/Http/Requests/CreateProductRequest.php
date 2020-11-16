@@ -29,7 +29,7 @@ class CreateProductRequest extends FormRequest
       'price'       => 'required|integer|min:0',
       'price_sale'  => 'sometimes|integer|min:0|nullable',
       'weight'      => 'required|min:0',
-      'on_new'      => 'i',
+      'on_new'      => 'boolean',
       'on_sale'     => 'boolean',
       'meta'        => 'required|array',
       'sex'         => 'required|string',
