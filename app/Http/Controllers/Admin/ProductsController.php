@@ -98,8 +98,8 @@ class ProductsController extends Controller {
     $product->price       = $request->price;
     $product->price_sale  = isset($request->price_sale) ? $request->price_sale : null;
     $product->weight      = $request->weight;
-    $product->on_new      = isset($request->on_new) ? 1 : 0;
-    $product->on_sale     = isset($request->on_sale) ? 1 : 0;
+    $product->on_new      = $request->on_new;
+    $product->on_sale     = $request->on_sale;
     $product->meta        = $request->meta;
     $product->sex         = $request->sex;
     $product->status      = $request->status;

@@ -112,13 +112,15 @@
               <div class="col-md-4">
                 <div class="row">
                   <div class="col-md-11 offset-md-1 mt-4">
+                    <input type="hidden" name="on_new" id="new" value="false">
+                    <input type="hidden" name="on_sale" id="sale" value="false">
                     <label>
-                      <input type="checkbox" name="on_new" id="new">
+                      <input type="checkbox" name="on_new" id="new" value="true">
                       NEW
                     </label>
 
                     <label class="ml-3">
-                      <input type="checkbox" name="on_sale" id="sale">
+                      <input type="checkbox" name="on_sale" id="sale" value="true">
                       SALE
                     </label>
 
