@@ -122,13 +122,16 @@
               <div class="col-md-4">
                 <div class="row">
                   <div class="col-md-11 offset-md-1 mt-4">
+                    <input type="hidden" name="on_new" id="new" value="0">
+                    <input type="hidden" name="on_sale" id="sale" value="0">
+
                     <label>
-                      <input type="checkbox" name="on_new" id="new" {{ $product->on_new ? 'checked' : null }}>
+                      <input type="checkbox" name="on_new" id="new" {{ $product->on_new ? 'checked' : null }} value="1">
                       NEW
                     </label>
 
                     <label class="ml-3">
-                      <input type="checkbox" name="on_sale" id="sale" {{ $product->on_sale ? 'checked' : null }}>
+                      <input type="checkbox" name="on_sale" id="sale" {{ $product->on_sale ? 'checked' : null }} value="1">
                       SALE
                     </label>
 
