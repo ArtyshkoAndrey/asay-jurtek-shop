@@ -64,6 +64,15 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="{{ route('admin.setting.second-section.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.setting.second-section.*') ? 'active' : '' }}">
+                <i class="far fa-image mr-3"></i>
+                <p>
+                  Секторы 2-го уровня
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
 
