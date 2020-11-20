@@ -28,10 +28,6 @@
                     @endforeach
                   </select>
                 </div>
-                <div class="custom-control mb-2 custom-switch">
-                  <input type="checkbox" name="to_index" value="true" class="custom-control-input" id="customSwitch">
-                  <label class="custom-control-label" for="customSwitch">На главной странице</label>
-                </div>
                 <div class="form-group">
                   <button type="submit" class="btn bg-dark rounded-0 border-0">Добавить</button>
                 </div>

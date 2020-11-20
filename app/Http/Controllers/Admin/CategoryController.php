@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
   /**
    * Display a listing of the resource.
    *
-   * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+   * @return Factory|View
    */
   public function index()
   {
@@ -26,7 +31,7 @@ class CategoryController extends Controller
   /**
    * Show the form for creating a new resource.
    *
-   * @return \Illuminate\Http\Response
+   * @return void
    */
   public function create()
   {
@@ -36,34 +41,29 @@ class CategoryController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\RedirectResponse
+   * @param Request $request
+   * @return RedirectResponse
    */
   public function store(Request $request)
   {
 //      dd($request);
     $request->validate([
       'name' => 'required|string',
-      'to_index' => $request->has('to_index') ? 'accepted' : ''
     ]);
     $ct = new Category();
     $ct->name = $request->name;
-    $ct->to_index = $request->has('to_index');
-    if($request->has('to_index')) {
-      Category::where('to_index', true)->update(['to_index' => false]);
-    }
     $ct->save();
     $ct->parents()->sync($request->categories);
-    return redirect()->route('admin.production.category.index');
+    return redirect()->route('admin.production.category.index')->withSuccess(['Категоия - ' . $request->name . ' - создана']);
   }
 
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return void
    */
-  public function show($id)
+  public function show(int $id)
   {
       //
   }
@@ -71,10 +71,10 @@ class CategoryController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
+   * @param int $id
+   * @return Application|Factory|\Illuminate\Contracts\View\View|Response
    */
-  public function edit($id)
+  public function edit(int $id)
   {
     $category = Category::find($id);
     $categories = Category::select('*')->whereNotIn('id',function($query) {
@@ -86,36 +86,33 @@ class CategoryController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\RedirectResponse
+   * @param Request $request
+   * @param int $id
+   * @return RedirectResponse
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, int $id)
   {
     $request->validate([
       'name' => 'required|string',
-      'to_index' => $request->has('to_index') ? 'accepted' : ''
     ]);
     $ct = Category::find($id);
     $ct->name = $request->name;
-    $ct->to_index = $request->has('to_index');
-    if($request->has('to_index')) {
-      Category::where('to_index', true)->update(['to_index' => false]);
-    }
     $ct->parents()->sync($request->categories);
     $ct->save();
-    return redirect()->route('admin.production.category.index');
+    return redirect()->route('admin.production.category.index')->withSuccess(['Категоия - ' . $request->name . ' - изменена']);
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param  int  $id
-   * @return \Illuminate\Http\RedirectResponse
+   * @param int $id
+   * @return RedirectResponse
    */
-  public function destroy($id)
+  public function destroy(int $id)
   {
-    Category::destroy($id);
-    return redirect()->route('admin.production.category.index');
+    $category = Category::find($id);
+    $name = $category->name;
+    $category->delete();
+    return redirect()->route('admin.production.category.index')->withSuccess(['Категоия - ' . $name . ' - удалена']);
   }
 }
