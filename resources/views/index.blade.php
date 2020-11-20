@@ -83,8 +83,8 @@
         </div>
       </div>
 
-      @foreach($secondSections as $section)
-      <div class="col-lg-6 col-12 p-0 mt-4 pr-lg-3">
+      @foreach($secondSections as $index => $section)
+      <div class="col-lg-6 col-12 p-0 mt-4 {{ $index % 2 ? '' : 'pr-lg-3' }}">
         <div class="promotion h-100 h-100 d-flex" id="secondPromotion-{{$section->id}}">
           <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
           <h4 class="font-weight-bolder text-center text-white h3">{{ $section->meta->title }}</h4>
