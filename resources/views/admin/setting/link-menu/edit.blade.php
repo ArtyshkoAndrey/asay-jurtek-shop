@@ -73,7 +73,7 @@
             @method('PUT')
             <div class="row justify-content-end">
               <div class="col-auto">
-                <button class="btn btn-dark rounded-0 border-0 px-3 py-2" type="submit">Создать</button>
+                <button class="btn btn-dark rounded-0 border-0 px-3 py-2" type="submit">Обновить</button>
               </div>
             </div>
             <div class="row mt-3 align-items-end">
@@ -84,7 +84,7 @@
               </div>
               <div class="col-md-3">
                 <label for="link">Ссылка</label>
-                <input type="text" name="link" id="link" class="w-100 px-2 form-control rounded-0 {{ $errors->has('link') ? ' is-invalid' : '' }}" value="{{ old('link', $linkMenu->name) }}" required>
+                <input type="text" name="link" id="link" class="w-100 px-2 form-control rounded-0 {{ $errors->has('link') ? ' is-invalid' : '' }}" value="{{ old('link', $linkMenu->link) }}" required>
                 <span id="link-error" class="error invalid-feedback">{{ $errors->first('link') }}</span>
               </div>
 
