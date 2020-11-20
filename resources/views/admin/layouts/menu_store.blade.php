@@ -12,7 +12,7 @@
     <a href="{{ route('admin.store.pay.index') }}" class="{{ Route::currentRouteNamed('admin.store.pay.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Оплата</a>
   </div>
  <div class="col-sm-auto col-6 px-0 px-sm-2">
-   <a href="{{ route('admin.store.report.index') }}" class="{{ Route::currentRouteNamed('admin.store.reports.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Отчеты</a>
+   <a href="{{ route('admin.store.report.index') }}" class="{{ Route::currentRouteNamed('admin.store.report.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Отчеты</a>
  </div>
 {{--  <div class="col-sm-auto col-6 px-0 px-sm-2">--}}
 {{--    <a href="{{ route('admin.store.stock.index') }}" class="{{ Route::currentRouteNamed('admin.store.stock.*') ? 'bg-white' : 'bg-dark' }} px-3 py-2 d-block">Акции</a>--}}
