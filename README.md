@@ -1,61 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Asay Jurek Online Store
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About
 
-## About Laravel
+* Online store for the sale of clothing.
+* Project status: working
+* PHP 7.4 support
+* MySQL 5.7 support
+* Laravel 8
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+See real examples:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* <https://asayjurek.kz/>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Table of contents
 
-## Learning Laravel
+> * [Asaý Júrek Store](#asay-jurek-online-store)
+>   * [About](#about)
+>   * [Table of contents](#table-of-contents)
+>   * [Installation](#installation)
+>   * [Usage](#usage)
+>     * [Screenshots](#screenshots)
+>   * [Code](#code)
+>     * [Content](#content)
+>     * [Build](#build)
+>   * [Resources (Documentation and other links)](#resources-documentation-and-other-links)
+>   * [License](#license)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Sample:
 
-## Laravel Sponsors
+* From the Marketplace: install [OpenServer](https://ospanel.io/).
+* From the command line: `composer install`
+* From the command line: `php artisan 
+* Import data of db: `Project/public/db.sql`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Usage
+After some manipulations with the installation of the project, you need to click on the link to the `localhost:8000` store itself.
+By the link `/admin` contains the administrative panel. The panel is a multiple functional tabbed into me. IMPORTANT: without the permissions prescribed in the database, you will not be able to enter the administrative panel
 
-### Premium Partners
+### Screenshots
+##### TODO
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+## Code
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+[![Build Status](https://camo.githubusercontent.com/a9c21aed014621d8a6c93cf7ebea1a106b83ebf5/687474703a2f2f696d672e736869656c64732e696f2f62616467652f6275696c642d70617373696e672d627269676874677265656e2e737667)](https://github.com/ArtyshkoAndrey/WallRidestore_laravel_shop)
+[![Build Status](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)](https://github.com/ArtyshkoAndrey/WallRidestore_laravel_shop)
 
-## Code of Conduct
+### Content
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Vue, Laravel, Laravel-admin, Bootstrap, Admin-LTE, jQuery
 
-## Security Vulnerabilities
+### Build
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    composer install
+
+Build options:
+
+* NaN
+
+## Resources (Documentation and other links)
+1. [Laravel](https://laravel.com/docs/8.0/releases)
+2. [laravel-shop](https://github.com/summerblue/laravel-shop/tree/L05_5.7)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[MIT](https://opensource.org/licenses/MIT)
