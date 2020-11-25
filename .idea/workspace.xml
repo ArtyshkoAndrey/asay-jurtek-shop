@@ -21,9 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/setting/link-menu/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/setting/link-menu/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +236,8 @@
       <workItem from="1605434779434" duration="133000" />
       <workItem from="1605510807832" duration="2521000" />
       <workItem from="1605864309066" duration="894000" />
-      <workItem from="1605865351756" duration="577000" />
+      <workItem from="1605865351756" duration="873000" />
+      <workItem from="1606126205078" duration="121000" />
     </task>
     <servers />
   </component>
@@ -360,6 +358,11 @@
           <url>file://$PROJECT_DIR$/resources/views/auth/register.blade.php</url>
           <line>138</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/admin/layouts/aside.blade.php</url>
+          <line>49</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
