@@ -53,7 +53,8 @@
                         <div class="col-xl-4 col-lg-6">
                           <div class="row h-100">
                             <div class="col-4">
-                              <img src="{{ $categoryMenu->title === 'Clothes and accessories' ? asset('images/new-logo-selected.png') : asset('images/new-logo-vintage.png') }}" alt="logo" class="img-fluid">
+
+                              <img src="{{ $categoryMenu->name === 'Selected second hand' ? asset('images/new-logo-selected.png') : asset('images/new-logo-vintage.png') }}" alt="logo" class="img-fluid">
                             </div>
                             <div class="col-12 d-flex flex-column justify-content-end">
                               <p class="font-weight-bolder h5">{{ $categoryMenu->description }}</p>
