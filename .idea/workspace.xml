@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,6 +246,7 @@
       <workItem from="1605864309066" duration="894000" />
       <workItem from="1605865351756" duration="873000" />
       <workItem from="1606126205078" duration="121000" />
+      <workItem from="1606311847906" duration="2188000" />
     </task>
     <servers />
   </component>
@@ -280,10 +289,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1603353456165" />
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1605355308259">
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1606312485079">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605355308259" />
+    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1606312485079" />
     <state x="673" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605365904333">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -321,10 +330,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1603707026676" />
-    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605351490781">
+    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606312473170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1605351490781" />
+    <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1606312473170" />
     <state x="715" y="332" width="580" height="601" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1604555053117">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -333,10 +342,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="0" y="0" width="844" height="1036" key="dock-window-1/0.0.1920.1050@0.0.1920.1050" timestamp="1603352200865" />
-    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1605351852815">
+    <state x="667" y="258" width="1005" height="597" key="find.popup" timestamp="1606312600848">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1605351852815" />
+    <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606312600848" />
     <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1605370304632">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
