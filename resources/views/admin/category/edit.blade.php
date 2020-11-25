@@ -19,8 +19,14 @@
                 @method('PUT')
                 <div class="form-group">
                   <label for="name">Название категории</label>
-                  <input type="text" class="form-control rounded-0" id="name" name="name" placeholder="Название категории" value="{{ old('name') ? old('name') : $category->name }}">
+                  <input type="text" class="form-control rounded-0" id="name" name="name" placeholder="Название категории" value="{{ old('name', $category->name) }}">
                 </div>
+
+                <div class="form-group">
+                  <label for="description">Описание (для меню)</label>
+                  <input type="text" class="form-control rounded-0" id="description" name="description" placeholder="Описание" value="{{ old('description', $category->description) }}" required>
+                </div>
+
                 <div class="form-group">
                   <label for="categories" class="col-12">Родительская категория</label>
                   <select name="categories[]" multiple id="categories" class="form-control rounded-0 js-example-basic-multiple">

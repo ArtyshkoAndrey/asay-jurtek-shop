@@ -20,6 +20,12 @@
                   <label for="name">Название категории</label>
                   <input type="text" class="form-control rounded-0" id="name" name="name" placeholder="Название категории" required>
                 </div>
+
+                <div class="form-group">
+                  <label for="description">Описание (для меню)</label>
+                  <input type="text" class="form-control rounded-0" id="description" name="description" placeholder="Описание" required>
+                </div>
+
                 <div class="form-group">
                   <label for="categories" class="col-12">Родительская категория</label>
                   <select name="categories[]" multiple id="categories" class="form-control rounded-0 js-example-basic-multiple">

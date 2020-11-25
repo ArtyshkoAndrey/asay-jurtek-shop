@@ -49,9 +49,11 @@ class CategoryController extends Controller
 //      dd($request);
     $request->validate([
       'name' => 'required|string',
+      'description' => 'string'
     ]);
     $ct = new Category();
     $ct->name = $request->name;
+    $ct->description = $request->description;
     $ct->save();
     $ct->parents()->sync($request->categories);
     return redirect()->route('admin.production.category.index')->withSuccess(['Категоия - ' . $request->name . ' - создана']);
@@ -94,9 +96,11 @@ class CategoryController extends Controller
   {
     $request->validate([
       'name' => 'required|string',
+      'description' => 'string'
     ]);
     $ct = Category::find($id);
     $ct->name = $request->name;
+    $ct->description = $request->description;
     $ct->parents()->sync($request->categories);
     $ct->save();
     return redirect()->route('admin.production.category.index')->withSuccess(['Категоия - ' . $request->name . ' - изменена']);
