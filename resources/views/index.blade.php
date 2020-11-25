@@ -124,6 +124,7 @@
 
             <p class="text-muted mt-5 mb-0">Телефоны</p>
             <p class="h5 font-weight-normal">+ 7 (777) 777-77-77</p>
+            <p class="h5 font-weight-normal">+ 7 (727) 273-51-45</p>
 
             <p class="text-muted mt-5 mb-0">Режим работы</p>
             <p class="h5 font-weight-normal">Пн - Пт 12:00 - 20:30</p>
