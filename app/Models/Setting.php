@@ -71,7 +71,7 @@ class Setting extends Model
       'color_gradient' => '#D1BC8A',
       'gradient_position' => 'left-to-right', //right-to-left
       'gradient' => true,
-      'text' => 'Asay Jurek',
+      'text' => 'Asaý Júrek',
       'description' => 'Селективный секонд хенд',
       'text_btn' => 'Перекти к покупкам',
       'link_btn' => '/product/all',
