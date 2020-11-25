@@ -4,6 +4,10 @@
     </IfModule>
 
     RewriteEngine On
+
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
     RewriteCond %{HTTP:Authorization} ^(.*)
     RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
     RewriteCond %{REQUEST_FILENAME} -d [OR]
