@@ -31,17 +31,30 @@ class Setting extends Model
   ];
 
   /**
-   * Функция для смены статуса сайта
+   * Функция для получения статуса сайта
    *
-   * @param null $status
    * @return bool
    */
-  public function statusSite ($status = null): bool
+  public static function getStatusSite (): bool
   {
-    if ($status === null)
-      return boolval($this->where('key', 'status')->first()->meta);
-    else
+    return boolval(self::where('key', 'status')->first()->meta);
+  }
+
+
+  /**
+   * Функция для изменения статуса сайта
+   *
+   * @param bool $status
+   * @return bool
+   */
+  public function setStatusSite (bool $status): bool
+  {
+    try {
       $this->where('key', 'status')->first()->update(['meta' => $status]);
+      return true;
+    } catch (TypeError $e) {
+      return false;
+    }
   }
 
   /**
@@ -58,7 +71,7 @@ class Setting extends Model
       'color_gradient' => '#D1BC8A',
       'gradient_position' => 'left-to-right', //right-to-left
       'gradient' => true,
-      'text' => 'Asay Jurek',
+      'text' => 'Asaý Júrek',
       'description' => 'Селективный секонд хенд',
       'text_btn' => 'Перекти к покупкам',
       'link_btn' => '/product/all',

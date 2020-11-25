@@ -24,7 +24,7 @@
           @foreach (session('success') as $message)
             <div class="alert alert-info alert-dismissible position-absolute rounded-0 mt-3 mr-3" style="z-index: 100; right: 0;">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-              <h4><i class="icon fa fa-info"></i> Уcпешно</h4>
+              <h4><i class="icon fa fa-info"></i> Успешно</h4>
               {{ $message }}
               {{-- Lorem ipsum dolor sit amet. --}}
             </div>

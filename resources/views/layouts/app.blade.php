@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Asay Jurek - @yield('title')</title>
+  <title>Asaý Júrek - @yield('title')</title>
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -38,7 +38,7 @@
       <div class="row">
         <nav class="navbar navbar-light w-100 navbar-expand bg-transparent pt-0">
           <a class="navbar-brand h-100 d-flex align-items-center" href="{{ url('/') }}">
-            <img src="{{ asset('images/new-logo-selected.png') }}" alt="logo" class="w-auto" style="height: 50px;">
+            <img src="{{ asset('images/Primary-Logo.svg') }}" alt="logo" class="w-auto" style="height: 60px;">
           </a>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -53,7 +53,8 @@
                         <div class="col-xl-4 col-lg-6">
                           <div class="row h-100">
                             <div class="col-4">
-                              <img src="{{ $categoryMenu->title === 'Clothes and accessories' ? asset('images/new-logo-selected.png') : asset('images/new-logo-vintage.png') }}" alt="logo" class="img-fluid">
+
+                              <img src="{{ $categoryMenu->name === 'Selected second hand' ? asset('images/Asau_Jurek_Second.svg') : ( $categoryMenu->name === 'Kids' ? asset('images/Asay_Jurek_KIDS.svg') : asset('images/Asay_Jurek_Vintage.svg') ) }}" alt="logo" class="img-fluid">
                             </div>
                             <div class="col-12 d-flex flex-column justify-content-end">
                               <p class="font-weight-bolder h5">{{ $categoryMenu->description }}</p>

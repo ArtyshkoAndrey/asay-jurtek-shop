@@ -8,8 +8,8 @@
     </li>
   </ul>
   <ul class="navbar-nav w-100">
-    <li class="nav-item row ml-auto mr-auto">
-      <img src="{{ asset('public/images/new-logo-selected.png') }}" height="40" alt="">
+    <li class="nav-item row mr-auto d-none d-md-flex">
+      <img src="{{ asset('public/images/logo-admin.svg') }}" height="40" alt="">
     </li>
     <li class="nav-item dropdown row">
       <section class="col">

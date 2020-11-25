@@ -20,7 +20,7 @@
             <a href="https://www.vk.com/fulliton" target="_blank" class="text-white text-decoration-none">Powered by <span class="text-danger">Fulliton</span></a>
           </div>
           <div class="col-auto">
-            <p class="mb-0 text-white">Все права защищены © Asay Jurek {{ \Carbon\Carbon::now()->year }}</p>
+            <p class="mb-0 text-white">Все права защищены © Asaý Júrek {{ \Carbon\Carbon::now()->year }}</p>
           </div>
         </div>
       </div>

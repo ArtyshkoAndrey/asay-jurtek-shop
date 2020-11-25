@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-auto d-flex justify-content-center align-items-center">
                   <div class="custom-control w-100 px-5 custom-switch">
-                    <input type="checkbox" name="status" class="custom-control-input" id="status" {{ (new App\Models\Setting)->statusSite() ? 'checked' : null }}>
+                    <input type="checkbox" name="status" class="custom-control-input" id="status" {{ App\Models\Setting::getStatusSite() ? 'checked' : null }}>
                     <label class="custom-control-label" for="status">Включить сайт</label>
                   </div>
                 </div>
