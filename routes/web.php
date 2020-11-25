@@ -1,11 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', function () {
-  (new App\Models\Setting)->setHeader();
-});
-
-if ((new App\Models\Setting)->statusSite()) {
+if (App\Models\Setting::getStatusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
   Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');

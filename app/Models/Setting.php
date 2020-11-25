@@ -31,17 +31,30 @@ class Setting extends Model
   ];
 
   /**
-   * Функция для смены статуса сайта
+   * Функция для получения статуса сайта
    *
-   * @param null $status
    * @return bool
    */
-  public function statusSite ($status = null): bool
+  public static function getStatusSite (): bool
   {
-    if ($status === null)
-      return boolval($this->where('key', 'status')->first()->meta);
-    else
+    return boolval(self::where('key', 'status')->first()->meta);
+  }
+
+
+  /**
+   * Функция для изменения статуса сайта
+   *
+   * @param bool $status
+   * @return bool
+   */
+  public function setStatusSite (bool $status): bool
+  {
+    try {
       $this->where('key', 'status')->first()->update(['meta' => $status]);
+      return true;
+    } catch (TypeError $e) {
+      return false;
+    }
   }
 
   /**

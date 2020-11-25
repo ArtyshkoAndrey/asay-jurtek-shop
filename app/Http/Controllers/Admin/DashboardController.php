@@ -40,7 +40,7 @@ class DashboardController extends Controller
    * @return RedirectResponse
    */
   public function status (Request $request) {
-    (new Setting)->statusSite((int)$request->has('status'));
+    (new Setting)->setStatusSite((bool) $request->has('status'));
     return redirect()->back();
   }
 }
