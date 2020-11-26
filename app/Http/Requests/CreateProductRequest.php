@@ -25,7 +25,8 @@ class CreateProductRequest extends FormRequest
   {
     return [
       'title'       => 'required|string|max:255',
-      'description' => 'required',
+      'description' => 'required|string',
+      'history'     => 'string',
       'price'       => 'required|integer|min:0',
       'price_sale'  => 'sometimes|integer|min:0|nullable',
       'weight'      => 'required|min:0',
@@ -33,7 +34,7 @@ class CreateProductRequest extends FormRequest
       'on_sale'     => 'boolean',
       'meta'        => 'required|array',
       'sex'         => 'required|string',
-      'status'      => 'required|string',
+      'status'      => 'string',
       'category'    => 'required|exists:App\Models\Category,id',
       'skus'        => 'required|exists:App\Models\Skus,id'
     ];
