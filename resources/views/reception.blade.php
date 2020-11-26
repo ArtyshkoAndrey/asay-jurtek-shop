@@ -10,6 +10,10 @@
     .wrapper {
       padding: 200px 0;
     }
+
+    .wrapper-info {
+      margin-top: 100px;
+    }
   </style>
 @endsection
 
@@ -25,7 +29,7 @@
       </div>
     </div>
     <div class="row mt-5 mx-2 mx-md-0">
-      <div class="col-md-6 mt-5 px-4">
+      <div class="col-md-6 wrapper-info px-4">
         <div class="row">
           <div class="col-3">
             <div class="row">
@@ -51,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-5 px-4">
+      <div class="col-md-6 wrapper-info px-4">
         <div class="row">
           <div class="col-3">
             <div class="row">
@@ -69,7 +73,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-5 px-4">
+      <div class="col-md-6 wrapper-info px-4">
         <div class="row">
           <div class="col-3">
             <div class="row">
@@ -92,7 +96,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-5 px-4">
+      <div class="col-md-6 wrapper-info px-4">
         <div class="row">
           <div class="col-3">
             <div class="row">
@@ -110,7 +114,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 mt-5 px-4">
+      <div class="col-md-6 wrapper-info px-4">
         <div class="row">
           <div class="col-3">
             <div class="row">
