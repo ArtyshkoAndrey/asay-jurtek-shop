@@ -81,9 +81,12 @@
               @endforeach
 
 
-              <li class="nav-item d-none d-lg-block mr-lg-auto">
+              <li class="nav-item d-none d-lg-block">
                 <a href="{{ route('contacts') }}" class="nav-link text-dark">Адресс и контакты</a>
               </li>
+                <li class="nav-item d-none d-lg-block">
+                  <a href="{{ route('reception') }}" class="nav-link text-dark">Приём вещей</a>
+                </li>
 {{--              Поиск--}}
 <!--               <li class="nav-item d-none d-xl-flex">
                 <form class="form-inline my-2 my-lg-0 nav-search" method="GET" action="{{ route('search') }}">
