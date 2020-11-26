@@ -16,8 +16,9 @@ class CreateProductsTable extends Migration
     Schema::create('products', function (Blueprint $table) {
       $table->id();
       $table->string('title');
-      $table->string('sex')->default(\App\Models\Product::SEX_ATTR_MALE);
+      $table->string('sex')->default(\App\Models\Product::SEX_ATTR_MALE)->nullable();
       $table->text('description');
+      $table->text('history')->nullable();
       $table->boolean('on_sale')->default(false);
       $table->boolean('on_new')->default(false);
       $table->decimal('price', 10, 0);
