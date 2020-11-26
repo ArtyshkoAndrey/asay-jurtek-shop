@@ -7,6 +7,7 @@ if (App\Models\Setting::getStatusSite()) {
   Route::get('/reception', [App\Http\Controllers\HomeController::class, 'reception'])->name('reception');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');
   Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
+  Route::post('/auth', [App\Http\Controllers\HomeController::class, 'auth'])->name('auth');
   Route::prefix('product')->name('product.')->group(function () {
     Route::get('/all', [\App\Http\Controllers\ProductController::class, 'all'])->name('all');
     Route::get('/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('show');
