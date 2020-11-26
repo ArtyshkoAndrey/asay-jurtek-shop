@@ -82,12 +82,30 @@
                   <th class="text-muted font-weight-normal">Состояние</th>
                   <td class="font-weight-bolder">{{ $item->status }}</td>
                 </tr>
+                <tr>
+                  <th class="text-muted font-weight-normal">Вес</th>
+                  <td class="font-weight-bolder">{{ $item->weight }} кг.</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+    @if (isset($item->history))
+      <div class="row">
+        <div class="col-12">
+          <button class="btn btn-orange ml-0 ml-md-auto d-block d my-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            История вещи
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body rounded-0">
+              {!! $item->history !!}
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
   </div>
 
   <div class="container-fluid mt-5 mt-ld-5">
