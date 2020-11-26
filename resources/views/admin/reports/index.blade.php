@@ -19,8 +19,6 @@
             <div class="col-md justify-content-center align-items-center d-flex">
               <div class="btn-group"  role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-dark active">Год</button>
-                <button type="button" class="btn btn-outline-dark">Месяц</button>
-                <button type="button" class="btn btn-outline-dark">Неделя</button>
               </div>
             </div>
             <div class="col-md justify-content-end align-items-center d-flex">
