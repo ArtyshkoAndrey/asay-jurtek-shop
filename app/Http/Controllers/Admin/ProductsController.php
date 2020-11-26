@@ -103,6 +103,7 @@ class ProductsController extends Controller {
     $product->meta        = $request->meta;
     $product->sex         = $request->sex;
     $product->status      = $request->status;
+    $product->history     = $request->history;
     $product
       ->skus()
       ->associate($request->skus);
@@ -168,6 +169,7 @@ class ProductsController extends Controller {
     $product->meta        = $request->meta;
     $product->sex         = $request->sex;
     $product->status      = $request->status;
+    $product->history     = $request->history;
     $product
       ->categories()
       ->sync($request->category);

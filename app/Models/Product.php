@@ -35,7 +35,8 @@ class Product extends Model
     'skus',
     'meta',
     'on_new',
-    'sex'
+    'sex',
+    'history'
   ];
 
   /**

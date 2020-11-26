@@ -43,4 +43,13 @@ class HomeController extends Controller
   {
     return view('contacts');
   }
+
+  /**
+   * Display Reception page
+   * @return Application|Factory|View
+   */
+  public function reception(): View
+  {
+    return view('reception');
+  }
 }

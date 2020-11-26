@@ -64,6 +64,11 @@
                     <textarea name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" cols="30" rows="10" required>{{ old('description', $product->description) }}</textarea>
                     <span id="description-error" class="error invalid-feedback">{{ $errors->first('description') }}</span>
                   </div>
+                  <div class="col-12 mt-2">
+                    <label for="history">История вещи</label>
+                    <textarea name="history" class="form-control {{ $errors->has('history') ? ' is-invalid' : '' }}" id="history" cols="30" rows="10">{{ old('history', $product->history) }}</textarea>
+                    <span id="hostory-error" class="error invalid-feedback">{{ $errors->first('history') }}</span>
+                  </div>
                   <div class="col-12 col-md-6 mt-2">
                     <label for="category">Категории</label>
                     <select name="category[]" class="form-control rounded-0 {{ $errors->has('category') ? ' is-invalid' : '' }}" multiple id="category">
@@ -95,26 +100,29 @@
                   </div>
 
                   <div class="col-md-6 mt-2">
-                    <label for="stock">Статус</label>
+                    <label for="status">Статус</label>
                     <input type="text" name="status" class="form-control rounded-0 {{ $errors->has('status') ? ' is-invalid' : '' }}" id="status" value="{{ old('status', $product->status) }}" required>
                     <span id="status-error" class="error invalid-feedback">{{ $errors->first('status') }}</span>
                   </div>
 
                   <div class="col-md-6 mt-2">
                     <label for="weight">Вес товара (кг)</label>
-                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0" id="weight" value="{{ old('weight', $product->weight) }}" required>
+                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0 {{ $errors->has('weight') ? ' is-invalid' : '' }}" id="weight" value="{{ old('weight', $product->weight) }}" required>
+                    <span id="weight-error" class="error invalid-feedback">{{ $errors->first('wight') }}</span>
                   </div>
 
                   {{-- Meta --}}
 
                   <div class="col-md-6 mt-2">
                     <label for="meta-description">Meta Description</label>
-                  <input type="text" name="meta[description]" class="form-control rounded-0" id="meta-description" value="{{ isset($product->meta->description) ? $product->meta->description : '' }}">
+                    <input type="text" name="meta[description]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-description" value="{{ isset($product->meta->description) ? $product->meta->description : '' }}">
+                    <span id="meta1-error" class="error invalid-feedback">{{ $errors->first('meta') }}</span>
                   </div>
 
                   <div class="col-md-6 mt-2">
                     <label for="meta-keywords">Meta Keywords</label>
-                    <input type="text" name="meta[keywords]" class="form-control rounded-0" id="meta-keywords" value="{{ isset($product->meta->keywords) ? $product->meta->keywords : '' }}">
+                    <input type="text" name="meta[keywords]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-keywords" value="{{ isset($product->meta->keywords) ? $product->meta->keywords : '' }}">
+                    <span id="meta2-error" class="error invalid-feedback">{{ $errors->first('meta') }}</span>
                   </div>
                 </div>
               </div>

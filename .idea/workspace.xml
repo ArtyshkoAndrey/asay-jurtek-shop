@@ -20,7 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/storage.rar" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/files/ДОГОВОР_2020.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/reception-closhes.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/reception-cost.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/reception-photo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/reception-search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/reception.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reception.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateProductRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateProductRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_20_154822_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_20_154822_create_products_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/item.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +200,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -185,6 +208,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OpenServer\domains\zakaz\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\OpenServer\domains\zakaz\resources\views\profile" />
       <recent name="D:\OpenServer\domains\zakaz\tests\Unit" />
@@ -239,6 +265,7 @@
       <workItem from="1605865351756" duration="873000" />
       <workItem from="1606126205078" duration="121000" />
       <workItem from="1606311847906" duration="7328000" />
+      <workItem from="1606391244245" duration="5689000" />
     </task>
     <servers />
   </component>
@@ -305,11 +332,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="709" y="247" key="NewPhpClassDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605366364087" />
-    <state x="727" y="414" key="NewPhpFileDialog" timestamp="1605515155599">
+    <state x="727" y="414" key="NewPhpFileDialog" timestamp="1606394228080">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1603547200186" />
-    <state x="727" y="414" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605515155599" />
+    <state x="727" y="414" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606394228080" />
     <state x="461" y="169" width="1363" height="708" key="SettingsEditor" timestamp="1604556731297">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -338,10 +365,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="667" y="258" width="1005" height="597" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606316427272" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1605370304632">
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1606391819806">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1605370304632" />
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606391819806" />
     <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1604575870478">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
