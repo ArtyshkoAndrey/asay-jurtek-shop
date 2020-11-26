@@ -58,7 +58,10 @@ class ProductController extends Controller {
     if ($user = $request->user()) {
       $inCart = (bool) $user->cartItems()->where('product_id', $id)->first();
     }
-    $items = Product::take(4)->get(); // TODO: Сделать вывод из той же категории
+    $ids = $item->categories->pluck('id')->toArray();
+    $items = Product::with('photos', 'skus')->whereHas('categories', function($query) use ($ids) {
+      $query->whereIn('categories.id', $ids);
+    })->take(4)->get();
     return view('item', compact('item', 'items', 'inCart'));
   }
 
