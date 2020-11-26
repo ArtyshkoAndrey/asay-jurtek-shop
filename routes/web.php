@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-if (App\Models\Setting::getStatusSite()) {
+//if (App\Models\Setting::getStatusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
   Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
   Route::get('/reception', [App\Http\Controllers\HomeController::class, 'reception'])->name('reception');
@@ -31,7 +31,7 @@ if (App\Models\Setting::getStatusSite()) {
   });
 
 
-}
+//}
 
 Auth::routes();
 
