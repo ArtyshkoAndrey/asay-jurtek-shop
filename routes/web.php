@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 if (App\Models\Setting::getStatusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
   Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
+  Route::get('/reception', [App\Http\Controllers\HomeController::class, 'reception'])->name('reception');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');
   Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
   Route::prefix('product')->name('product.')->group(function () {
