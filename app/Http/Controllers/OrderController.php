@@ -133,7 +133,6 @@ class OrderController extends Controller
     );
 
     if ($order->payment_method === 'card') {
-//    TODO: в заказе не сохраняется номер телефона
       $paybox = new Paybox();
       $pay = Pay::first();
       $paybox->merchant->id = $pay->pg_merchant_id;
