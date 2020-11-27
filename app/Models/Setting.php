@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -45,12 +46,12 @@ class Setting extends Model
    * @param bool $status
    * @return bool
    */
-  public function setStatusSite (bool $status): bool
+  public static function setStatusSite (bool $status): bool
   {
     try {
-      $this->where('key', 'status')->first()->update(['meta' => $status]);
+      self::where('key', 'status')->first()->update(['meta' => $status]);
       return true;
-    } catch (TypeError $e) {
+    } catch (Exception $e) {
       return false;
     }
   }
