@@ -2,16 +2,66 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
 
 /**
  * Class Product
  * Класс Модель для товаров
+ *
+ * @package App\Models
+ * @property int $id
+ * @property string $title
+ * @property string|null $sex
+ * @property string $description
+ * @property string|null $history
+ * @property bool $on_sale
+ * @property bool $on_new
+ * @property string $price
+ * @property string $weight
+ * @property string|null $price_sale
+ * @property int $skus_id
+ * @property object|null $meta
+ * @property string|null $status
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ * @property-read Collection|Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read Collection|ProductsImage[] $photos
+ * @property-read int|null $photos_count
+ * @property-read Skus $skus
+ * @method static Builder|Product newModelQuery()
+ * @method static Builder|Product newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
+ * @method static Builder|Product query()
+ * @method static Builder|Product whereCreatedAt($value)
+ * @method static Builder|Product whereDeletedAt($value)
+ * @method static Builder|Product whereDescription($value)
+ * @method static Builder|Product whereHistory($value)
+ * @method static Builder|Product whereId($value)
+ * @method static Builder|Product whereMeta($value)
+ * @method static Builder|Product whereOnNew($value)
+ * @method static Builder|Product whereOnSale($value)
+ * @method static Builder|Product wherePrice($value)
+ * @method static Builder|Product wherePriceSale($value)
+ * @method static Builder|Product whereSex($value)
+ * @method static Builder|Product whereSkusId($value)
+ * @method static Builder|Product whereStatus($value)
+ * @method static Builder|Product whereTitle($value)
+ * @method static Builder|Product whereUpdatedAt($value)
+ * @method static Builder|Product whereWeight($value)
+ * @method static \Illuminate\Database\Query\Builder|Product withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Product withoutTrashed()
+ * @mixin Eloquent
  */
 class Product extends Model
 {

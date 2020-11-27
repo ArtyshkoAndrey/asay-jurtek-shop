@@ -32,15 +32,13 @@ class DashboardController extends Controller
     return view('admin.dashboard');
   }
 
-//  TODO: Переписать на гетеры и сетеры
-
   /**
    * Set status site
    * @param Request $request
    * @return RedirectResponse
    */
   public function status (Request $request) {
-    (new Setting)->setStatusSite((bool) $request->has('status'));
+    Setting::setStatusSite((bool) $request->has('status'));
     return redirect()->back();
   }
 }

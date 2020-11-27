@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +187,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
@@ -257,7 +255,12 @@
       <workItem from="1606311847906" duration="7328000" />
       <workItem from="1606391244245" duration="6611000" />
       <workItem from="1606442074300" duration="12947000" />
-      <workItem from="1606462754440" duration="394000" />
+      <workItem from="1606462754440" duration="1060000" />
+      <workItem from="1606472588939" duration="637000" />
+      <workItem from="1606473283765" duration="4153000" />
+      <workItem from="1606477659727" duration="60000" />
+      <workItem from="1606477767049" duration="2079000" />
+      <workItem from="1606482649308" duration="738000" />
     </task>
     <servers />
   </component>
@@ -284,14 +287,19 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="770" y="404" key="#Composer/0.0.1920.1050@0.0.1920.1050" timestamp="1603350444854" />
-    <state x="586" y="203" key="#Inspections" timestamp="1603799515056">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="417" y="85" key="#Inspections" timestamp="1606478930429">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="417" y="85" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1606478930429" />
     <state x="586" y="203" key="#Inspections/0.0.1920.1050@0.0.1920.1050" timestamp="1603799515056" />
     <state x="835" y="337" key="#Language_Injections" timestamp="1604823381094">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="835" y="337" key="#Language_Injections/0.0.1920.1050@0.0.1920.1050" timestamp="1604823381094" />
+    <state x="275" y="5" key="#Plugins" timestamp="1606477722084">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="5" key="#Plugins/0.0.1366.728@0.0.1366.728" timestamp="1606477722084" />
     <state x="336" y="366" key="#SQL_Dialects" timestamp="1603353353545">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -300,9 +308,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606403034287" />
-    <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1606312485079">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="457" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606475156488">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="457" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1606475156488" />
+    <state x="544" y="92" key="#com.intellij.ide.util.MemberChooser" timestamp="1606478526174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="544" y="92" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1606478526174" />
     <state x="765" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1606312485079" />
     <state x="673" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605365904333">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -329,9 +342,10 @@
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1603547200186" />
     <state x="727" y="414" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1606451972780" />
-    <state x="461" y="169" width="1363" height="708" key="SettingsEditor" timestamp="1606445686467">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="328" y="20" width="970" height="708" key="SettingsEditor" timestamp="1606477570025">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="328" y="20" width="970" height="708" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1606477570025" />
     <state x="461" y="169" width="1363" height="708" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1606445686467" />
     <state x="681" y="266" width="540" height="524" key="StructurePopup" timestamp="1604302893388">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -341,6 +355,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1050@0.0.1920.1050" timestamp="1603707026676" />
+    <state x="462" y="208" key="cloudConfig.PluginsDialog" timestamp="1606477604555">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="462" y="208" key="cloudConfig.PluginsDialog/0.0.1366.728@0.0.1366.728" timestamp="1606477604555" />
+    <state x="555" y="208" key="cloudConfig.SelfSettingsDialog" timestamp="1606477598113">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="555" y="208" key="cloudConfig.SelfSettingsDialog/0.0.1366.728@0.0.1366.728" timestamp="1606477598113" />
     <state x="566" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606312473170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

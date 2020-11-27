@@ -2,12 +2,32 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Class Setting
  * Класс модель для Настроек
+ *
+ * @package App\Models
+ * @property int $id
+ * @property string $key
+ * @property object $meta
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Setting newModelQuery()
+ * @method static Builder|Setting newQuery()
+ * @method static Builder|Setting query()
+ * @method static Builder|Setting whereCreatedAt($value)
+ * @method static Builder|Setting whereId($value)
+ * @method static Builder|Setting whereKey($value)
+ * @method static Builder|Setting whereMeta($value)
+ * @method static Builder|Setting whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Setting extends Model
 {
@@ -45,12 +65,12 @@ class Setting extends Model
    * @param bool $status
    * @return bool
    */
-  public function setStatusSite (bool $status): bool
+  public static function setStatusSite (bool $status): bool
   {
     try {
-      $this->where('key', 'status')->first()->update(['meta' => $status]);
+      self::where('key', 'status')->first()->update(['meta' => $status]);
       return true;
-    } catch (TypeError $e) {
+    } catch (Exception $e) {
       return false;
     }
   }
