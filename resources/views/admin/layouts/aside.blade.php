@@ -33,6 +33,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{ route('admin.news.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.news.*') ? 'active' : '' }}">
+            <i class="fas fa-newspaper mr-3"></i>
+            <p>
+              Новости
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="{{ route('admin.users.index') }}" class="nav-link rounded-0 {{ Route::currentRouteNamed('admin.users.*') ? 'active' : '' }}">
             <i class="fas fa-user mr-3"></i>
             <p>

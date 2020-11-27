@@ -10,10 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * Class ExpressZone
  * Класс Модель Зон компаний
- *
- * @package App\Models
- * @method create(array $all)
- * @method static find($id)
  */
 class ExpressZone extends Model
 {

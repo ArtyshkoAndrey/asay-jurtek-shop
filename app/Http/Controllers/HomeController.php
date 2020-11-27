@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Product;
 use App\Models\Setting;
 use Illuminate\Contracts\Foundation\Application;
@@ -34,7 +35,9 @@ class HomeController extends Controller
       ->take(4)
       ->with('photos')
       ->get();
-    return view('index', compact('header', 'items', 'secondSections'));
+
+    $newses = News::all();
+    return view('index', compact('header', 'items', 'secondSections', 'newses'));
   }
 
   /**

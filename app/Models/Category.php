@@ -9,10 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * Category Class
  * Класс Модель для Категорий
- *
- * @method static find($value)
- * @method static whereLike(string $string, string $category)
- * @method static where(string $string, bool $true)
  */
 class Category extends Model
 {

@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Setting
  * Класс модель для Настроек
- *
- * @method static where(string $string, string $string1)
  */
 class Setting extends Model
 {

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * Class ProductsImage
  * Класс Модель для Фотограйии товара
  * @package App\Models
- * @method static where(string $string, $photo)
  */
 class ProductsImage extends Model
 {

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * Class Pay
  * Класс Модель для настроки оплаты
  * @package App\Models
- * @method static find(int $id)
  */
 class Pay extends Model
 {

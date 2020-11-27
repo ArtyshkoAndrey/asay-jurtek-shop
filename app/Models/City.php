@@ -9,10 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * Class City
  * Класс Модель для городов
- *
- * @method static whereLike(string $string, string $city)
- * @method static whereHas(string $string, \Closure $param)
- * @method static find($city)
  */
 class City extends Model
 {

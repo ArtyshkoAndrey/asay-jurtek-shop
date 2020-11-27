@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Class Country
  * Класс Модель для стран
- *
- * @method static whereLike(string $string, string $country)
- * @method static find($country)
  */
 class Country extends Model
 {

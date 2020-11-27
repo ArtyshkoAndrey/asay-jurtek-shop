@@ -84,9 +84,12 @@
               <li class="nav-item d-none d-lg-block">
                 <a href="{{ route('contacts') }}" class="nav-link text-dark">Адресс и контакты</a>
               </li>
-                <li class="nav-item d-none d-lg-block">
-                  <a href="{{ route('reception') }}" class="nav-link text-dark">Приём вещей</a>
-                </li>
+              <li class="nav-item d-none d-lg-block">
+                <a href="{{ route('reception') }}" class="nav-link text-dark">Приём вещей</a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <a href="{{ route('news.index') }}" class="nav-link text-dark">Наш блог</a>
+              </li>
 {{--              Поиск--}}
 <!--               <li class="nav-item d-none d-xl-flex">
                 <form class="form-inline my-2 my-lg-0 nav-search" method="GET" action="{{ route('search') }}">
@@ -280,6 +283,7 @@
   </div>
   @include('layouts.footer')
   <script src="{{ asset('js/app.js') }}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.9.0/slick/slick.min.js"></script>
   <script>
     document.getElementById("cart").addEventListener('click', function (event) {
       event.stopPropagation();

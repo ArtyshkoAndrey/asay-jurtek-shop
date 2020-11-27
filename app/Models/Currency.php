@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Currency
  * Класс Модель валюты
- *
- * @method static find(int $id)
  */
 class Currency extends Model
 {

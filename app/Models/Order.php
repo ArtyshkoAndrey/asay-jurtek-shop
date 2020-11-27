@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * Класс Модель для Заказов
  *
  * @package App\Models
- * @method static find(int $id)
  */
 class Order extends Model
 {
