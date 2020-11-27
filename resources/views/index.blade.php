@@ -3,6 +3,9 @@
 
 @section('style')
   <style>
+    .mt-100 {
+      margin-top: 100px;
+    }
     #first-big-header {
       position: relative;
       @if($header->gradient)
@@ -30,7 +33,7 @@
     }
 
     .promotion {
-     min-height: 655px;
+     min-height: 455px;
     }
 
     .promotion>div {
@@ -73,6 +76,7 @@
 @section('content')
   <div class="container-fluid">
     <div class="row m-0">
+
       <div class="col-12 d-flex align-items-center" id="first-big-header">
         <div class="row w-100 m-0 {{$header->text_center ? 'justify-content-center' : ($header->position === 'left' ? 'justify-content-end' : 'justify-content-start')}}">
           <div class="col-lg-6 text-center text-white">
@@ -83,21 +87,25 @@
         </div>
       </div>
 
-      @foreach($secondSections as $index => $section)
-      <div class="col-lg-6 col-12 p-0 mt-4 {{ $index % 2 ? '' : 'pr-lg-3' }}">
-        <div class="promotion h-100 h-100 d-flex" id="secondPromotion-{{$section->id}}">
-          <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
-          <h4 class="font-weight-bolder text-center text-white h3">{{ $section->meta->title }}</h4>
-          <a href="{{ url($section->meta->link) }}" class="btn btn-transparent btn-text-white rounded-0">{{ $section->meta->btn_text }}</a>
-        </div>
+      <div class="col-12 mt-100">
+        <div class="row">
+          @foreach($secondSections as $index => $section)
+            <div class="col-lg-4 col-12 p-0 mt-4 {{ $index / 2 == 1 ? '' : 'pr-lg-3' }}">
+              <div class="promotion h-100 h-100 d-flex" id="secondPromotion-{{$section->id}}">
+                <div class="w-100 h-100 d-flex align-items-center flex-column justify-content-center">
+                  <h4 class="font-weight-bolder text-center text-white h3">{{ $section->meta->title }}</h4>
+                  <a href="{{ url($section->meta->link) }}" class="btn btn-transparent btn-text-white rounded-0">{{ $section->meta->btn_text }}</a>
+                </div>
+              </div>
+            </div>
+          @endforeach
         </div>
       </div>
-      @endforeach
 
     </div>
   </div>
 
-  <div class="container-fluid mt-4">
+  <div class="container-fluid mt-100">
     <div class="row m-0">
       <h3>Новые товары</h3>
     </div>
@@ -114,7 +122,7 @@
     </div>
   </div>
 
-  <div class="container-fluid mt-4">
+  <div class="container-fluid mt-100">
     <div class="row m-0">
       <h3>Наш блог</h3>
     </div>
@@ -131,7 +139,7 @@
     </div>
   </div>
 
-  <div class="container-fluid mt-5">
+  <div class="container-fluid mt-100">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 col-md-10">
         <div class="row bg-gray align-items-center">
