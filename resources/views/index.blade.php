@@ -114,6 +114,23 @@
     </div>
   </div>
 
+  <div class="container-fluid mt-4">
+    <div class="row m-0">
+      <h3>Наш блог</h3>
+    </div>
+    <div class="row m-0" id="full-width-news">
+      @forelse($newses as $news)
+{{--        <div class="col-lg-3 mt-4 col-sm-6 col-12 pl-sm-0">--}}
+          @include('layouts.news', array('news'=>$news, 'slider' => true))
+{{--        </div>--}}
+      @empty
+        <div class="col-12 text-center">
+          <p class="h3 font-weight-bolder">Новостей нет</p>
+        </div>
+      @endforelse
+    </div>
+  </div>
+
   <div class="container-fluid mt-5">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10 col-md-10">
@@ -150,5 +167,32 @@
       let itemsImg = $('.item img');
       itemsImg.height(itemsImg.width())
     }
+    $( document ).ready(function() {
+      $('#full-width-news').slick({
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        cssEase: 'linear',
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          }
+        ]
+      });
+    })
   </script>
 @endsection

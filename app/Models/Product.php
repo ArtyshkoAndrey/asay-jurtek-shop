@@ -12,10 +12,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Product
  * Класс Модель для товаров
- *
- * @method static take(int $int)
- * @method static findMany($ids)
- * @method static where(string $string, bool $true)
  */
 class Product extends Model
 {

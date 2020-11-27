@@ -16,8 +16,6 @@ use Illuminate\Notifications\Notifiable;
  * Класс Модель для Пользователя
  *
  * @package App\Models
- * @method static find()
- * @method static where(string $string, $email)
  */
 class User extends Authenticatable
 {

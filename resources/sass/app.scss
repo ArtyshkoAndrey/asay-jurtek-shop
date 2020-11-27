@@ -2,6 +2,20 @@
 @import "fonts";
 @import "bootstrap";
 @import "~select2/src/scss/core";
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+/* the slides */
+.slick-slide {
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+}
+
+/* the parent */
+.slick-list {
+  margin-left:-15px;
+}
 
 /* Make Select2 boxes match Bootstrap3 as well as Bootstrap4 heights: */
 .select2-selection__rendered {
@@ -364,6 +378,10 @@ footer {
 .item {
   transition: .5s;
   border: 1px solid transparent;
+  &:-webkit-any-link:focus {
+    outline-offset: 0;
+    outline: none;
+  }
   &:hover {
     border: 1px solid #A69C93;
   }
@@ -377,7 +395,7 @@ footer {
     transition: .5s;
     display: block;
     height: 300px;
-    &:hover {
+    &.img-scale:hover {
       transform: scale(1.1);
     }
   }

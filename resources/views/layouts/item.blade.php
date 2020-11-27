@@ -1,7 +1,7 @@
 <a href="{{ route('product.show', $item->id) }}" class="item h-100 w-100 d-block text-decoration-none inverse">
   <div class="row m-0">
     <div class="col p-0 scale">
-      <img src="{{ $item->placeholder() }}" alt="{{ $item->title }}" class="img-fluid">
+      <img src="{{ $item->placeholder() }}" alt="{{ $item->title }}" class="img-fluid img-scale">
     </div>
   </div>
   <div class="row mt-2 px-2">

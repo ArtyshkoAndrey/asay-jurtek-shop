@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 if (App\Models\Setting::getStatusSite()) {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+  Route::resource('/news', App\Http\Controllers\NewsController::class);
   Route::get('/contacts', [App\Http\Controllers\HomeController::class, 'contacts'])->name('contacts');
   Route::get('/reception', [App\Http\Controllers\HomeController::class, 'reception'])->name('reception');
   Route::post('/currency/change', [App\Http\Controllers\CurrencyController::class, 'change'])->name('currency.change');
@@ -43,6 +44,13 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
   Route::resource('/users', App\Http\Controllers\Admin\UserController::class)->except([
     'create', 'store', 'show'
   ]);
+  Route::resource('/news', App\Http\Controllers\Admin\NewsController::class)->except([
+    'show'
+  ]);
+  Route::post('/news/upload/tiny/image', [App\Http\Controllers\Admin\NewsController::class, 'tinyUploadImage'])->name('news.upload.tiny.image');
+  Route::post('/news/image-create', [App\Http\Controllers\Admin\NewsController::class, 'photoCreate'])->name('news.photoCreate');
+  Route::post('/news/image-delete', [App\Http\Controllers\Admin\NewsController::class, 'photoDelete'])->name('news.photoDelete');
+
   Route::name('store.')->group(function () {
 
     Route::resource('order', App\Http\Controllers\Admin\OrderController::class)->except([

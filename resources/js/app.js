@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import kebabCase from 'lodash/kebabCase'
 
 require('sweetalert');
+require("slick-carousel");
 window._ = lodash;
 window.Vue = require('vue');
 Vue.config.productionTip = false
