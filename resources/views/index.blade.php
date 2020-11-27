@@ -128,9 +128,9 @@
     </div>
     <div class="row m-0" id="full-width-news">
       @forelse($newses as $news)
-{{--        <div class="col-lg-3 mt-4 col-sm-6 col-12 pl-sm-0">--}}
+        <div class="col-lg-3 mt-4 col-sm-6 col-12 pl-sm-0">
           @include('layouts.news', array('news'=>$news, 'slider' => true))
-{{--        </div>--}}
+        </div>
       @empty
         <div class="col-12 text-center">
           <p class="h3 font-weight-bolder">Новостей нет</p>
@@ -180,23 +180,20 @@
         dots: false,
         infinite: false,
         speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 2,
+        slidesPerRow: 4,
         cssEase: 'linear',
         arrows: false,
         responsive: [
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
+              slidesPerRow: 2,
             }
           },
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
+              slidesPerRow: 1 ,
             }
           }
         ]
