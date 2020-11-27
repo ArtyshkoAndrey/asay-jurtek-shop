@@ -91,7 +91,6 @@
         </div>
         <div class="col-md-auto">
           <button type="submit" class="btn btn-orange w-100 mt-2 mt-md-0">Применить</button>
-  {{--        TODO: ОСтавляем кнопку, тут вью со списками что бы был реактивен, товары подгружать по api--}}
         </div>
 
         <div class="col-12">
@@ -142,6 +141,7 @@
 
 @section('js')
   <script>
+
     $("#filtered .dropdown-menu").on('click', function (event) {
       event.stopPropagation();
     });
