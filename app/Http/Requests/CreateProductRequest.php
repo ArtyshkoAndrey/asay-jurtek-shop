@@ -26,7 +26,7 @@ class CreateProductRequest extends FormRequest
     return [
       'title'       => 'required|string|max:255',
       'description' => 'required|string',
-      'history'     => 'string',
+      'history'     => 'string|nullable',
       'price'       => 'required|integer|min:0',
       'price_sale'  => 'sometimes|integer|min:0|nullable',
       'weight'      => 'required|min:0',

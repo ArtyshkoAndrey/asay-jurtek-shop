@@ -119,41 +119,45 @@
             @endif
           </form>
           <div class="row mt-4">
-            <h3>Заказы</h3>
-            <table class="table text-nowrap">
-              <thead>
-              <tr>
-                <th>Номер заказа</th>
-                <th>Клиент</th>
-                <th>Дата</th>
-                <th>Статус</th>
-                <th>Итого</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              @forelse($user->orders as $order)
-              <tr class="align-items-center">
-                <td style="vertical-align: middle;"><a href="{{ route('admin.store.order.edit', $order->id) }}" class="text-red">№ {{ $order->no }}</a></td>
-                <td style="vertical-align: middle;">{{ $order->user->getFSName() }}</td>
-                <td style="vertical-align: middle;">{{ $order->created_at->format('d.m.Y') }}</td>
-                <td style="vertical-align: middle;">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</td>
-                <td style="vertical-align: middle;"><span class="font-weight-bold h5">{{ $order->cost($order->total_amount + $order->ship_price) }} тг.</span></td>
-                <td style="vertical-align: middle;">
-                  <form action="{{ route('admin.store.order.destroy', $order->id) }}" method="post" >
-                    @csrf
-                    @method('delete')
-                    <button class="bg-transparent border-0 rounded-0" style="color: #F33C3C" type="submit"><i style="font-size: 1.5rem" class="fal fa-trash"></i></button>
-                  </form>
-                </td>
-              </tr>
-              @empty
+            <div class="col-12">
+              <h3>Заказы</h3>
+            </div>
+            <div class="col-12">
+              <table class="table text-nowrap table-responsive">
+                <thead>
                 <tr>
-                  <td colspan="6" class="text-center">Нет заказов</td>
+                  <th>Номер заказа</th>
+                  <th>Клиент</th>
+                  <th>Дата</th>
+                  <th>Статус</th>
+                  <th>Итого</th>
+                  <th></th>
                 </tr>
-              @endforelse
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                @forelse($user->orders as $order)
+                  <tr class="align-items-center">
+                    <td style="vertical-align: middle;"><a href="{{ route('admin.store.order.edit', $order->id) }}" class="text-red">№ {{ $order->no }}</a></td>
+                    <td style="vertical-align: middle;">{{ $order->user->getFSName() }}</td>
+                    <td style="vertical-align: middle;">{{ $order->created_at->format('d.m.Y') }}</td>
+                    <td style="vertical-align: middle;">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</td>
+                    <td style="vertical-align: middle;"><span class="font-weight-bold h5">{{ $order->cost($order->total_amount + $order->ship_price) }} тг.</span></td>
+                    <td style="vertical-align: middle;">
+                      <form action="{{ route('admin.store.order.destroy', $order->id) }}" method="post" >
+                        @csrf
+                        @method('delete')
+                        <button class="bg-transparent border-0 rounded-0" style="color: #F33C3C" type="submit"><i style="font-size: 1.5rem" class="fal fa-trash"></i></button>
+                      </form>
+                    </td>
+                  </tr>
+                @empty
+                  <tr>
+                    <td colspan="6" class="text-center">Нет заказов</td>
+                  </tr>
+                @endforelse
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

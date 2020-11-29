@@ -24,7 +24,7 @@
         </div>
       </div>
       <form action="{{ route('news.index')  }}" id="order-form" class="d-none" method="get">
-        <input type="hidden" id="order" value="{{ $filter['order'] }}">
+        <input type="text" id="order" name="order" value="{{ $filter['order'] }}">
       </form>
     </div>
     <div class="row">
