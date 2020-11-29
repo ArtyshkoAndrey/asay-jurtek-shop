@@ -170,7 +170,7 @@ class OrderController extends Controller
   {
     $order = Order::find($id);
     $order->delete();
-    return redirect()->route('admin.store.order.index');
+    return redirect()->route('admin.store.order.index')->withSuccess(['Заказ успешно удалён']);
   }
 
   /**

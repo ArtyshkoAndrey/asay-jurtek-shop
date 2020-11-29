@@ -91,7 +91,7 @@ class PayController extends Controller
     $request['pg_testing_mode'] = isset($request->pg_testing_mode);
     $p->update($request->all());
     $p->save();
-    return redirect()->route('admin.store.pay.index');
+    return redirect()->route('admin.store.pay.index')->withSuccess(['Данные оплаты успешно обновлены']);
   }
 
   /**

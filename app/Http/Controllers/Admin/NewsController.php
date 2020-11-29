@@ -67,10 +67,10 @@ class NewsController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
-   * @return Response
+   * @param int $id
+   * @return void
    */
-  public function show($id)
+  public function show(int $id)
   {
       //
   }
@@ -122,7 +122,7 @@ class NewsController extends Controller
     } catch (Exception $e) {
       return redirect()->route('admin.news.index')->withErrors(['Новость успешно обновлена']);
     }
-    return redirect()->route('admin.news.index')->withSuccess(['Новость успешно далена']);
+    return redirect()->route('admin.news.index')->withSuccess(['Новость успешно удалена']);
   }
 
   /**

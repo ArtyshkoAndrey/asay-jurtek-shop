@@ -72,10 +72,10 @@ class LinkMenuController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  int  $id
-   * @return Response
+   * @param int $id
+   * @return Application|Factory|View|Response
    */
-  public function edit($id)
+  public function edit(int $id)
   {
     $linkMenu = LinkMenu::find($id);
     $categories = Category::where('to_menu', true)->get();
@@ -86,10 +86,10 @@ class LinkMenuController extends Controller
    * Update the specified resource in storage.
    *
    * @param Request $request
-   * @param  int  $id
+   * @param int $id
    * @return Response
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, int $id)
   {
     $linkMenu = LinkMenu::find($id);
     $image = $request->file('image');

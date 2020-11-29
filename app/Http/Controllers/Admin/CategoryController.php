@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -18,7 +18,7 @@ class CategoryController extends Controller
    *
    * @return Factory|View
    */
-  public function index()
+  public function index(): View
   {
     $categories = Category::select('*')->whereNotIn('id',function($query) {
 
@@ -44,7 +44,7 @@ class CategoryController extends Controller
    * @param Request $request
    * @return RedirectResponse
    */
-  public function store(Request $request)
+  public function store(Request $request): RedirectResponse
   {
 //      dd($request);
     $request->validate([
@@ -74,9 +74,9 @@ class CategoryController extends Controller
    * Show the form for editing the specified resource.
    *
    * @param int $id
-   * @return Application|Factory|\Illuminate\Contracts\View\View|Response
+   * @return Application|Factory|\Illuminate\Contracts\View\View|View
    */
-  public function edit(int $id)
+  public function edit(int $id): View
   {
     $category = Category::find($id);
     $categories = Category::select('*')->whereNotIn('id',function($query) {
@@ -92,7 +92,7 @@ class CategoryController extends Controller
    * @param int $id
    * @return RedirectResponse
    */
-  public function update(Request $request, int $id)
+  public function update(Request $request, int $id): RedirectResponse
   {
     $request->validate([
       'name' => 'required|string',
@@ -111,8 +111,9 @@ class CategoryController extends Controller
    *
    * @param int $id
    * @return RedirectResponse
+   * @throws Exception
    */
-  public function destroy(int $id)
+  public function destroy(int $id): RedirectResponse
   {
     $category = Category::find($id);
     $name = $category->name;
