@@ -22,14 +22,17 @@ class NewsController extends Controller
    */
   public function index(Request $request): View
   {
+    $newses = News::query();
+    $order = $request->input('order', 'sort-new');
+    if ($order === 'sort-new') {
+      $newses = $newses->orderBy('created_at', 'desc');
+    } else if ($order === 'sort-old') {
+      $newses = $newses->orderBy('created_at', 'asc');
+    }
+    $newses = $newses->paginate(20);
     $filter = [
-      'order' => 'sort-new'
+      'order' => $order
     ];
-//    if ($filter['order'] = $request->input('order', null)) {
-//      $newses = News::where('title', 'like', '%'.$search.'%')->paginate(10);
-//    } else {
-      $newses = News::paginate(10);
-//    }
     return view('news.index', compact('newses', 'filter'));
   }
 
