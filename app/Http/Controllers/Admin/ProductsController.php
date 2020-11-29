@@ -92,6 +92,9 @@ class ProductsController extends Controller {
    */
   public function store(CreateProductRequest $request): RedirectResponse
   {
+    if ($request->on_sale && !isset($request->price_sale)) {
+      return redirect()->back()->withInput()->withErrors(['price_sale' => 'Цена не может быть ниже 0 при скидке']);
+    }
     $product              = new Product();
     $product->title       = $request->title;
     $product->description = $request->description;
@@ -158,6 +161,9 @@ class ProductsController extends Controller {
    */
   public function update(UpdateProductRequest $request, int $id)
   {
+    if ($request->on_sale && !isset($request->price_sale)) {
+      return redirect()->back()->withInput()->withErrors(['price_sale' => 'Цена не может быть ниже 0 при скидке']);
+    }
     $product              = Product::withTrashed()->find($id);
     $product->title       = $request->title;
     $product->description = $request->description;

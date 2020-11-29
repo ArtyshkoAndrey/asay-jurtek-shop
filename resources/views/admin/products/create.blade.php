@@ -58,13 +58,13 @@
                 <div class="row">
                   <div class="col-12">
                     <label for="description">Описание</label>
-                    <textarea name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                    <textarea name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
                     <span id="description-error" class="error invalid-feedback">{{ $errors->first('description') }}</span>
                   </div>
                   <div class="col-12 mt-2">
                     <label for="history">История вещи</label>
                     <textarea name="history" class="form-control {{ $errors->has('history') ? ' is-invalid' : '' }}" id="history" cols="30" rows="10">{{ old('history') }}</textarea>
-                    <span id="hostory-error" class="error invalid-feedback">{{ $errors->first('history') }}</span>
+                    <span id="history-error" class="error invalid-feedback">{{ $errors->first('history') }}</span>
                   </div>
                   <div class="col-12 col-md-6 mt-2">
                     <label for="category">Категории</label>
@@ -84,7 +84,7 @@
                   </div>
                   <div class="col-md-6 mt-2">
                     <label for="price_sale">Цена со скидкой</label>
-                    <input type="number" min="0" name="price_sale" class="form-control rounded-0 {{ $errors->has('price_sale') ? ' is-invalid' : '' }}" id="price_sale">
+                    <input type="number" min="0" name="price_sale" class="form-control rounded-0 {{ $errors->has('price_sale') ? ' is-invalid' : '' }}" id="price_sale" value="{{ old('price_sale') }}">
                     <span id="price_sale-error" class="error invalid-feedback">{{ $errors->first('price_sale') }}</span>
                   </div>
 
@@ -108,8 +108,8 @@
 
                   <div class="col-md-6 mt-2">
                     <label for="weight">Вес товара (кг)</label>
-                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0 {{ $errors->has('weight') ? ' is-invalid' : '' }}" id="weight" value="value="{{ old('weight', 0.1) }}">
-                    <span id="weight-error" class="error invalid-feedback">{{ $errors->first('wight') }}</span>
+                    <input type="number" min="0" name="weight" step="0.01" class="form-control rounded-0 {{ $errors->has('weight') ? ' is-invalid' : '' }}" id="weight" value="{{ old('weight') }}">
+                    <span id="weight-error" class="error invalid-feedback">{{ $errors->first('weight') }}</span>
                   </div>
 
                   {{-- Meta --}}
@@ -168,7 +168,7 @@
                                     <div class="col-12">
                                       <div class="row mt-2">
                                         <label class="col-12">
-                                          <input type="radio" value="{{ $sku->id }}" name="skus" id="skus" {{ in_array($sku->id, old('skus', [])) }}>
+                                          <input type="radio" value="{{ $sku->id }}" name="skus" id="skus" {{ $sku->id == old('skus') ? 'checked' : null }}>
                                           {{ $sku->title }}
                                         </label>
                                       </div>
