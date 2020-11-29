@@ -202,7 +202,7 @@ class ProductsController extends Controller {
     } else {
       $pr->delete();
     }
-    return redirect()->back();
+    return redirect()->back()->withSuccess(['Товар успешно удалён']);
   }
 
   public function collectionsDestroy(Request $request) {

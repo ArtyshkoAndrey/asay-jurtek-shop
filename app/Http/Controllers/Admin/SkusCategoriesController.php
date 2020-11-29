@@ -13,9 +13,6 @@ use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class SkusCategoriesController extends Controller {
-  public function __construct() {
-
-  }
 
   /**
    * Display a listing of the resource.
@@ -55,7 +52,7 @@ class SkusCategoriesController extends Controller {
     $sc->name = $request->name;
     $sc->save();
 
-    return redirect()->route('admin.production.skus-category.edit', $sc->id);
+    return redirect()->route('admin.production.skus-category.edit', $sc->id)->withSuccess(['Категория размеров успешно создана']);
   }
 
   /**
@@ -98,7 +95,7 @@ class SkusCategoriesController extends Controller {
     $sc->update($request->all());
     $sc->save();
 
-    return redirect()->route('admin.production.skus-category.index');
+    return redirect()->route('admin.production.skus-category.index')->withSuccess(['Катогория размеров успешно создана']);
   }
 
   /**
@@ -111,6 +108,6 @@ class SkusCategoriesController extends Controller {
   public function destroy($id)
   {
     SkusCategory::destroy($id);
-    return redirect()->route('admin.production.skus-category.index');
+    return redirect()->route('admin.production.skus-category.index')->withSuccess(['Категория размеров успешно удалена']);;
   }
 }

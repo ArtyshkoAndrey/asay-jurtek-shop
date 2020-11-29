@@ -14,9 +14,6 @@ use App\Models\SkusCategory;
 
 class SkusController extends Controller
 {
-  public function __construct() {
-
-  }
 
   /**
    * Display a listing of the resource.
@@ -26,7 +23,7 @@ class SkusController extends Controller
    */
   public function index(Request $request)
   {
-    $type = $request->type;
+    $type = 'all';
     $search = $request->search;
     $skus = Skus::query();
     if (isset($search)) {
@@ -34,16 +31,6 @@ class SkusController extends Controller
         ->orWhere('created_at', 'LIKE', '%'.$search.'%');
     } else {
       $search = '';
-    }
-    if (isset($type)) {
-      switch ($type) {
-        case 'all':
-        case 'published':
-          $skus = $skus;
-          break;
-      }
-    } else {
-      $type = 'all';
     }
     $filters = [
       'search' => $search,
@@ -84,7 +71,7 @@ class SkusController extends Controller
     $sku->save();
 
 //    return redirect()->route('admin.production.attr.index');
-    return redirect()->route('admin.production.skus-category.edit', $request->skus_category_id);
+    return redirect()->route('admin.production.skus-category.edit', $request->skus_category_id)->withSuccess(['Размер успешно создан']);
   }
 
     /**
@@ -133,7 +120,7 @@ class SkusController extends Controller
       $sku->save();
 
 //      return redirect()->route('admin.production.attr.index');
-      return redirect()->route('admin.production.skus-category.edit', $sku->skus_category->id);
+      return redirect()->route('admin.production.skus-category.edit', $sku->skus_category->id)->withSuccess(['Размер успешно обновлён']);
     }
 
   /**
@@ -148,7 +135,6 @@ class SkusController extends Controller
       $sc = Skus::find($id);
       $s = $sc->skus_category_id;
       $sc->delete();
-//      return redirect()->route('admin.production.attr.index');
-      return redirect()->route('admin.production.skus-category.edit', $s);
+      return redirect()->route('admin.production.skus-category.edit', $s)->withSuccess(['Размер успешно удалён']);
     }
 }

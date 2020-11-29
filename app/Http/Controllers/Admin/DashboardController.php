@@ -39,6 +39,6 @@ class DashboardController extends Controller
    */
   public function status (Request $request) {
     Setting::setStatusSite((bool) $request->has('status'));
-    return redirect()->back();
+    return redirect()->back()->withSuccess(['Статус сайта был изменён']);
   }
 }
