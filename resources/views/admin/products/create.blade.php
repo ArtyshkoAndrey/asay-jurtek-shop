@@ -116,13 +116,13 @@
 
                   <div class="col-md-6 mt-2">
                     <label for="meta-description">Meta Description</label>
-                    <input type="text" name="meta[description]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-description" value="{{ old('meta')["description"] }}">
+                    <input type="text" name="meta[description]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-description" value="{{ old('meta', ['description' => '', 'keywords' => ''])["description"] }}">
                     <span id="meta1-error" class="error invalid-feedback">{{ $errors->first('meta') }}</span>
                   </div>
 
                   <div class="col-md-6 mt-2">
                     <label for="meta-keywords">Meta Keywords</label>
-                    <input type="text" name="meta[keywords]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-keywords" value="{{ old('meta')["keywords"] }}">
+                    <input type="text" name="meta[keywords]" class="form-control rounded-0 {{ $errors->has('meta') ? ' is-invalid' : '' }}" id="meta-keywords" value="{{old('meta', ['description' => '', 'keywords' => ''])["keywords"] }}">
                     <span id="meta2-error" class="error invalid-feedback">{{ $errors->first('meta') }}</span>
                   </div>
                 </div>
