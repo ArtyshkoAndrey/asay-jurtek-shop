@@ -22,7 +22,7 @@
     <list default="true" id="6a71ca92-6c09-464e-9bde-9f11805a56e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +262,8 @@
       <workItem from="1606482649308" duration="2478000" />
       <workItem from="1606654144385" duration="48000" />
       <workItem from="1606654229759" duration="4305000" />
-      <workItem from="1606756494858" duration="211000" />
+      <workItem from="1606756494858" duration="362000" />
+      <workItem from="1606756912398" duration="720000" />
     </task>
     <servers />
   </component>
@@ -385,10 +386,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606445746152" />
-    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1606449750581">
+    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1606756948614">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606449750581" />
+    <state x="1103" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606756948614" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
