@@ -72,7 +72,11 @@
               <tbody>
                 <tr>
                   <th class="text-muted font-weight-normal">Категория</th>
-                  <td class="font-weight-bolder">Куртка</td>
+                  <td class="font-weight-bolder">
+                    @foreach($item->categories as $index => $cat)
+                      {{ $item->categories->count() == $index + 1 ? $cat->name : $cat->name . ', ' }}
+                    @endforeach
+                  </td>
                 </tr>
                 <tr>
                   <th class="text-muted font-weight-normal">Размер</th>
